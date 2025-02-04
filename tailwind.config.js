@@ -6,6 +6,10 @@ module.exports = {
   presets: [require('nativewind/preset')],
   theme: {
     extend: {
+      fontFamily: {
+        inter: ['Inter'],
+        roboto: ['Roboto'],
+      },
       colors: colors,
     },
   },

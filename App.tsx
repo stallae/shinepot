@@ -1,13 +1,13 @@
-import {SafeAreaView, Text, View} from 'react-native';
 import React from 'react';
-import WideButton from './src/components/global/buttons/wideButton/wideButton.tsx';
 import './src/components/global/global.css';
+import {ThemeProvider} from './src/utils/themeContext.tsx';
+import RootNavigator from './src/navigation/RootNavigator.tsx';
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaView>
-      <WideButton />
-    </SafeAreaView>
+    <ThemeProvider>
+      <RootNavigator />
+    </ThemeProvider>
   );
 }
 
