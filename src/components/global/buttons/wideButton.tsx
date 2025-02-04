@@ -1,13 +1,14 @@
 import React from 'react';
-import {Text, Pressable} from 'react-native';
+import {Text, Pressable, View} from 'react-native';
 import {WideButtonProps} from '../interfaces/wideButtonInterface.tsx';
 import useColors from '../../../hooks/useColors.tsx';
+import {IconContext} from 'phosphor-react-native';
 
 const WideButton: React.FC<WideButtonProps> = ({
-  icon = '',
+  icon = null,
   text = '',
   outlined = false,
-  isDisabled = true,
+  isDisabled = false,
 }) => {
   const {colors} = useColors();
   return (
@@ -27,21 +28,28 @@ const WideButton: React.FC<WideButtonProps> = ({
           : null
       }
       onPress={() => {}}>
-      <Text
-        className="mr-4"
-        style={{
-          color: isDisabled ? colors.textPrimaryDisabled : colors.textPrimary,
+      <IconContext.Provider
+        value={{
+          weight: 'bold',
+          color: isDisabled
+            ? colors.textPrimaryDisabled
+            : outlined
+            ? colors.textPrimary
+            : '#FFFFFF',
         }}>
-        aa
-      </Text>
+        <View style={{marginRight: 5}}>{icon ? icon : null}</View>
+      </IconContext.Provider>
       <Text
         className={`text-lg font-bold self-center font-inter`}
         style={{
-          color: isDisabled ? colors.textPrimaryDisabled : colors.textPrimary,
+          color: isDisabled
+            ? colors.textPrimaryDisabled
+            : outlined
+            ? colors.textPrimary
+            : '#FFFFFF',
         }}>
         {text}
       </Text>
-      r
     </Pressable>
   );
 };
