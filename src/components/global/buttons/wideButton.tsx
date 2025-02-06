@@ -14,7 +14,7 @@ const WideButton: React.FC<WideButtonProps> = ({
   return (
     <Pressable
       disabled={isDisabled}
-      className={`rounded-full w-10/12 h-1/4 justify-center items-center self-center flex-row  ${
+      className={`rounded-full w-10/12 h-16 justify-center items-center self-center flex-row  ${
         outlined
           ? 'bg-transparent border border-blue-500 active:bg-blue-500'
           : 'bg-blue-500 active:bg-blue-900'
