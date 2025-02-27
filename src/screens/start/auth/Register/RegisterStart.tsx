@@ -1,0 +1,77 @@
+import {Pressable, SafeAreaView, Text, View} from 'react-native';
+import React from 'react';
+import Logo from '../../../../components/global/logo/logo.tsx';
+import useColors from '../../../../hooks/useColors.tsx';
+import WideButton from '../../../../components/global/buttons/wideButton.tsx';
+import GeneralInput from '../../../../components/global/inputs/generalImput.tsx';
+import {Routes} from '../../../../navigation/Routes.tsx';
+import BackButton from '../../../../components/global/buttons/backButton.tsx';
+import {X} from 'phosphor-react-native';
+
+const RegisterStart = ({navigation}) => {
+  const {colors} = useColors();
+
+  const handlePress = (type: string) => {
+    console.log(`Clicked on ${type}`);
+  };
+  return (
+    <SafeAreaView
+      className="flex-1 justify-between items-center"
+      style={{backgroundColor: colors.primary}}>
+      <View className="absolute top-20 left-10">
+        <BackButton icon={<X />} onPress={navigation.goBack} />
+      </View>
+
+      <View className="flex-1 justify-center w-full items-center">
+        <Logo />
+        <View className="h-2/5 w-full justify-between mt-10">
+          <View className="ml-8 h-1/3 w-full justify-between">
+            <Text
+              className="font-inter text-3xl font-bold mb-10"
+              style={{color: colors.textPrimary}}>
+              {'Enter your email address'}
+            </Text>
+
+            <GeneralInput
+              label={'Your email:'}
+              keyboardType={'email-address'}
+              placeholder={'Enter your email address'}
+            />
+          </View>
+        </View>
+      </View>
+
+      <View className="w-full mb-10">
+        <View className="flex-row flex-wrap justify-center align-middle">
+          <Text className="font-inter font-medium color-gray-250">
+            By signing up, you agree to our{' '}
+          </Text>
+          <Pressable onPress={() => handlePress('Privacy')}>
+            <Text className="font-inter font-medium color-blue-500 underline">
+              Privacy
+            </Text>
+          </Pressable>
+        </View>
+        <View className="flex-row flex-wrap justify-center align-middle mb-5">
+          <Pressable onPress={() => handlePress('Policy')}>
+            <Text className="font-inter font-medium color-blue-500 underline">
+              Policy
+            </Text>
+          </Pressable>
+          <Text className="font-inter font-medium color-gray-250"> and </Text>
+          <Pressable onPress={() => handlePress('Terms of Use')}>
+            <Text className="font-inter font-medium color-blue-500 underline">
+              Terms of Use
+            </Text>
+          </Pressable>
+        </View>
+        <WideButton
+          text={'Next'}
+          onPress={() => navigation.navigate(Routes.RegisterUsername)}
+        />
+      </View>
+    </SafeAreaView>
+  );
+};
+
+export default RegisterStart;
