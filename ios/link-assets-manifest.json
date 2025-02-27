@@ -432,6 +432,42 @@
     {
       "path": "src/assets/fonts/Roboto/Roboto_SemiCondensed-ThinItalic.ttf",
       "sha1": "4015948dfdcc05da6c01e8950dc1f09bb0cc3ed0"
+    },
+    {
+      "path": "src/assets/fonts/HeptaSlab/HeptaSlab-Black.ttf",
+      "sha1": "c3a3a933867bef5b4698173a9f8c2a3cd0611bb3"
+    },
+    {
+      "path": "src/assets/fonts/HeptaSlab/HeptaSlab-Bold.ttf",
+      "sha1": "294ebce90cec3ebd7fdfae41c965e743e54bba4c"
+    },
+    {
+      "path": "src/assets/fonts/HeptaSlab/HeptaSlab-ExtraBold.ttf",
+      "sha1": "385716d09ea95db148707528997f25885491bfe5"
+    },
+    {
+      "path": "src/assets/fonts/HeptaSlab/HeptaSlab-ExtraLight.ttf",
+      "sha1": "012bad63b485d39785b5a2df62845e1bbe431cbf"
+    },
+    {
+      "path": "src/assets/fonts/HeptaSlab/HeptaSlab-Light.ttf",
+      "sha1": "22cdb0730dfc24d4dde91d36324acca1007798fd"
+    },
+    {
+      "path": "src/assets/fonts/HeptaSlab/HeptaSlab-Medium.ttf",
+      "sha1": "fd5df54f8ff4ed56efef4dc3ffdd4551d4f4bb94"
+    },
+    {
+      "path": "src/assets/fonts/HeptaSlab/HeptaSlab-Regular.ttf",
+      "sha1": "4021907028a53266801efb4b1bf478d98bcee340"
+    },
+    {
+      "path": "src/assets/fonts/HeptaSlab/HeptaSlab-SemiBold.ttf",
+      "sha1": "1be9047dba571aab4dc38f022550d2226880bf26"
+    },
+    {
+      "path": "src/assets/fonts/HeptaSlab/HeptaSlab-Thin.ttf",
+      "sha1": "de1295cec553c9dace665a6783d72c5c98d1e1a5"
     }
   ]
 }

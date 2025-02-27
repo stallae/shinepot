@@ -5,4 +5,5 @@ export interface WideButtonProps {
   text: string;
   outlined?: boolean;
   isDisabled?: boolean;
+  onPress?: () => void;
 }

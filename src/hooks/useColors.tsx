@@ -1,7 +1,7 @@
 import {useContext, useEffect} from 'react';
 import {Colors, TColors} from '../assets/styles/theme.tsx';
 import {ThemeContext} from '../utils/themeContext.tsx';
-import {useColorScheme} from 'react-native';
+import useTheme from './useTheme.tsx';
 
 interface ColorType {
   colors: TColors;
@@ -9,7 +9,7 @@ interface ColorType {
 }
 
 const useColors = (): ColorType => {
-  const colorScheme = useColorScheme();
+  const theme = useTheme();
   const store = useContext(ThemeContext);
 
   if (!store) {
@@ -19,10 +19,10 @@ const useColors = (): ColorType => {
   const {applyColors, colors} = store;
 
   useEffect(() => {
-    if (colorScheme) {
-      applyColors(colorScheme === 'dark' ? Colors.dark : Colors.light);
+    if (theme) {
+      applyColors(theme === 'dark' ? Colors.dark : Colors.light);
     }
-  }, [applyColors, colorScheme]);
+  }, [applyColors, theme]);
 
   return {applyColors, colors};
 };

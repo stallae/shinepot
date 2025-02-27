@@ -9,6 +9,7 @@ const WideButton: React.FC<WideButtonProps> = ({
   text = '',
   outlined = false,
   isDisabled = false,
+  onPress,
 }) => {
   const {colors} = useColors();
   return (
@@ -27,14 +28,14 @@ const WideButton: React.FC<WideButtonProps> = ({
             }
           : null
       }
-      onPress={() => {}}>
+      onPress={onPress}>
       <IconContext.Provider
         value={{
           weight: 'bold',
           color: isDisabled
             ? colors.textPrimaryDisabled
             : outlined
-            ? colors.textPrimary
+            ? colors.textSecondary
             : '#FFFFFF',
         }}>
         <View style={{marginRight: 5}}>{icon ? icon : null}</View>
@@ -45,7 +46,7 @@ const WideButton: React.FC<WideButtonProps> = ({
           color: isDisabled
             ? colors.textPrimaryDisabled
             : outlined
-            ? colors.textPrimary
+            ? colors.textSecondary
             : '#FFFFFF',
         }}>
         {text}
