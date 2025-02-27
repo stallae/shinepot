@@ -1,6 +1,7 @@
 export const colors = {
   blue: {
     500: '#0183FD',
+    900: '#004688',
   },
   green: {
     300: '#7CFF90',
