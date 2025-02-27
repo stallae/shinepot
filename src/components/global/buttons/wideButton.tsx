@@ -9,12 +9,13 @@ const WideButton: React.FC<WideButtonProps> = ({
   text = '',
   outlined = false,
   isDisabled = false,
+  onPress,
 }) => {
   const {colors} = useColors();
   return (
     <Pressable
       disabled={isDisabled}
-      className={`rounded-full w-10/12 h-1/4 justify-center items-center self-center flex-row  ${
+      className={`rounded-full w-10/12 h-16 justify-center items-center self-center flex-row  ${
         outlined
           ? 'bg-transparent border border-blue-500 active:bg-blue-500'
           : 'bg-blue-500 active:bg-blue-900'
@@ -27,14 +28,14 @@ const WideButton: React.FC<WideButtonProps> = ({
             }
           : null
       }
-      onPress={() => {}}>
+      onPress={onPress}>
       <IconContext.Provider
         value={{
           weight: 'bold',
           color: isDisabled
             ? colors.textPrimaryDisabled
             : outlined
-            ? colors.textPrimary
+            ? colors.textSecondary
             : '#FFFFFF',
         }}>
         <View style={{marginRight: 5}}>{icon ? icon : null}</View>
@@ -45,7 +46,7 @@ const WideButton: React.FC<WideButtonProps> = ({
           color: isDisabled
             ? colors.textPrimaryDisabled
             : outlined
-            ? colors.textPrimary
+            ? colors.textSecondary
             : '#FFFFFF',
         }}>
         {text}

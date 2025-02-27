@@ -1,4 +1,4 @@
-export const colors = {
+const colors = {
   blue: {
     500: '#0183FD',
     900: '#004688',
@@ -24,3 +24,5 @@ export const colors = {
     500: '#1D1D1D',
   },
 };
+
+module.exports = colors;
