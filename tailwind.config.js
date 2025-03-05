@@ -1,9 +1,10 @@
-const colors = require('./src/assets/styles/colors.tsx').colors;
+import colors from './src/assets/styles/colors.tsx';
+import nativewindPreset from 'nativewind/preset';
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  presets: [require('nativewind/preset')],
+  presets: [nativewindPreset],
   theme: {
     extend: {
       fontFamily: {

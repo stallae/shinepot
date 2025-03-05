@@ -3,11 +3,11 @@ import React from 'react';
 import Logo from '../../../../components/global/logo/logo.tsx';
 import useColors from '../../../../hooks/useColors.tsx';
 import WideButton from '../../../../components/global/buttons/wideButton.tsx';
-import {Routes} from '../../../../navigation/Routes.tsx';
 import BackButton from "../../../../components/global/buttons/backButton.tsx";
 import {ArrowLeft} from "phosphor-react-native";
+import {ROUTES, ScreenProps} from '../../../../navigation/types';
 
-const RegisterOtp = ({navigation}) => {
+const RegisterOtp: React.FC<ScreenProps> = ({navigation}) => {
   const {colors} = useColors();
   return (
     <SafeAreaView
@@ -26,10 +26,10 @@ const RegisterOtp = ({navigation}) => {
           style={{color: colors.textPrimary}}>
           {'Check your email, we just sent you a\nconfirmation code.'}
         </Text>
-        <View className="justify-between h-1/4 mt-10 ">
+        <View className="justify-between w-11/12 h-1/4 mt-10 mx-auto">
           <WideButton
             text={'Open your email to approve'}
-            onPress={() => navigation.navigate(Routes.RegisterVerified)}
+            onPress={() => navigation.navigate(ROUTES.RegisterVerified)}
           />
           <WideButton text={'Resend code (1:32)'} outlined={true} />
         </View>

@@ -3,9 +3,9 @@ import React from 'react';
 import Logo from '../../../../components/global/logo/logo.tsx';
 import useColors from '../../../../hooks/useColors.tsx';
 import WideButton from '../../../../components/global/buttons/wideButton.tsx';
-import {Routes} from '../../../../navigation/Routes.tsx';
+import {ROUTES, ScreenProps} from '../../../../navigation/types';
 
-const RegisterVerified = ({navigation}) => {
+const RegisterVerified: React.FC<ScreenProps> = ({navigation}) => {
   const {colors} = useColors();
   return (
     <SafeAreaView
@@ -25,10 +25,10 @@ const RegisterVerified = ({navigation}) => {
             'Thank you verifying your email!\nYou can now proceed to the next\n step.'
           }
         </Text>
-        <View className="justify-between h-1/8 mt-10 ">
+        <View className="justify-between h-1/8 mt-10 w-11/12 mx-auto">
           <WideButton
             text={'Next'}
-            onPress={() => navigation.navigate(Routes.RegisterVerified)}
+            onPress={() => navigation.navigate(ROUTES.RegisterVerified)}
           />
         </View>
       </View>

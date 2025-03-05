@@ -8,9 +8,10 @@ import BackButton from '../../../../components/global/buttons/backButton.tsx';
 import {X} from 'phosphor-react-native';
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
 
-const RegisterStart: React.FC<ScreenProps> = ({navigation}) => {
+const RegisterPassword: React.FC<ScreenProps> = ({navigation}) => {
   const {colors} = useColors();
-  const [fullName, setFullName] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleInputChange = (text: string, setter: (value: string) => void) => {
     setter(text);
@@ -35,20 +36,24 @@ const RegisterStart: React.FC<ScreenProps> = ({navigation}) => {
             <Text
               className="font-inter text-3xl font-bold mb-10"
               style={{color: colors.textPrimary}}>
-              {'Enter your email address'}
+              {'Create a password'}
             </Text>
 
             <GeneralInput
-              label={'Your email:'}
-              keyboardType={'email-address'}
-              placeholder={'Enter your email address'}
+              label={'Your password:'}
+              keyboardType={'default'}
+              placeholder={'Enter your password'}
+              value={password}
+              secureText={true}
+              onChange={(text) => handleInputChange(text, setPassword)}
             />
             <GeneralInput
-              label={'Your full name:'}
-              placeholder={'Enter your full name'}
+              label={'Confirm password:'}
+              placeholder={'Confirm your password'}
               keyboardType="default"
-              value={fullName}
-              onChange={(text) => handleInputChange(text, setFullName)}
+              value={confirmPassword}
+              secureText={true}
+              onChange={(text) => handleInputChange(text, setConfirmPassword)}
             />
           </View>
         </View>
@@ -81,7 +86,7 @@ const RegisterStart: React.FC<ScreenProps> = ({navigation}) => {
         <View className="w-11/12 mx-auto">
         <WideButton
           text={'Next'}
-            onPress={() => navigation.navigate(ROUTES.RegisterInfos)}
+            onPress={() => navigation.navigate(ROUTES.RegisterOtp)}
           />
         </View>
       </View>
@@ -89,4 +94,4 @@ const RegisterStart: React.FC<ScreenProps> = ({navigation}) => {
   );
 };
 
-export default RegisterStart;
+export default RegisterPassword;

@@ -1,0 +1,221 @@
+import {DropdownOption} from '../components/global/interfaces/dropdownInterface';
+
+export interface Country extends DropdownOption {
+  code: string;    // Country code (e.g., 'US')
+  dial_code: string; // Phone code (e.g., '+1')
+  flag: string;    // Flag emoji (e.g., '🇺🇸')
+  name: string;    // Country name (e.g., 'United States')
+  value: string;
+  text: string;
+}
+
+export const countries: Country[] = [
+  {
+    code: "US",
+    dial_code: "+1",
+    flag: "🇺🇸",
+    name: "United States",
+    value: 'US',
+    text: '🇺🇸 1'
+  },
+  {
+    code: "BR",
+    dial_code: "+55",
+    flag: "🇧🇷",
+    name: "Brazil",
+    value: 'BR',
+    text: '🇧🇷 +55'
+  },
+  {
+    code: 'AU',
+    dial_code: '+61',
+    flag: '🇦🇺',
+    name: 'Australia',
+    value: '61',
+    text: '🇦🇺 61'
+  },
+  {
+    code: 'CN',
+    dial_code: '+86',
+    flag: '🇨🇳',
+    name: 'China',
+    value: '86',
+    text: '🇨🇳 86'
+  },
+  {
+    code: 'DK',
+    dial_code: '+45',
+    flag: '🇩🇰',
+    name: 'Denmark',
+    value: '45',
+    text: '🇩🇰 45'
+  },
+  {
+    code: 'EG',
+    dial_code: '+20',
+    flag: '🇪🇬',
+    name: 'Egypt',
+    value: '20',
+    text: '🇪🇬 20'
+  },
+  {
+    code: 'FI',
+    dial_code: '+358',
+    flag: '🇫🇮',
+    name: 'Finland',
+    value: '358',
+    text: '🇫🇮 358'
+  },
+  {
+    code: 'FR',
+    dial_code: '+33',
+    flag: '🇫🇷',
+    name: 'France',
+    value: '33',
+    text: '🇫🇷 33'
+  },
+  {
+    code: 'DE',
+    dial_code: '+49',
+    flag: '🇩🇪',
+    name: 'Germany',
+    value: '49',
+    text: '🇩🇪 49'
+  },
+  {
+    code: 'IN',
+    dial_code: '+91',
+    flag: '🇮🇳',
+    name: 'India',
+    value: '91',
+    text: '🇮🇳 91'
+  },
+  {
+    code: 'IT',
+    dial_code: '+39',
+    flag: '🇮🇹',
+    name: 'Italy',
+    value: '39',
+    text: '🇮🇹 39'
+  },
+  {
+    code: 'JP',
+    dial_code: '+81',
+    flag: '🇯🇵',
+    name: 'Japan',
+    value: '81',
+    text: '🇯🇵 81'
+  },
+  {
+    code: 'MX',
+    dial_code: '+52',
+    flag: '🇲🇽',
+    name: 'Mexico',
+    value: '52',
+    text: '🇲🇽 52'
+  },
+  {
+    code: 'NL',
+    dial_code: '+31',
+    flag: '🇳🇱',
+    name: 'Netherlands',
+    value: '31',
+    text: '🇳🇱 31'
+  },
+  {
+    code: 'NG',
+    dial_code: '+234',
+    flag: '🇳🇬',
+    name: 'Nigeria',
+    value: '234',
+    text: '🇳🇬 234'
+  },
+  {
+    code: 'NO',
+    dial_code: '+47',
+    flag: '🇳🇴',
+    name: 'Norway',
+    value: '47',
+    text: '🇳🇴 47'
+  },
+  {
+    code: 'PT',
+    dial_code: '+351',
+    flag: '🇵🇹',
+    name: 'Portugal',
+    value: '351',
+    text: '🇵🇹 351'
+  },
+  {
+    code: 'RU',
+    dial_code: '+7',
+    flag: '🇷🇺',
+    name: 'Russia',
+    value: '7',
+    text: '🇷🇺 7'
+  },
+  {
+    code: 'SA',
+    dial_code: '+966',
+    flag: '🇸🇦',
+    name: 'Saudi Arabia',
+    value: '966',
+    text: '🇸🇦 966'
+  },
+  {
+    code: 'KR',
+    dial_code: '+82',
+    flag: '🇰🇷',
+    name: 'South Korea',
+    value: '82',
+    text: '🇰🇷 82'
+  },
+  {
+    code: 'ES',
+    dial_code: '+34',
+    flag: '🇪🇸',
+    name: 'Spain',
+    value: '34',
+    text: '🇪🇸 34'
+  },
+  {
+    code: 'SE',
+    dial_code: '+46',
+    flag: '🇸🇪',
+    name: 'Sweden',
+    value: '46',
+    text: '🇸🇪 46'
+  },
+  {
+    code: 'AE',
+    dial_code: '+971',
+    flag: '🇦🇪',
+    name: 'United Arab Emirates',
+    value: '971',
+    text: '🇦🇪 971'
+  },
+  {
+    code: 'GB',
+    dial_code: '+44',
+    flag: '🇬🇧',
+    name: 'United Kingdom',
+    value: '44',
+    text: '🇬🇧 44'
+  },
+  {
+    code: 'ZA',
+    dial_code: '+27',
+    flag: '🇿🇦',
+    name: 'South Africa',
+    value: '27',
+    text: '🇿🇦 27'
+  },
+  {
+    code: 'ZA',
+    dial_code: '+27',
+    flag: '🇿🇦',
+    name: 'South Africa',
+    value: '27',
+    text: '🇿🇦 27'
+  }
+];

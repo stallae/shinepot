@@ -4,9 +4,9 @@ import Logo from '../../../../components/global/logo/logo.tsx';
 import useColors from '../../../../hooks/useColors.tsx';
 import WideButton from '../../../../components/global/buttons/wideButton.tsx';
 import GeneralInput from '../../../../components/global/inputs/generalImput.tsx';
-import {ROUTES, ScreenProps} from '../../../../navigation/types';
+import { ScreenProps } from '../../../../types/navigation';
 
-const LoginOtp: React.FC<ScreenProps> = ({navigation}) => {
+const LoginOtpPhone: React.FC<ScreenProps> = ({navigation}) => {
   const {colors} = useColors();
 
   const inputRefs = Array.from({length: 6}, () => useRef<TextInput>(null));
@@ -19,7 +19,7 @@ const LoginOtp: React.FC<ScreenProps> = ({navigation}) => {
         <Text
           className="font-inter text-2xl font-bold text-center mt-10 mb-16"
           style={{color: colors.textPrimary}}>
-          {'Enter the code received\nvia Email'}
+          {'Enter the code received\nvia Phone'}
         </Text>
         <View>
           <View className="flex-row justify-center mt-3 px-3">
@@ -44,10 +44,9 @@ const LoginOtp: React.FC<ScreenProps> = ({navigation}) => {
       </View>
       <View className="absolute inset-x-0 bottom-12 w-full px-6">
         <WideButton text={'Log In'} />
-        
       </View>
     </SafeAreaView>
   );
 };
 
-export default LoginOtp;
+export default LoginOtpPhone;
