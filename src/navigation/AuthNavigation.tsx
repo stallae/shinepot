@@ -13,6 +13,8 @@ import RegisterOtp from '../screens/start/auth/Register/RegisterOtp';
 import RegisterInfos from '../screens/start/auth/Register/RegisterInfos';
 import RegisterVerified from '../screens/start/auth/Register/RegisterVerified';
 import RegisterPassword from '../screens/start/auth/Register/RegisterPassword';
+import RecoverPassword from '../screens/start/auth/Login/RecoverPassword';
+import ComplianceRules from '../screens/start/auth/Register/ComplianceRules';
 const Stack = createStackNavigator<AuthStackParamList>();
 
 const AuthNavigation = () => {
@@ -29,7 +31,8 @@ const AuthNavigation = () => {
       <Stack.Screen name={ROUTES.RegisterInfos} component={RegisterInfos} />
       <Stack.Screen name={ROUTES.RegisterPassword} component={RegisterPassword} />
       <Stack.Screen name={ROUTES.RegisterVerified} component={RegisterVerified} />
-    
+      <Stack.Screen name={ROUTES.RecoverPassword} component={RecoverPassword} />
+      <Stack.Screen name={ROUTES.ComplianceRules} component={ComplianceRules} />
     </Stack.Navigator>
   );
 };

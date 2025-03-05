@@ -6,7 +6,7 @@ import WideButton from '../../../../components/global/buttons/wideButton.tsx';
 import GeneralInput from '../../../../components/global/inputs/generalImput.tsx';
 import { countries } from '../../../../constants/countries.ts';
 import Dropdown from '../../../../components/global/dropdown/dropdown.tsx';
-import { ROUTES, ScreenProps } from '../../../../navigation/types';
+import {ScreenProps } from '../../../../navigation/types';
 import { ArrowLeft } from 'phosphor-react-native';
 import BackButton from '../../../../components/global/buttons/backButton.tsx';
 const LoginPhone: React.FC<ScreenProps> = ({navigation}) => {

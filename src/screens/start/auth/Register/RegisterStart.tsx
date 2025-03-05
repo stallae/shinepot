@@ -16,9 +16,6 @@ const RegisterStart: React.FC<ScreenProps> = ({navigation}) => {
     setter(text);
   };
 
-  const handlePress = (type: string) => {
-    console.log(`Clicked on ${type}`);
-  };
 
   return (
     <SafeAreaView
@@ -59,20 +56,20 @@ const RegisterStart: React.FC<ScreenProps> = ({navigation}) => {
           <Text className="font-inter font-medium color-gray-250">
             By signing up, you agree to our{' '}
           </Text>
-          <Pressable onPress={() => handlePress('Privacy')}>
+          <Pressable onPress={() => navigation.navigate(ROUTES.ComplianceRules)}>
             <Text className="font-inter font-medium color-blue-500 underline">
               Privacy
             </Text>
           </Pressable>
         </View>
         <View className="flex-row flex-wrap justify-center align-middle mb-5">
-          <Pressable onPress={() => handlePress('Policy')}>
+          <Pressable onPress={() => navigation.navigate(ROUTES.ComplianceRules)}>
             <Text className="font-inter font-medium color-blue-500 underline">
               Policy
             </Text>
           </Pressable>
           <Text className="font-inter font-medium color-gray-250"> and </Text>
-          <Pressable onPress={() => handlePress('Terms of Use')}>
+          <Pressable onPress={() => navigation.navigate(ROUTES.ComplianceRules)}>
             <Text className="font-inter font-medium color-blue-500 underline">
               Terms of Use
             </Text>

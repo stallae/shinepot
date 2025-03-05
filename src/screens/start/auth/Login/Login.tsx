@@ -49,8 +49,7 @@ const Login: React.FC<ScreenProps> = ({navigation}) => {
             <Text className="font-inter font-medium color-gray-250">
               Forgot Password? You can{' '}
             </Text>
-            <Pressable onPress={() => navigation.navigate(ROUTES.LoginOtp)}> 
-              {/* todo: add forgot password screen */}
+            <Pressable onPress={() => navigation.navigate(ROUTES.RecoverPassword)}> 
               <Text className="font-inter font-bold text-blue-500">Recover it</Text>
             </Pressable>
           </View>

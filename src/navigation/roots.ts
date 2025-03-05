@@ -15,6 +15,7 @@ export const AUTH = {
   LoginPhone: 'LoginPhone',
   LoginOtpPhone: 'LoginOtpPhone',
   Login: 'Login',
+  RecoverPassword: 'RecoverPassword',
 
   // Registration Flow
   RegisterEmail: 'RegisterEmail',
@@ -22,6 +23,7 @@ export const AUTH = {
   RegisterInfos: 'RegisterInfos',
   RegisterPassword: 'RegisterPassword',
   RegisterVerified: 'RegisterVerified',
+  ComplianceRules: 'ComplianceRules',
 } as const;
 
 // Combined routes for easy access
