@@ -24,7 +24,7 @@ const RegisterStart: React.FC<ScreenProps> = ({navigation}) => {
     <SafeAreaView
       className="flex-1 justify-between items-center"
       style={{backgroundColor: colors.primary}}>
-      <View className="absolute top-20 left-10">
+      <View className="absolute top-20 left-2">
         <BackButton icon={<X />} onPress={navigation.goBack} />
       </View>
 

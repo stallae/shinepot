@@ -3,8 +3,9 @@ import React from 'react';
 import Logo from '../../../../components/global/logo/logo.tsx';
 import useColors from '../../../../hooks/useColors.tsx';
 import WideButton from '../../../../components/global/buttons/wideButton.tsx';
-import {DeviceMobile, AppleLogo, GoogleLogo} from 'phosphor-react-native';
+import {DeviceMobile, AppleLogo, GoogleLogo, ArrowLeft} from 'phosphor-react-native';
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
+import BackButton from '../../../../components/global/buttons/backButton.tsx';
 
 
 const LoginThirdParty: React.FC<ScreenProps> = ({navigation}) => {
@@ -13,6 +14,9 @@ const LoginThirdParty: React.FC<ScreenProps> = ({navigation}) => {
     <SafeAreaView
       className="flex-1 items-center"
       style={{backgroundColor: colors.primary}}>
+      <View className="absolute top-20 left-2">
+        <BackButton icon={<ArrowLeft />} onPress={navigation.goBack} />
+      </View>
       <View className=" absolute inset-x-0 bottom-0 justify-between h-5/6 mb-12">
         <Logo />
         <Text

@@ -5,7 +5,7 @@ import useColors from '../../../../hooks/useColors.tsx';
 import WideButton from '../../../../components/global/buttons/wideButton.tsx';
 import GeneralInput from '../../../../components/global/inputs/generalImput.tsx';
 import BackButton from '../../../../components/global/buttons/backButton.tsx';
-import {X} from 'phosphor-react-native';
+import {ArrowLeft} from 'phosphor-react-native';
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
 
 const RegisterPassword: React.FC<ScreenProps> = ({navigation}) => {
@@ -25,8 +25,8 @@ const RegisterPassword: React.FC<ScreenProps> = ({navigation}) => {
     <SafeAreaView
       className="flex-1 justify-between items-center"
       style={{backgroundColor: colors.primary}}>
-      <View className="absolute top-20 left-10">
-        <BackButton icon={<X />} onPress={navigation.goBack} />
+     <View className="absolute top-20 left-2">
+        <BackButton icon={<ArrowLeft />} onPress={navigation.goBack} />
       </View>
 
       <View className="flex-1 justify-center w-full items-center">

@@ -7,7 +7,8 @@ import GeneralInput from '../../../../components/global/inputs/generalImput.tsx'
 import { countries } from '../../../../constants/countries.ts';
 import Dropdown from '../../../../components/global/dropdown/dropdown.tsx';
 import { ROUTES, ScreenProps } from '../../../../navigation/types';
-
+import { ArrowLeft } from 'phosphor-react-native';
+import BackButton from '../../../../components/global/buttons/backButton.tsx';
 const LoginPhone: React.FC<ScreenProps> = ({navigation}) => {
   const {colors} = useColors();
   const [selectedCountry, setSelectedCountry] = useState<string | number>('');
@@ -16,6 +17,9 @@ const LoginPhone: React.FC<ScreenProps> = ({navigation}) => {
     <SafeAreaView
       className="flex-1 items-center justify-center"
       style={{backgroundColor: colors.primary}}>
+      <View className="absolute top-20 left-2">
+        <BackButton icon={<ArrowLeft />} onPress={navigation.goBack} />
+      </View>
       <View className="w-full items-centers h-3/4 justify-center">
         <Logo />
         <Text
