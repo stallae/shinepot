@@ -4,7 +4,8 @@ import React from "react";
 import { ArrowLeft } from "phosphor-react-native";
 import BackButton from "../../../../components/global/buttons/backButton";
 import useColors from "../../../../hooks/useColors";
-const ComplianceRules: React.FC<ScreenProps> = ({navigation}) => {
+
+const PrivacyPolicy: React.FC<ScreenProps> = ({navigation}) => {
   const {colors} = useColors();
   return (
     <SafeAreaView
@@ -142,4 +143,4 @@ const ComplianceRules: React.FC<ScreenProps> = ({navigation}) => {
   );
 };
 
-export default ComplianceRules;
+export default PrivacyPolicy; 

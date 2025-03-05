@@ -23,7 +23,10 @@ export const AUTH = {
   RegisterInfos: 'RegisterInfos',
   RegisterPassword: 'RegisterPassword',
   RegisterVerified: 'RegisterVerified',
-  ComplianceRules: 'ComplianceRules',
+
+  // Legal Pages
+  TermsOfUse: 'TermsOfUse',
+  PrivacyPolicy: 'PrivacyPolicy',
 } as const;
 
 // Combined routes for easy access
