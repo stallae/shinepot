@@ -4,6 +4,7 @@ import { NavigatorScreenParams } from '@react-navigation/native';
 export const ROOT = {
   OnBoardStart: 'OnBoardStart',
   Auth: 'Auth',
+  Blog: 'Blog',
 } as const;
 
 // Auth Stack
@@ -42,9 +43,7 @@ export type Routes = typeof ROUTES;
 
 // Helper for type-safe navigation
 export type RootStackParamList = {
-  [K in keyof typeof ROOT]: K extends 'Auth' 
-    ? NavigatorScreenParams<AuthStackParamList> | undefined
-    : undefined;
+  [K in keyof typeof ROOT]: undefined;
 };
 
 export type AuthStackParamList = {

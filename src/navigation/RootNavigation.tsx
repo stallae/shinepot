@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { RootStackParamList, ROUTES } from './roots';
 import OnBoardStart from '../screens/start/onBoard/OnBoardStart';
 import AuthNavigation from './AuthNavigation';
+import Blog from '../screens/main/Blog';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -14,6 +15,7 @@ const RootNavigation = () => {
     >
       <Stack.Screen name={ROUTES.OnBoardStart} component={OnBoardStart} />
       <Stack.Screen name={ROUTES.Auth} component={AuthNavigation} />
+      <Stack.Screen name={ROUTES.Blog} component={Blog} />
     </Stack.Navigator>
   );
 };

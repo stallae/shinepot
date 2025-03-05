@@ -5,9 +5,12 @@ import useColors from '../../../../hooks/useColors.tsx';
 import WideButton from '../../../../components/global/buttons/wideButton.tsx';
 import GeneralInput from '../../../../components/global/inputs/generalImput.tsx';
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
+import { useNavigation } from '@react-navigation/native';
+import { RootNavigationProp } from '../../../../navigation/types';
 
-const LoginOtp: React.FC<ScreenProps> = ({navigation}) => {
+const LoginOtp: React.FC<ScreenProps> = () => {
   const {colors} = useColors();
+  const rootNavigation = useNavigation<RootNavigationProp>();
 
   const inputRefs = Array.from({length: 6}, () => useRef<TextInput>(null));
   return (
@@ -35,7 +38,10 @@ const LoginOtp: React.FC<ScreenProps> = ({navigation}) => {
             ))}
           </View>
 
-          <Pressable>
+          <Pressable onPress={() => rootNavigation.reset({
+            index: 0,
+            routes: [{ name: ROUTES.Blog }],
+          })}>
             <Text className="text-blue-500 font-inter font-bold text-center mt-5">
               Resend code
             </Text>
@@ -43,8 +49,13 @@ const LoginOtp: React.FC<ScreenProps> = ({navigation}) => {
         </View>
       </View>
       <View className="absolute inset-x-0 bottom-12 w-full px-6">
-        <WideButton text={'Log In'} />
-        
+        <WideButton 
+          text={'Log In'} 
+          onPress={() => rootNavigation.reset({
+            index: 0,
+            routes: [{ name: ROUTES.Blog }],
+          })}
+        />
       </View>
     </SafeAreaView>
   );

@@ -4,9 +4,13 @@ import Logo from '../../../../components/global/logo/logo.tsx';
 import useColors from '../../../../hooks/useColors.tsx';
 import WideButton from '../../../../components/global/buttons/wideButton.tsx';
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
+import { useNavigation } from '@react-navigation/native';
+import { RootNavigationProp } from '../../../../navigation/types';
 
-const RegisterVerified: React.FC<ScreenProps> = ({navigation}) => {
+const RegisterVerified: React.FC<ScreenProps> = () => {
   const {colors} = useColors();
+  const rootNavigation = useNavigation<RootNavigationProp>();
+
   return (
     <SafeAreaView
       className="flex-1 justify-evenly items-center"
@@ -28,7 +32,10 @@ const RegisterVerified: React.FC<ScreenProps> = ({navigation}) => {
         <View className="justify-between h-1/8 mt-10 w-11/12 mx-auto">
           <WideButton
             text={'Next'}
-            onPress={() => navigation.navigate(ROUTES.RegisterVerified)}
+            onPress={() => rootNavigation.reset({
+              index: 0,
+              routes: [{ name: ROUTES.Blog }],
+            })}
           />
         </View>
       </View>
