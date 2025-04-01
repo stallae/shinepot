@@ -1,0 +1,19 @@
+import React from 'react';
+import useColors from '../../../hooks/useColors.tsx';
+import {View} from 'react-native';
+import LogoHorizontal from '../logo/logoHorizontal.tsx';
+
+const Header = () => {
+  const {colors} = useColors();
+  return (
+    <View
+      className={'w-full absolute h-24 top-0 justify-around'}
+      style={{backgroundColor: colors.secondary}}>
+      <View className={'ml-7'}>
+        <LogoHorizontal />
+      </View>
+    </View>
+  );
+};
+
+export default Header;
