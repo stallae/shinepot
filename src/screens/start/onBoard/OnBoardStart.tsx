@@ -4,7 +4,7 @@ import ProgressBar from '../../../components/global/progressBar/progressBar.tsx'
 import Logo from '../../../components/global/logo/logo.tsx';
 import useColors from '../../../hooks/useColors.tsx';
 import WideButton from '../../../components/global/buttons/wideButton.tsx';
-import {ROUTES, ScreenProps} from '../../../navigation/types';  
+import {ROUTES, ScreenProps} from '../../../navigation/types';
 
 const OnBoardStart: React.FC<ScreenProps> = ({navigation}) => {
   const {colors} = useColors();
@@ -14,7 +14,7 @@ const OnBoardStart: React.FC<ScreenProps> = ({navigation}) => {
       style={{backgroundColor: colors.primary}}>
       <ProgressBar progress={30} />
 
-      <View >
+      <View>
         <Logo />
         <Text
           className="font-roboto font-semibold text-4xl mt-5 self-center text-center"
@@ -25,7 +25,11 @@ const OnBoardStart: React.FC<ScreenProps> = ({navigation}) => {
       <View className="w-11/12 mb-4">
         <WideButton
           text={'Let`s go'}
-          onPress={() => navigation.navigate(ROUTES.Auth, { screen: ROUTES.LoginStart })}
+          onPress={() =>
+            navigation.navigate(ROUTES.Auth, {
+              screen: ROUTES.LoginStart,
+            } as never)
+          }
         />
       </View>
     </SafeAreaView>
