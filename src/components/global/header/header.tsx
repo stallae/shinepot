@@ -10,7 +10,7 @@ const Header = () => {
     <View
       className={'w-full absolute h-24 top-0 justify-around'}
       style={{backgroundColor: colors.secondary}}>
-      <View className={'ml-7' + ' flex-row justify-between items-center'}>
+      <View className={'ml-7 flex-row justify-between items-center'}>
         <LogoHorizontal />
         <ProfilePicture size={50} shape="square" />
       </View>

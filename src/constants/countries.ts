@@ -1,30 +1,30 @@
-import {DropdownOption} from '../components/global/interfaces/dropdownInterface';
+import {DropdownOption} from '../components/global/dropdown/interfaces/dropdownInterface.tsx';
 
 export interface Country extends DropdownOption {
-  code: string;    // Country code (e.g., 'US')
-  dial_code: string; // Phone code (e.g., '+1')
-  flag: string;    // Flag emoji (e.g., '🇺🇸')
-  name: string;    // Country name (e.g., 'United States')
+  code: string;
+  dial_code: string;
+  flag: string;
+  name: string;
   value: string;
   text: string;
 }
 
 export const countries: Country[] = [
   {
-    code: "US",
-    dial_code: "+1",
-    flag: "🇺🇸",
-    name: "United States",
+    code: 'US',
+    dial_code: '+1',
+    flag: '🇺🇸',
+    name: 'United States',
     value: 'US',
-    text: '🇺🇸 1'
+    text: '🇺🇸 1',
   },
   {
-    code: "BR",
-    dial_code: "+55",
-    flag: "🇧🇷",
-    name: "Brazil",
+    code: 'BR',
+    dial_code: '+55',
+    flag: '🇧🇷',
+    name: 'Brazil',
     value: 'BR',
-    text: '🇧🇷 +55'
+    text: '🇧🇷 +55',
   },
   {
     code: 'AU',
@@ -32,7 +32,7 @@ export const countries: Country[] = [
     flag: '🇦🇺',
     name: 'Australia',
     value: '61',
-    text: '🇦🇺 61'
+    text: '🇦🇺 61',
   },
   {
     code: 'CN',
@@ -40,7 +40,7 @@ export const countries: Country[] = [
     flag: '🇨🇳',
     name: 'China',
     value: '86',
-    text: '🇨🇳 86'
+    text: '🇨🇳 86',
   },
   {
     code: 'DK',
@@ -48,7 +48,7 @@ export const countries: Country[] = [
     flag: '🇩🇰',
     name: 'Denmark',
     value: '45',
-    text: '🇩🇰 45'
+    text: '🇩🇰 45',
   },
   {
     code: 'EG',
@@ -56,7 +56,7 @@ export const countries: Country[] = [
     flag: '🇪🇬',
     name: 'Egypt',
     value: '20',
-    text: '🇪🇬 20'
+    text: '🇪🇬 20',
   },
   {
     code: 'FI',
@@ -64,7 +64,7 @@ export const countries: Country[] = [
     flag: '🇫🇮',
     name: 'Finland',
     value: '358',
-    text: '🇫🇮 358'
+    text: '🇫🇮 358',
   },
   {
     code: 'FR',
@@ -72,7 +72,7 @@ export const countries: Country[] = [
     flag: '🇫🇷',
     name: 'France',
     value: '33',
-    text: '🇫🇷 33'
+    text: '🇫🇷 33',
   },
   {
     code: 'DE',
@@ -80,7 +80,7 @@ export const countries: Country[] = [
     flag: '🇩🇪',
     name: 'Germany',
     value: '49',
-    text: '🇩🇪 49'
+    text: '🇩🇪 49',
   },
   {
     code: 'IN',
@@ -88,7 +88,7 @@ export const countries: Country[] = [
     flag: '🇮🇳',
     name: 'India',
     value: '91',
-    text: '🇮🇳 91'
+    text: '🇮🇳 91',
   },
   {
     code: 'IT',
@@ -96,7 +96,7 @@ export const countries: Country[] = [
     flag: '🇮🇹',
     name: 'Italy',
     value: '39',
-    text: '🇮🇹 39'
+    text: '🇮🇹 39',
   },
   {
     code: 'JP',
@@ -104,7 +104,7 @@ export const countries: Country[] = [
     flag: '🇯🇵',
     name: 'Japan',
     value: '81',
-    text: '🇯🇵 81'
+    text: '🇯🇵 81',
   },
   {
     code: 'MX',
@@ -112,7 +112,7 @@ export const countries: Country[] = [
     flag: '🇲🇽',
     name: 'Mexico',
     value: '52',
-    text: '🇲🇽 52'
+    text: '🇲🇽 52',
   },
   {
     code: 'NL',
@@ -120,7 +120,7 @@ export const countries: Country[] = [
     flag: '🇳🇱',
     name: 'Netherlands',
     value: '31',
-    text: '🇳🇱 31'
+    text: '🇳🇱 31',
   },
   {
     code: 'NG',
@@ -128,7 +128,7 @@ export const countries: Country[] = [
     flag: '🇳🇬',
     name: 'Nigeria',
     value: '234',
-    text: '🇳🇬 234'
+    text: '🇳🇬 234',
   },
   {
     code: 'NO',
@@ -136,7 +136,7 @@ export const countries: Country[] = [
     flag: '🇳🇴',
     name: 'Norway',
     value: '47',
-    text: '🇳🇴 47'
+    text: '🇳🇴 47',
   },
   {
     code: 'PT',
@@ -144,7 +144,7 @@ export const countries: Country[] = [
     flag: '🇵🇹',
     name: 'Portugal',
     value: '351',
-    text: '🇵🇹 351'
+    text: '🇵🇹 351',
   },
   {
     code: 'RU',
@@ -152,7 +152,7 @@ export const countries: Country[] = [
     flag: '🇷🇺',
     name: 'Russia',
     value: '7',
-    text: '🇷🇺 7'
+    text: '🇷🇺 7',
   },
   {
     code: 'SA',
@@ -160,7 +160,7 @@ export const countries: Country[] = [
     flag: '🇸🇦',
     name: 'Saudi Arabia',
     value: '966',
-    text: '🇸🇦 966'
+    text: '🇸🇦 966',
   },
   {
     code: 'KR',
@@ -168,7 +168,7 @@ export const countries: Country[] = [
     flag: '🇰🇷',
     name: 'South Korea',
     value: '82',
-    text: '🇰🇷 82'
+    text: '🇰🇷 82',
   },
   {
     code: 'ES',
@@ -176,7 +176,7 @@ export const countries: Country[] = [
     flag: '🇪🇸',
     name: 'Spain',
     value: '34',
-    text: '🇪🇸 34'
+    text: '🇪🇸 34',
   },
   {
     code: 'SE',
@@ -184,7 +184,7 @@ export const countries: Country[] = [
     flag: '🇸🇪',
     name: 'Sweden',
     value: '46',
-    text: '🇸🇪 46'
+    text: '🇸🇪 46',
   },
   {
     code: 'AE',
@@ -192,7 +192,7 @@ export const countries: Country[] = [
     flag: '🇦🇪',
     name: 'United Arab Emirates',
     value: '971',
-    text: '🇦🇪 971'
+    text: '🇦🇪 971',
   },
   {
     code: 'GB',
@@ -200,7 +200,7 @@ export const countries: Country[] = [
     flag: '🇬🇧',
     name: 'United Kingdom',
     value: '44',
-    text: '🇬🇧 44'
+    text: '🇬🇧 44',
   },
   {
     code: 'ZA',
@@ -208,7 +208,7 @@ export const countries: Country[] = [
     flag: '🇿🇦',
     name: 'South Africa',
     value: '27',
-    text: '🇿🇦 27'
+    text: '🇿🇦 27',
   },
   {
     code: 'ZA',
@@ -216,6 +216,6 @@ export const countries: Country[] = [
     flag: '🇿🇦',
     name: 'South Africa',
     value: '27',
-    text: '🇿🇦 27'
-  }
+    text: '🇿🇦 27',
+  },
 ];
