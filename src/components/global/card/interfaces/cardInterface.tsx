@@ -1,5 +1,5 @@
 import {IconProps} from 'phosphor-react-native/lib/typescript/lib';
-import {WideButtonProps} from './wideButtonInterface';
+import {WideButtonProps} from '../../buttons/interfaces/wideButtonInterface.tsx';
 
 export interface CardProps {
   title: string;

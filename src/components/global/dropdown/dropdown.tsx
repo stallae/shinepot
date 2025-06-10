@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, Pressable, ScrollView} from 'react-native';
 import useColors from '../../../hooks/useColors';
-import {DropdownProps} from '../interfaces/dropdownInterface';
+import {DropdownProps} from './interfaces/dropdownInterface.tsx';
 import {CaretDown} from 'phosphor-react-native';
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -30,16 +30,14 @@ const Dropdown: React.FC<DropdownProps> = ({
         <Text
           className="flex-1 font-inter text-lg"
           style={{
-            color: selectedOption ? colors.textPrimary : colors.textPrimaryDisabled,
+            color: selectedOption
+              ? colors.textPrimary
+              : colors.textPrimaryDisabled,
             fontWeight: 'bold',
           }}>
           {selectedOption ? selectedOption.text : placeholder}
         </Text>
-        <CaretDown
-          size={20}
-          color={colors.textPrimary}
-          weight="bold"
-        />
+        <CaretDown size={20} color={colors.textPrimary} weight="bold" />
       </Pressable>
 
       {isOpen && (

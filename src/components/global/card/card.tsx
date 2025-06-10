@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {CardProps} from '../interfaces/cardInterface.tsx';
+import {CardProps} from './interfaces/cardInterface.tsx';
 import useColors from '../../../hooks/useColors.tsx';
 
 import {View, Text} from 'react-native';

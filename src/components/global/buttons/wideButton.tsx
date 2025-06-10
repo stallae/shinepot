@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, Pressable, View} from 'react-native';
-import {WideButtonProps} from '../interfaces/wideButtonInterface.tsx';
+import {WideButtonProps} from './interfaces/wideButtonInterface.tsx';
 import useColors from '../../../hooks/useColors.tsx';
 import {IconContext} from 'phosphor-react-native';
 
