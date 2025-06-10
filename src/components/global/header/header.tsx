@@ -2,7 +2,7 @@ import React from 'react';
 import useColors from '../../../hooks/useColors.tsx';
 import {View} from 'react-native';
 import LogoHorizontal from '../logo/logoHorizontal.tsx';
-import ProfilePicture from '../profilePicture/profilePicture.tsx';
+import ProfilePicture from '../profile-picture/profilePicture.tsx';
 
 const Header = () => {
   const {colors} = useColors();
