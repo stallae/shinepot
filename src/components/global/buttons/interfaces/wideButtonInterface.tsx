@@ -1,4 +1,5 @@
 import type {IconProps} from 'phosphor-react-native/lib/typescript/lib';
+import React from 'react';
 
 export interface WideButtonProps {
   icon?: React.ReactElement<IconProps> | null;
