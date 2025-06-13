@@ -1,6 +1,6 @@
 import React from 'react';
 import {Pressable, View} from 'react-native';
-import {BackButtonProps} from '../interfaces/backButtonInterface.tsx';
+import {BackButtonProps} from './interfaces/backButtonInterface.tsx';
 import {IconContext} from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors.tsx';
 

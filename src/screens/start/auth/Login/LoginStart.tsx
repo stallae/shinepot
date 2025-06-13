@@ -1,6 +1,6 @@
 import {SafeAreaView, Text, View} from 'react-native';
 import React from 'react';
-import ProgressBar from '../../../../components/global/progressBar/progressBar.tsx';
+import ProgressBar from '../../../../components/global/progress-bar/progressBar.tsx';
 import Logo from '../../../../components/global/logo/logo.tsx';
 import useColors from '../../../../hooks/useColors.tsx';
 import WideButton from '../../../../components/global/buttons/wideButton.tsx';
