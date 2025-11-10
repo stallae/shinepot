@@ -24,7 +24,7 @@ const OnBoardStart: React.FC<ScreenProps> = ({navigation}) => {
       </View>
       <View className="w-11/12 mb-4">
         <WideButton
-          text={'Let`s go'}
+          text={"Let's go"}
           onPress={() =>
             navigation.navigate(ROUTES.Auth, {
               screen: ROUTES.LoginStart,

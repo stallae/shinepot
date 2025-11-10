@@ -33,7 +33,7 @@ const LoginOtpPhone: React.FC<ScreenProps> = () => {
                 centerText
                 isOtp={true}
                 inputRefs={inputRefs}
-                index={index} // Pass the index for navigation
+                index={index} 
               />
             ))}
           </View>
