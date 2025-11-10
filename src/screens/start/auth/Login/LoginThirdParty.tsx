@@ -2,10 +2,10 @@ import {SafeAreaView, Text, View} from 'react-native';
 import React from 'react';
 import Logo from '../../../../components/global/logo/logo.tsx';
 import useColors from '../../../../hooks/useColors.tsx';
-import WideButton from '../../../../components/global/buttons/wideButton.tsx';
+import WideButton from '../../../../components/global/buttons/wide-button.tsx';
 import {DeviceMobile, AppleLogo, GoogleLogo, ArrowLeft} from 'phosphor-react-native';
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
-import BackButton from '../../../../components/global/buttons/backButton.tsx';
+import BackButton from '../../../../components/global/buttons/back-button.tsx';
 
 
 const LoginThirdParty: React.FC<ScreenProps> = ({navigation}) => {
@@ -27,12 +27,12 @@ const LoginThirdParty: React.FC<ScreenProps> = ({navigation}) => {
 
         <View className="justify-between h-36 w-11/12 mx-auto">
           <WideButton
-            icon=<AppleLogo  weight="fill"/>
+            icon={<AppleLogo  weight="fill"/>}
             text={'Sign in with Apple'}
             outlined={true}
           />
           <WideButton
-            icon=<GoogleLogo />
+            icon={<GoogleLogo />}
             text={'Sign in with Google'}
             outlined={true}
           />
@@ -41,8 +41,8 @@ const LoginThirdParty: React.FC<ScreenProps> = ({navigation}) => {
           Or enter with
         </Text>
         <View className="w-11/12 mx-auto">
-          <WideButton 
-            icon={<DeviceMobile />} 
+          <WideButton
+            icon={<DeviceMobile />}
             text={'Sign in with Phone Number'}
             onPress={() => navigation.navigate(ROUTES.LoginPhone)}
           />
