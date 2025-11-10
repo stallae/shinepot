@@ -2,10 +2,10 @@ import {SafeAreaView, Text, View} from 'react-native';
 import React from 'react';
 import Logo from '../../../../components/global/logo/logo.tsx';
 import useColors from '../../../../hooks/useColors.tsx';
-import WideButton from '../../../../components/global/buttons/wide-button.tsx';
+import WideButton from '../../../../components/global/buttons/wideButton.tsx';
 import {DeviceMobile, AppleLogo, GoogleLogo, ArrowLeft} from 'phosphor-react-native';
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
-import BackButton from '../../../../components/global/buttons/back-button.tsx';
+import BackButton from '../../../../components/global/buttons/backButton.tsx';
 
 
 const LoginThirdParty: React.FC<ScreenProps> = ({navigation}) => {
