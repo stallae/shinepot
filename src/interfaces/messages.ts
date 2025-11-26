@@ -7,6 +7,7 @@ export interface Messages {
   s3_url: string;
   message_type: 'private' | 'public' | 'random';
   message_content_type: 'video' | 'image' | 'text' | 'audio';
+  title?: string;
   publish_date: Date;
   hidden: boolean;
   created_at: Date;
