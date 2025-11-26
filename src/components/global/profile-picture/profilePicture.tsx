@@ -3,7 +3,7 @@ import {Image, View} from 'react-native';
 import ProfileImage from '../../../assets/images/ProfileImage.png';
 import {ProfilePictureProps} from './interfaces/profilePictureInterface.tsx';
 
-const ProfilePicture: React.FC<ProfilePictureProps> = ({shape, size}) => {
+const ProfilePicture: React.FC<ProfilePictureProps> = ({shape, size, className}) => {
   return (
     <View className="flex-row">
       <Image
@@ -13,7 +13,7 @@ const ProfilePicture: React.FC<ProfilePictureProps> = ({shape, size}) => {
           : shape === 'square'
           ? {borderRadius: 5}
           : {borderRadius: 15})}
-        className={'object-contain m-5'}
+        className={`object-contain ${className}`}
         style={{height: size, width: size}}
       />
     </View>
