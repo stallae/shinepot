@@ -8,7 +8,7 @@ const Header = () => {
   const {colors} = useColors();
   return (
     <View
-      className={'w-full absolute h-24 top-0 justify-around'}
+      className={'w-full fixed top-0 h-24 justify-around'}
       style={{backgroundColor: colors.secondary}}>
       <View className={'ml-7 flex-row justify-between items-center'}>
         <LogoHorizontal />
