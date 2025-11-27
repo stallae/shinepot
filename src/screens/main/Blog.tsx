@@ -71,7 +71,7 @@ const Blog: React.FC<ScreenProps> = () => {
           backgroundColor: isActive ? colors.secondary : 'transparent',
         }}>
         <Text
-          className="text-heading-sm font-inter"
+          className="text-heading-sm font-bold"
           style={{
             color: colors.textPrimary,
           }}>
@@ -99,7 +99,7 @@ const Blog: React.FC<ScreenProps> = () => {
             </Pressable>
           </View>
           <Text
-            className="text-body-secondary"
+            className="text-body-primary"
             style={{color: colors.textPrimary, opacity: 0.4}}>
             Your personal space
           </Text>
