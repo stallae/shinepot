@@ -9,7 +9,7 @@ export {default as ProgressBar} from './global/progress-bar/progressBar.tsx';
 
 export {default as BackButton} from './global/buttons/backButton.tsx';
 export {default as WideButton} from './global/buttons/wideButton.tsx';
-export {default as RoundedButton} from './global/buttons/roundedButton.tsx';
+export {default as SelectButton} from './global/buttons/selectButton.tsx';
 
 export {default as MessageCard} from './main/message-card/messageCard.tsx';
 export {default as NewMessageButton} from './main/new-message-button/NewMessageButton.tsx';

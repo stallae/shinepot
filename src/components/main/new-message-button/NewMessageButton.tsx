@@ -1,18 +1,19 @@
 import React from 'react';
-import {RoundedButton} from '../../index.ts';
+import {Pressable} from 'react-native';
 import {PaperPlaneTilt} from 'phosphor-react-native';
 import {ROUTES, ScreenProps} from '../../../navigation/types.ts';
+import colorPalette from '../../../assets/styles/colors.tsx';
 
 const NewMessageButton: React.FC<ScreenProps> = ({navigation}) => {
   return (
-    <RoundedButton
-      icon={<PaperPlaneTilt size={24} weight="fill" color="#FFFFFF" />}
+    <Pressable
       onPress={() => {
         navigation.navigate(ROUTES.NewMessage);
       }}
-      colored={true}
-      floating={true}
-    />
+      className="absolute bottom-6 right-6 w-16 h-16 rounded-3xl justify-center items-center"
+      style={{backgroundColor: colorPalette.blue[500]}}>
+      <PaperPlaneTilt size={24} weight="fill" color="#FFFFFF" />
+    </Pressable>
   );
 };
 
