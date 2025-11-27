@@ -1,17 +1,17 @@
 import React from 'react';
-import {FloatingButton} from '../../index.ts';
-import { PaperPlaneTilt } from 'phosphor-react-native';
-import useColors from '../../../hooks/useColors.tsx';
+import {RoundedButton} from '../../index.ts';
+import {PaperPlaneTilt} from 'phosphor-react-native';
+import {ROUTES, ScreenProps} from '../../../navigation/types.ts';
 
-const NewMessageButton: React.FC = () => {
-  const {colors} = useColors();
+const NewMessageButton: React.FC<ScreenProps> = ({navigation}) => {
   return (
-    <FloatingButton
-      icon={<PaperPlaneTilt size={24} weight="fill" color={colors.textPrimary} />}
+    <RoundedButton
+      icon={<PaperPlaneTilt size={24} weight="fill" color="#FFFFFF" />}
       onPress={() => {
-        // TODO: Navigate to create message screen
-        console.log('Create new message');
+        navigation.navigate(ROUTES.NewMessage);
       }}
+      colored={true}
+      floating={true}
     />
   );
 };

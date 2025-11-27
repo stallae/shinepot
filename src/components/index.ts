@@ -9,13 +9,12 @@ export {default as ProgressBar} from './global/progress-bar/progressBar.tsx';
 
 export {default as BackButton} from './global/buttons/backButton.tsx';
 export {default as WideButton} from './global/buttons/wideButton.tsx';
-export {default as FloatingButton} from './global/buttons/floatingButton.tsx';
+export {default as RoundedButton} from './global/buttons/roundedButton.tsx';
 
 export {default as MessageCard} from './main/message-card/messageCard.tsx';
 export {default as NewMessageButton} from './main/new-message-button/NewMessageButton.tsx';
 
 export type {BackButtonProps} from './global/buttons/interfaces/backButtonInterface.tsx';
-export type {FloatingButtonProps} from './global/buttons/interfaces/floatingButton.tsx';
 export type {WideButtonProps} from './global/buttons/interfaces/wideButtonInterface.tsx';
 export type {CardProps} from './global/card/interfaces/cardInterface.tsx';
 export type {DropdownOption, DropdownProps} from './global/dropdown/interfaces/dropdownInterface.tsx';
