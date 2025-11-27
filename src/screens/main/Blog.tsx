@@ -8,7 +8,7 @@ import {Messages} from '../../interfaces/messages.ts';
 import {Funnel} from 'phosphor-react-native';
 import {FilterType, FILTER_OPTIONS} from '../../constants/filter.ts';
 
-const Blog: React.FC<ScreenProps> = () => {
+const Blog: React.FC<ScreenProps> = ({navigation}) => {
   const {colors} = useColors();
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
 
@@ -144,7 +144,7 @@ const Blog: React.FC<ScreenProps> = () => {
           />
         )}
 
-        <NewMessageButton />
+        <NewMessageButton navigation={navigation} />
       </View>
     </SafeAreaView>
   );

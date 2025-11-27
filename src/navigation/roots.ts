@@ -1,12 +1,11 @@
-// Root Stack
-export const ROOT = {
+ const ROOT = {
   OnBoardStart: 'OnBoardStart',
   Auth: 'Auth',
   Blog: 'Blog',
+  NewMessage: 'NewMessage',
 } as const;
 
-// Auth Stack
-export const AUTH = {
+ const AUTH = {
   LoginStart: 'LoginStart',
   LoginThirdParty: 'LoginThirdParty',
   LoginOtp: 'LoginOtp',
@@ -25,13 +24,11 @@ export const AUTH = {
   PrivacyPolicy: 'PrivacyPolicy',
 } as const;
 
-// Combined routes for easy access
 export const ROUTES = {
   ...ROOT,
   ...AUTH,
 } as const;
 
-// Helper for type-safe navigation
 export type RootStackParamList = {
   [K in keyof typeof ROOT]: undefined;
 };
