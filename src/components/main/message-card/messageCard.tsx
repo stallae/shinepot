@@ -3,7 +3,7 @@ import {View, Text, Pressable} from 'react-native';
 import {Messages} from '../../../interfaces/messages.ts';
 import useColors from '../../../hooks/useColors.tsx';
 import {Lock} from 'phosphor-react-native';
-import ProfilePicture from '../../global/profile-picture/profilePicture.tsx';
+import {ProfilePicture} from '../../index.ts';
 
 interface MessageCardProps {
   message: Messages;

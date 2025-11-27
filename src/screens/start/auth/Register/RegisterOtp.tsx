@@ -1,9 +1,7 @@
 import {SafeAreaView, Text, View} from 'react-native';
 import React from 'react';
-import Logo from '../../../../components/global/logo/logo.tsx';
+import {Logo, WideButton, BackButton} from '../../../../components';
 import useColors from '../../../../hooks/useColors.tsx';
-import WideButton from '../../../../components/global/buttons/wideButton.tsx';
-import BackButton from "../../../../components/global/buttons/backButton.tsx";
 import {ArrowLeft} from "phosphor-react-native";
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
 

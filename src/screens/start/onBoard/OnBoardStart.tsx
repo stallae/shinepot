@@ -1,9 +1,7 @@
 import {SafeAreaView, Text, View} from 'react-native';
 import React from 'react';
-import ProgressBar from '../../../components/global/progress-bar/progressBar.tsx';
-import Logo from '../../../components/global/logo/logo.tsx';
+import {ProgressBar, Logo, WideButton} from '../../../components';
 import useColors from '../../../hooks/useColors.tsx';
-import WideButton from '../../../components/global/buttons/wideButton.tsx';
 import {ROUTES, ScreenProps} from '../../../navigation/types';
 
 const OnBoardStart: React.FC<ScreenProps> = ({navigation}) => {

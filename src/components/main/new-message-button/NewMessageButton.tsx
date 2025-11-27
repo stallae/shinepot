@@ -1,5 +1,5 @@
 import React from 'react';
-import FloatingButton from '../../global/buttons/floatingButton.tsx';
+import {FloatingButton} from '../../index.ts';
 import { PaperPlaneTilt } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors.tsx';
 

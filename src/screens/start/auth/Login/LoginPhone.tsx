@@ -1,14 +1,10 @@
 import { SafeAreaView, Text,  View} from 'react-native';
 import React, { useState } from 'react';
-import Logo from '../../../../components/global/logo/logo.tsx';
 import useColors from '../../../../hooks/useColors.tsx';
-import WideButton from '../../../../components/global/buttons/wideButton.tsx';
-import GeneralInput from '../../../../components/global/inputs/generalImput.tsx';
+import {WideButton, GeneralInput, Logo, BackButton, Dropdown  } from '../../../../components';
 import { countries } from '../../../../constants/countries.ts';
-import Dropdown from '../../../../components/global/dropdown/dropdown.tsx';
 import {ScreenProps } from '../../../../navigation/types';
 import { ArrowLeft } from 'phosphor-react-native';
-import BackButton from '../../../../components/global/buttons/backButton.tsx';
 const LoginPhone: React.FC<ScreenProps> = ({navigation}) => {
   const {colors} = useColors();
   const [selectedCountry, setSelectedCountry] = useState<string | number>('');

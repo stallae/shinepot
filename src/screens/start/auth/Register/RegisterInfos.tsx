@@ -1,13 +1,9 @@
 import {SafeAreaView, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import Logo from '../../../../components/global/logo/logo.tsx';
 import useColors from '../../../../hooks/useColors.tsx';
-import WideButton from '../../../../components/global/buttons/wideButton.tsx';
-import GeneralInput from '../../../../components/global/inputs/generalImput.tsx';
+import {WideButton, GeneralInput, BackButton, Dropdown, Logo } from '../../../../components';
 import {ROUTES, ScreenProps} from '../../../../navigation/types.ts';
-import BackButton from '../../../../components/global/buttons/backButton.tsx';
 import {ArrowLeft} from 'phosphor-react-native';
-import Dropdown from '../../../../components/global/dropdown/dropdown.tsx';
 import {countries} from '../../../../constants/countries.ts';
 
 const RegisterInfos: React.FC<ScreenProps> = ({navigation}) => {

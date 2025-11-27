@@ -1,4 +1,4 @@
-import {DropdownOption} from '../components/global/dropdown/interfaces/dropdownInterface.tsx';
+import type {DropdownOption} from '../components';
 
 export interface Country extends DropdownOption {
   code: string;

@@ -1,8 +1,7 @@
 import {SafeAreaView, Text, View} from 'react-native';
 import React from 'react';
-import Logo from '../../../../components/global/logo/logo.tsx';
+import {Logo, WideButton} from '../../../../components';
 import useColors from '../../../../hooks/useColors.tsx';
-import WideButton from '../../../../components/global/buttons/wideButton.tsx';
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
 import { useNavigation } from '@react-navigation/native';
 import { RootNavigationProp } from '../../../../navigation/types';

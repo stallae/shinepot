@@ -1,9 +1,7 @@
 import {Pressable, SafeAreaView, Text, TextInput, View} from 'react-native';
 import React, {useRef} from 'react';
-import Logo from '../../../../components/global/logo/logo.tsx';
 import useColors from '../../../../hooks/useColors.tsx';
-import WideButton from '../../../../components/global/buttons/wideButton.tsx';
-import GeneralInput from '../../../../components/global/inputs/generalImput.tsx';
+import {WideButton, GeneralInput, Logo} from '../../../../components';
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
 import { useNavigation } from '@react-navigation/native';
 import { RootNavigationProp } from '../../../../navigation/types';

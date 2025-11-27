@@ -1,10 +1,7 @@
 import {Pressable, SafeAreaView, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import Logo from '../../../../components/global/logo/logo.tsx';
+import {Logo, WideButton, GeneralInput, BackButton} from '../../../../components';
 import useColors from '../../../../hooks/useColors.tsx';
-import WideButton from '../../../../components/global/buttons/wideButton.tsx';
-import GeneralInput from '../../../../components/global/inputs/generalImput.tsx';
-import BackButton from '../../../../components/global/buttons/backButton.tsx';
 import {X} from 'phosphor-react-native';
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
 
