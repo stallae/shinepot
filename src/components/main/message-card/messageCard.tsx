@@ -28,7 +28,7 @@ const MessageCard: React.FC<MessageCardProps> = ({message, onPress}) => {
           <View className="flex-row items-center gap-4 h-1/2 flex">
             <ProfilePicture size={30} shape="circle" />
             <Text
-              className="text-base font-bold"
+              className="text-heading-sm"
               style={{color: colors.textPrimary}}>
               {message.title || 'Message'}
             </Text>
@@ -44,8 +44,8 @@ const MessageCard: React.FC<MessageCardProps> = ({message, onPress}) => {
             </View>
           ) : (
             <Text
-            className="text-sm mb-2 mt-4 font-medium"
-            style={{color: colors.textPrimary, opacity: 0.7}}>
+            className="text-body-secondary mb-2 mt-4"
+            style={{color: colors.textPrimary, opacity: 0.4}}>
             {getMessageTypeDescription()}
           </Text>
           )}

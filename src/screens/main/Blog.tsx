@@ -71,7 +71,7 @@ const Blog: React.FC<ScreenProps> = () => {
           backgroundColor: isActive ? colors.secondary : 'transparent',
         }}>
         <Text
-          className="font-inter text-sm font-semibold"
+          className="text-heading-sm font-inter"
           style={{
             color: colors.textPrimary,
           }}>
@@ -87,19 +87,19 @@ const Blog: React.FC<ScreenProps> = () => {
       <View className="flex-1 pt-10">
         <View className="px-6 mb-3 gap-3">
           <View className="flex-row items-center justify-between gap-2">
-          <Text
-            className="font-inter text-3xl font-bold mb-1"
-            style={{color: colors.textPrimary}}>
-            My messages
-          </Text>
-          <Pressable
-            className="w-10 h-10 rounded-lg justify-center items-center"
-            style={{backgroundColor: colors.secondary}}>
-            <Funnel size={20} color={colors.textPrimary} />
-          </Pressable>
+            <Text
+              className="text-heading-lg"
+              style={{color: colors.textPrimary}}>
+              My messages
+            </Text>
+            <Pressable
+              className="w-10 h-10 rounded-lg justify-center items-center"
+              style={{backgroundColor: colors.secondary}}>
+              <Funnel size={20} color={colors.textPrimary} />
+            </Pressable>
           </View>
           <Text
-            className="font-inter text-medium"
+            className="text-body-secondary"
             style={{color: colors.textPrimary, opacity: 0.4}}>
             Your personal space
           </Text>
