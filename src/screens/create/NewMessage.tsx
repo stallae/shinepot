@@ -8,10 +8,11 @@ import {
 } from 'react-native';
 import {ScreenProps} from '../../navigation/types';
 import useColors from '../../hooks/useColors';
-import {Header, WideButton, ProfilePicture, SelectButton} from '../../components';
+import {Header, WideButton, SelectButton} from '../../components';
 import {MOODS} from '../../constants/moods.ts';
 import {CONTENT_TYPES} from '../../constants/contentTypes.ts';
-import {Plus} from 'phosphor-react-native';
+import {MODAL_TYPE_FILTER_OPTIONS} from '../../constants/filter.ts';
+import {ModalTypeFilterType} from '../../constants/filter.ts';
 
 const NewMessage: React.FC<ScreenProps> = () => {
   const {colors} = useColors();
@@ -19,6 +20,7 @@ const NewMessage: React.FC<ScreenProps> = () => {
   const [selectedContentType, setSelectedContentType] = useState<string | null>(
     null,
   );
+  const [selectedMessageType, setSelectedMessageType] = useState<ModalTypeFilterType | null>(null);
 
   return (
     <SafeAreaView
@@ -97,39 +99,49 @@ const NewMessage: React.FC<ScreenProps> = () => {
           </View>
 
           <View className="mb-8">
-          <Text
+            <Text
               className="text-body-primary mb-4"
-              style={{color: colors.textPrimary, opacity: 0.4}}>    
-              Especial recipients
+              style={{color: colors.textPrimary, opacity: 0.4}}>
+              Message type
             </Text>
-            <View className="flex-row gap-4 items-center">
-              <ProfilePicture size={50} shape="circle" />
-              <ProfilePicture size={50} shape="circle" />
-              <Pressable
-                className="w-12 h-12 rounded-full justify-center items-center border-2 border-dashed"
-                style={{
-                  borderColor: colors.textPrimary,
-                  opacity: 0.5,
-                }}>
-                <Plus size={24} weight="bold" color={colors.textPrimary} />
-              </Pressable>
+            <View className="flex-row flex-wrap gap-4">
+              {MODAL_TYPE_FILTER_OPTIONS.map(type => {
+                const isSelected = selectedMessageType === type.value;
+                const hasSelection = selectedMessageType !== null;
+                return (
+                  <SelectButton
+                    key={type.value}
+                    label={type.label}
+                    onPress={() =>
+                      setSelectedMessageType(
+                        selectedMessageType === type.value
+                          ? null
+                          : (type.value as ModalTypeFilterType),
+                      )
+                    }
+                    isSelected={isSelected}
+                    hasSelection={hasSelection}
+                    size="small"
+                  />
+                );
+              })}
             </View>
           </View>
 
           <View className="mb-8">
             <Text
-              className="text-body-primary mb-4"
+              className="text-body-primary"
               style={{color: colors.textPrimary, opacity: 0.4}}>
               Schedule delivery date
             </Text>
             <Pressable
-              className="py-4"
+              className="py-2"
               onPress={() => {
                 // TODO: Open date picker
                 console.log('Open date picker');
               }}>
               <Text
-                className="text-body-primary text-blue-500 "
+                className="text-body-secondary text-blue-500"
                 >
                 Clique to choose date
               </Text>
