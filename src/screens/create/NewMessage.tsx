@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   SafeAreaView,
@@ -6,43 +6,45 @@ import {
   Text,
   Pressable,
 } from 'react-native';
-import {ScreenProps} from '../../navigation/types';
+import { ScreenProps } from '../../navigation/types';
 import useColors from '../../hooks/useColors';
-import {Header, WideButton, SelectButton, MessageTypeInfoModal} from '../../components';
-import {MOODS} from '../../constants/moods.ts';
-import {CONTENT_TYPES} from '../../constants/contentTypes.ts';
-import {MODAL_TYPE_FILTER_OPTIONS} from '../../constants/filter.ts';
-import {ModalTypeFilterType} from '../../constants/filter.ts';
-import {Question} from 'phosphor-react-native';
+import { Header, WideButton, SelectButton, MessageTypeInfoModal, DatePickerModal } from '../../components';
+import { MOODS } from '../../constants/moods.ts';
+import { CONTENT_TYPES } from '../../constants/contentTypes.ts';
+import { MODAL_TYPE_FILTER_OPTIONS } from '../../constants/filter.ts';
+import { ModalTypeFilterType } from '../../constants/filter.ts';
+import { Question } from 'phosphor-react-native';
 
 const NewMessage: React.FC<ScreenProps> = () => {
-  const {colors} = useColors();
+  const { colors } = useColors();
   const [selectedMood, setSelectedMood] = useState<string | null>(null);
   const [selectedContentType, setSelectedContentType] = useState<string | null>(
     null,
   );
   const [selectedMessageType, setSelectedMessageType] = useState<ModalTypeFilterType | null>(null);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   return (
     <SafeAreaView
       className="flex-1"
-      style={{backgroundColor: colors.primary}}>
+      style={{ backgroundColor: colors.primary }}>
       <Header />
       <ScrollView
         className="flex-1 pt-10"
-        contentContainerStyle={{paddingBottom: 32}}>
+        contentContainerStyle={{ paddingBottom: 32 }}>
         <View className="px-6">
           <Text
             className="text-heading-lg mb-8"
-            style={{color: colors.textPrimary}}>
+            style={{ color: colors.textPrimary }}>
             New Message
           </Text>
 
           <View className="mb-8">
             <Text
               className="text-body-primary mb-4"
-              style={{color: colors.textPrimary, opacity: 0.4}}>
+              style={{ color: colors.textPrimary, opacity: 0.4 }}>
               How do you feeling now?
             </Text>
             <View className="flex-row flex-wrap gap-3">
@@ -67,9 +69,9 @@ const NewMessage: React.FC<ScreenProps> = () => {
           </View>
 
           <View className="mb-8">
-          <Text
+            <Text
               className="text-body-primary mb-4"
-              style={{color: colors.textPrimary, opacity: 0.4}}>
+              style={{ color: colors.textPrimary, opacity: 0.4 }}>
               Type of content
             </Text>
             <View className="flex-row flex-wrap gap-4">
@@ -104,11 +106,11 @@ const NewMessage: React.FC<ScreenProps> = () => {
             <View className="flex-row items-center gap-2 mb-4">
               <Text
                 className="text-body-primary"
-                style={{color: colors.textPrimary, opacity: 0.4}}>
+                style={{ color: colors.textPrimary, opacity: 0.4 }}>
                 Message type
               </Text>
               <Pressable onPress={() => setIsInfoModalOpen(true)} className="opacity-50">
-                <Question size={18} color={colors.textPrimary}/>
+                <Question size={18} color={colors.textPrimary} />
               </Pressable>
             </View>
             <View className="flex-row flex-wrap gap-4">
@@ -138,19 +140,17 @@ const NewMessage: React.FC<ScreenProps> = () => {
           <View className="mb-8">
             <Text
               className="text-body-primary"
-              style={{color: colors.textPrimary, opacity: 0.4}}>
+              style={{ color: colors.textPrimary, opacity: 0.4 }}>
               Schedule delivery date
             </Text>
             <Pressable
               className="py-2"
-              onPress={() => {
-                // TODO: Open date picker
-                console.log('Open date picker');
-              }}>
+              onPress={() => setIsDatePickerOpen(true)}>
               <Text
-                className="text-body-secondary text-blue-500"
-                >
-                Clique to choose date
+                className={`text-body-secondary ${selectedDate ? '' : 'text-blue-500'}`}
+                style={selectedDate ? { color: colors.textPrimary } : {}}
+              >
+                {selectedDate ? selectedDate.toLocaleDateString() : 'Click to choose date'}
               </Text>
             </Pressable>
           </View>
@@ -170,6 +170,14 @@ const NewMessage: React.FC<ScreenProps> = () => {
       <MessageTypeInfoModal
         visible={isInfoModalOpen}
         onClose={() => setIsInfoModalOpen(false)}
+      />
+
+      <DatePickerModal
+        visible={isDatePickerOpen}
+        onClose={() => setIsDatePickerOpen(false)}
+        onSelect={(date) => setSelectedDate(date)}
+        initialDate={selectedDate || undefined}
+        minDate={new Date()}
       />
     </SafeAreaView>
   );
