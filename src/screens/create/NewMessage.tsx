@@ -8,11 +8,12 @@ import {
 } from 'react-native';
 import {ScreenProps} from '../../navigation/types';
 import useColors from '../../hooks/useColors';
-import {Header, WideButton, SelectButton} from '../../components';
+import {Header, WideButton, SelectButton, MessageTypeInfoModal} from '../../components';
 import {MOODS} from '../../constants/moods.ts';
 import {CONTENT_TYPES} from '../../constants/contentTypes.ts';
 import {MODAL_TYPE_FILTER_OPTIONS} from '../../constants/filter.ts';
 import {ModalTypeFilterType} from '../../constants/filter.ts';
+import {Question} from 'phosphor-react-native';
 
 const NewMessage: React.FC<ScreenProps> = () => {
   const {colors} = useColors();
@@ -21,6 +22,7 @@ const NewMessage: React.FC<ScreenProps> = () => {
     null,
   );
   const [selectedMessageType, setSelectedMessageType] = useState<ModalTypeFilterType | null>(null);
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
 
   return (
     <SafeAreaView
@@ -99,11 +101,16 @@ const NewMessage: React.FC<ScreenProps> = () => {
           </View>
 
           <View className="mb-8">
-            <Text
-              className="text-body-primary mb-4"
-              style={{color: colors.textPrimary, opacity: 0.4}}>
-              Message type
-            </Text>
+            <View className="flex-row items-center gap-2 mb-4">
+              <Text
+                className="text-body-primary"
+                style={{color: colors.textPrimary, opacity: 0.4}}>
+                Message type
+              </Text>
+              <Pressable onPress={() => setIsInfoModalOpen(true)} className="opacity-50">
+                <Question size={18} color={colors.textPrimary}/>
+              </Pressable>
+            </View>
             <View className="flex-row flex-wrap gap-4">
               {MODAL_TYPE_FILTER_OPTIONS.map(type => {
                 const isSelected = selectedMessageType === type.value;
@@ -159,6 +166,11 @@ const NewMessage: React.FC<ScreenProps> = () => {
           }}
         />
       </View>
+
+      <MessageTypeInfoModal
+        visible={isInfoModalOpen}
+        onClose={() => setIsInfoModalOpen(false)}
+      />
     </SafeAreaView>
   );
 };

@@ -13,6 +13,7 @@ export {default as SelectButton} from './global/buttons/selectButton.tsx';
 
 export {default as MessageCard} from './main/message-card/messageCard.tsx';
 export {default as NewMessageButton} from './main/new-message-button/NewMessageButton.tsx';
+export {default as MessageTypeInfoModal} from './create/message-type-info-modal/MessageTypeInfoModal.tsx';
 
 export type {BackButtonProps} from './global/buttons/interfaces/backButtonInterface.tsx';
 export type {WideButtonProps} from './global/buttons/interfaces/wideButtonInterface.tsx';
