@@ -33,11 +33,6 @@ const MessageTypeInfoModal: React.FC<MessageTypeInfoModalProps> = ({
     },
   ];
 
-  const generalInfo = [
-    'You can send messages of any content type and select a mood and delivery date for all message types.',
-    'You can also invite friends to send you messages.',
-  ];
-
   return (
     <Modal
       visible={visible}
@@ -78,17 +73,6 @@ const MessageTypeInfoModal: React.FC<MessageTypeInfoModalProps> = ({
                 </Text>
               </View>
             ))}
-
-            <View className="mb-4">
-              {generalInfo.map((info, index) => (
-                <Text
-                  key={index}
-                  className={`text-body-primary ${index > 0 ? 'mt-2' : ''}`}
-                  style={{ color: colors.textPrimary, opacity: 0.7 }}>
-                  {info}
-                </Text>
-              ))}
-            </View>
           </ScrollView>
         </Pressable>
       </Pressable>
