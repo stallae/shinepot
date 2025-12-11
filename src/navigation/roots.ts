@@ -1,11 +1,11 @@
- const ROOT = {
+const ROOT = {
   OnBoardStart: 'OnBoardStart',
   Auth: 'Auth',
   Blog: 'Blog',
-  NewMessage: 'NewMessage',
+  NewMessageFlow: 'NewMessageFlow',
 } as const;
 
- const AUTH = {
+const AUTH = {
   LoginStart: 'LoginStart',
   LoginThirdParty: 'LoginThirdParty',
   LoginOtp: 'LoginOtp',
@@ -24,9 +24,15 @@
   PrivacyPolicy: 'PrivacyPolicy',
 } as const;
 
+const NEW_MESSAGE = {
+  NewMessage: 'NewMessage',
+  NewMessageTitle: 'NewMessageTitle',
+} as const;
+
 export const ROUTES = {
   ...ROOT,
   ...AUTH,
+  ...NEW_MESSAGE,
 } as const;
 
 export type RootStackParamList = {
@@ -35,4 +41,8 @@ export type RootStackParamList = {
 
 export type AuthStackParamList = {
   [K in keyof typeof AUTH]: undefined;
+};
+
+export type NewMessageStackParamList = {
+  [K in keyof typeof NEW_MESSAGE]: undefined;
 };
