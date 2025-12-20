@@ -5,6 +5,7 @@ import OnBoardStart from '../screens/start/onBoard/OnBoardStart';
 import AuthNavigation from './AuthNavigation';
 import Blog from '../screens/main/Blog';
 import NewMessageNavigation from './NewMessageNavigation';
+import ViewMessage from '../screens/main/view/ViewMessage';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -17,6 +18,7 @@ const RootNavigation = () => {
       <Stack.Screen name={ROUTES.Auth} component={AuthNavigation} />
       <Stack.Screen name={ROUTES.Blog} component={Blog} />
       <Stack.Screen name={ROUTES.NewMessageFlow} component={NewMessageNavigation} />
+      <Stack.Screen name={ROUTES.ViewMessage} component={ViewMessage} />
     </Stack.Navigator>
   );
 };

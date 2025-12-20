@@ -1,0 +1,76 @@
+import React from 'react';
+import { View, SafeAreaView, ScrollView } from 'react-native';
+import { useRoute, useNavigation } from '@react-navigation/native';
+import { RouteProp } from '@react-navigation/native';
+import useColors from '../../../hooks/useColors';
+import { ScreenProps } from '../../../navigation/types';
+import MessageViewHeader from '../../../components/main/view-message/MessageViewHeader';
+import MessageContentView from '../../../components/main/view-message/MessageContentView';
+import MessageTimestamp from '../../../components/main/view-message/MessageTimestamp';
+import PrivateMessageFooter from '../../../components/main/view-message/PrivateMessageFooter';
+import { RootStackParamList } from '../../../navigation/roots';
+import { deserializeMessage } from '../../../utils/messageSerialization';
+
+const ViewMessage: React.FC<ScreenProps> = () => {
+  const { colors } = useColors();
+  const route = useRoute<RouteProp<RootStackParamList, 'ViewMessage'>>();
+  const navigation = useNavigation();
+  const rawMessage = route.params?.message;
+
+  if (!rawMessage) {
+    return null;
+  }
+
+  const message = deserializeMessage(rawMessage);
+
+  const publishDate = typeof message.publish_date === 'string' 
+    ? new Date(message.publish_date) 
+    : message.publish_date;
+  const now = new Date();
+  const isFuture = publishDate > now;
+  const isLocked = message.message_audit_status.message_status_type === 'pending';
+  const shouldBlock = isFuture || isLocked;
+  
+  React.useLayoutEffect(() => {
+    if (shouldBlock) {
+      navigation.goBack();
+    }
+  }, [shouldBlock, navigation]);
+
+  if (shouldBlock) {
+    return null;
+  }
+
+  const isPrivate = message.message_type === 'private';
+  const senderName = message.message_recipients?.recipient_contact?.user_id
+    ? 'Sender Name' // TODO: Fetch actual sender name from user data
+    : undefined;
+
+  const handleMenuPress = () => {
+    // TODO: Implement menu actions (report, share, etc.)
+    console.log('Menu pressed');
+  };
+
+  return (
+    <SafeAreaView
+      className="flex-1"
+      style={{ backgroundColor: colors.primary }}>
+      <MessageViewHeader
+        senderName={senderName}
+        onMenuPress={handleMenuPress}
+      />
+      <ScrollView
+        className="flex-1"
+        contentContainerStyle={{ paddingBottom: 20 }}>
+        <View className="px-6 pt-4">
+          <MessageContentView message={message} />
+          <MessageTimestamp date={message.publish_date} />
+        </View>
+      </ScrollView>
+      {isPrivate && <PrivateMessageFooter />}
+    </SafeAreaView>
+  );
+};
+
+export default ViewMessage;
+
