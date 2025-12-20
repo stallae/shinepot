@@ -1,0 +1,49 @@
+import React from 'react';
+import { View, Text } from 'react-native';
+import useColors from '../../../hooks/useColors';
+import TextMessageContent from './content/TextMessageContent';
+import AudioMessageContent from './content/AudioMessageContent';
+import VideoMessageContent from './content/VideoMessageContent';
+import ImageMessageContent from './content/ImageMessageContent';
+import { Messages } from '../../../interfaces/messages';
+
+interface MessageContentViewProps {
+  message: Messages;
+}
+
+const MessageContentView: React.FC<MessageContentViewProps> = ({ message }) => {
+  const { colors } = useColors();
+
+  const renderContent = () => {
+    switch (message.message_content_type) {
+      case 'text':
+        return <TextMessageContent message={message} />;
+      case 'audio':
+        return <AudioMessageContent message={message} />;
+      case 'video':
+        return <VideoMessageContent message={message} />;
+      case 'image':
+        return <ImageMessageContent message={message} />;
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <View
+      className="rounded-xl p-6 mb-4"
+      style={{ backgroundColor: colors.secondary }}>
+      {message.title && (
+        <Text
+          className="text-heading-lg mb-4 font-bold"
+          style={{ color: colors.textPrimary }}>
+          {message.title}
+        </Text>
+      )}
+      {renderContent()}
+    </View>
+  );
+};
+
+export default MessageContentView;
+
