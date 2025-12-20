@@ -3,11 +3,11 @@ import {Image, View} from 'react-native';
 import ProfileImage from '../../../assets/images/ProfileImage.png';
 import {ProfilePictureProps} from './interfaces/profilePictureInterface.tsx';
 
-const ProfilePicture: React.FC<ProfilePictureProps> = ({shape, size, className}) => {
+const ProfilePicture: React.FC<ProfilePictureProps> = ({shape, size, className, source}) => {
   return (
     <View className="flex-row">
       <Image
-        source={ProfileImage}
+        source={source || ProfileImage}
         {...(shape === 'circle'
           ? {borderRadius: 30}
           : shape === 'square'
