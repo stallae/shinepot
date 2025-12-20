@@ -130,10 +130,9 @@ export const filterMessages = (
     });
   }
 
-  // Apply status filter
   if (filters.activeStatusFilter) {
     filtered = filtered.filter((message: Messages) => {
-      const status = message.message_audit_status.message_status_type;
+      const status = message.message_audit_status?.message_status_type;
       if (filters.activeStatusFilter === 'opened') {
         return status === 'published';
       } else {
