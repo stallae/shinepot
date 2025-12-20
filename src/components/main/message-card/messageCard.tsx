@@ -17,7 +17,7 @@ const MessageCard: React.FC<MessageCardProps> = ({message, onPress}) => {
     return `This a ${message.message_content_type} message.`;
   };
 
-  const isLocked = message.message_audit_status.message_status_type === 'pending';
+  const isLocked = message.message_audit_status?.message_status_type === 'pending';
   
   const publishDate = message.publish_date instanceof Date 
     ? message.publish_date 
@@ -33,7 +33,7 @@ const MessageCard: React.FC<MessageCardProps> = ({message, onPress}) => {
       : new Date(message.publish_date);
     const checkNow = new Date();
     const checkIsFuture = checkDate > checkNow;
-    const checkIsLocked = message.message_audit_status.message_status_type === 'pending';
+    const checkIsLocked = message.message_audit_status?.message_status_type === 'pending';
     const checkShouldBlock = checkIsFuture || checkIsLocked;
     
     if (!checkShouldBlock && onPress) {
