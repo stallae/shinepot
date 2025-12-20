@@ -13,8 +13,8 @@ export interface Messages {
   created_at: Date;
   message_likes?: MessageLikes;
   messages_comments?: MessagesComments[];
-  message_recipients: MessageRecipients;
-  message_audit_status: MessageAuditStatus;
+  message_recipients?: MessageRecipients;
+  message_audit_status?: MessageAuditStatus;
   message_thread?: MessageThread;
 }
 

@@ -28,7 +28,7 @@ const ViewMessage: React.FC<ScreenProps> = () => {
     : message.publish_date;
   const now = new Date();
   const isFuture = publishDate > now;
-  const isLocked = message.message_audit_status.message_status_type === 'pending';
+  const isLocked = message.message_audit_status?.message_status_type === 'pending';
   const shouldBlock = isFuture || isLocked;
   
   React.useLayoutEffect(() => {
