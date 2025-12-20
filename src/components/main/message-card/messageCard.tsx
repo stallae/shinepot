@@ -19,14 +19,34 @@ const MessageCard: React.FC<MessageCardProps> = ({message, onPress}) => {
 
   const isLocked = message.message_audit_status.message_status_type === 'pending';
   
-  const isFuture = new Date(message.publish_date) > new Date();
+  const publishDate = message.publish_date instanceof Date 
+    ? message.publish_date 
+    : new Date(message.publish_date);
+  const now = new Date();
+  const isFuture = publishDate > now;
+  
+  const shouldBlock = isFuture || isLocked;
+
+  const handlePress = () => {
+    const checkDate = message.publish_date instanceof Date 
+      ? message.publish_date 
+      : new Date(message.publish_date);
+    const checkNow = new Date();
+    const checkIsFuture = checkDate > checkNow;
+    const checkIsLocked = message.message_audit_status.message_status_type === 'pending';
+    const checkShouldBlock = checkIsFuture || checkIsLocked;
+    
+    if (!checkShouldBlock && onPress) {
+      onPress();
+    }
+  };
 
   return (
     <Pressable
-      onPress={onPress}
+      onPress={shouldBlock ? undefined : handlePress}
       className="w-11/12 mx-auto mb-3 rounded-xl p-4 font-inter overflow-hidden"
       style={{backgroundColor: colors.secondary}}
-      disabled={isFuture}>
+      disabled={shouldBlock}>
       <View className="flex-1" style={{opacity: isFuture ? 0.3 : 1}}>
         <View className="flex-row items-center gap-4 h-1/2 flex">
           <ProfilePicture size={30} shape="circle" />
