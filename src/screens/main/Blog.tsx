@@ -18,6 +18,8 @@ import {
   ContentFilterType,
   DateFilterType,
 } from '../../constants/filter.ts';
+import {ROUTES} from '../../navigation/roots';
+import {serializeMessage} from '../../utils/messageSerialization.ts';
 
 const Blog: React.FC<ScreenProps> = ({navigation}) => {
   const {colors} = useColors();
@@ -31,6 +33,9 @@ const Blog: React.FC<ScreenProps> = ({navigation}) => {
 
   const handleTabFilterChange = (filter: TabFilterType) => {
     setActiveTabFilter(filter);
+    if (activeModalMessageFilter) {
+      setActiveModalMessageFilter(null);
+    }
   };
 
   const handleStatusFilterChange = (filter: StatusFilterType | null) => {
@@ -118,13 +123,33 @@ const Blog: React.FC<ScreenProps> = ({navigation}) => {
   };
 
   const renderMessage = ({item}: {item: Messages}) => {
+    const publishDate = item.publish_date instanceof Date 
+      ? item.publish_date 
+      : new Date(item.publish_date);
+    const now = new Date();
+    const isFuture = publishDate > now;
+    const isLocked = item.message_audit_status?.message_status_type === 'pending';
+    const shouldBlock = isFuture || isLocked;
+    
+    const handleMessagePress = () => {
+      const checkDate = item.publish_date instanceof Date 
+        ? item.publish_date 
+        : new Date(item.publish_date);
+      const checkNow = new Date();
+      const checkIsFuture = checkDate > checkNow;
+      const checkIsLocked = item.message_audit_status?.message_status_type === 'pending';
+      const checkShouldBlock = checkIsFuture || checkIsLocked;
+      
+      if (!checkShouldBlock) {
+        const serializedMessage = serializeMessage(item);
+        navigation.navigate(ROUTES.ViewMessage, { message: serializedMessage });
+      }
+    };
+    
     return (
       <MessageCard
         message={item}
-        onPress={() => {
-          // TODO: Navigate to message detail screen
-          console.log('Message pressed:', item.id);
-        }}
+        onPress={shouldBlock ? undefined : handleMessagePress}
       />
     );
   };
@@ -154,7 +179,6 @@ const Blog: React.FC<ScreenProps> = ({navigation}) => {
           </Text>
         </View>
 
-        {/* Tab Filters */}
         <View className="px-6 mb-3">
           <ScrollView
             horizontal
