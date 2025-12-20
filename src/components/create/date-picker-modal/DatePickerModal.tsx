@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { View, Text, Pressable, Modal, FlatList } from 'react-native';
+import { View, Text, Pressable, Modal } from 'react-native';
 import { X, CaretLeft, CaretRight } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
 
@@ -81,10 +81,9 @@ const DatePickerModal: React.FC<DatePickerModalProps> = ({
             day,
         );
 
-        // Check minDate
         if (minDate) {
             const checkDate = new Date(newDate);
-            checkDate.setHours(23, 59, 59, 999); // Allow selecting today if minDate is today
+            checkDate.setHours(23, 59, 59, 999);
             const minDateStart = new Date(minDate);
             minDateStart.setHours(0, 0, 0, 0);
 
@@ -121,7 +120,7 @@ const DatePickerModal: React.FC<DatePickerModalProps> = ({
         const minDateStart = new Date(minDate);
         minDateStart.setHours(0, 0, 0, 0);
         return dateToCheck < minDateStart;
-    }
+    };
 
     return (
         <Modal
@@ -138,7 +137,6 @@ const DatePickerModal: React.FC<DatePickerModalProps> = ({
                     style={{ backgroundColor: colors.secondary }}
                     onPress={e => e.stopPropagation()}>
 
-                    {/* Header */}
                     <View className="flex-row items-center justify-between mb-6">
                         <Text
                             className="text-heading-sm font-bold"
@@ -150,7 +148,6 @@ const DatePickerModal: React.FC<DatePickerModalProps> = ({
                         </Pressable>
                     </View>
 
-                    {/* Month Navigation */}
                     <View className="flex-row items-center justify-between mb-4">
                         <Pressable onPress={handlePrevMonth} className="p-2">
                             <CaretLeft size={20} color={colors.textPrimary} />
@@ -163,7 +160,6 @@ const DatePickerModal: React.FC<DatePickerModalProps> = ({
                         </Pressable>
                     </View>
 
-                    {/* Days Header */}
                     <View className="flex-row justify-between mb-2">
                         {DAYS_OF_WEEK.map((day, index) => (
                             <Text key={index} className="text-center w-10 text-body-sm font-medium" style={{ color: colors.textPrimary, opacity: 0.5 }}>
@@ -172,7 +168,6 @@ const DatePickerModal: React.FC<DatePickerModalProps> = ({
                         ))}
                     </View>
 
-                    {/* Calendar Grid */}
                     <View className="flex-row flex-wrap">
                         {calendarGrid.map((day, index) => {
                             if (day === null) {
