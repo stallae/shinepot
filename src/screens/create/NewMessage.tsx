@@ -16,7 +16,7 @@ import { ModalTypeFilterType } from '../../constants/filter.ts';
 import { Question } from 'phosphor-react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList, ROUTES, NewMessageStackParamList } from '../../navigation/roots';
+import { ROUTES, NewMessageStackParamList } from '../../navigation/roots';
 
 
 const NewMessage: React.FC<ScreenProps> = () => {
@@ -166,7 +166,16 @@ const NewMessage: React.FC<ScreenProps> = () => {
                 <WideButton
                     text="Keep going"
                     onPress={() => {
-                        navigation.navigate(ROUTES.NewMessageTitle);
+                        if (selectedMood && selectedContentType && selectedMessageType && selectedDate) {
+                            navigation.navigate(ROUTES.NewMessageTitle, {
+                                data: {
+                                    mood: selectedMood,
+                                    contentType: selectedContentType,
+                                    messageType: selectedMessageType,
+                                    date: selectedDate.toISOString(),
+                                },
+                            });
+                        }
                     }}
                     isDisabled={!selectedMood || !selectedContentType || !selectedMessageType || !selectedDate}
                 />

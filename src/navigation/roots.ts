@@ -1,3 +1,5 @@
+import { ModalTypeFilterType } from '../constants/filter';
+
 const ROOT = {
   OnBoardStart: 'OnBoardStart',
   Auth: 'Auth',
@@ -27,6 +29,11 @@ const AUTH = {
 const NEW_MESSAGE = {
   NewMessage: 'NewMessage',
   NewMessageTitle: 'NewMessageTitle',
+  NewMessageText: 'NewMessageText',
+  NewMessageImage: 'NewMessageImage',
+  NewMessageAudio: 'NewMessageAudio',
+  NewMessageVideo: 'NewMessageVideo',
+  MessageConfirmation: 'MessageConfirmation',
 } as const;
 
 export const ROUTES = {
@@ -43,6 +50,20 @@ export type AuthStackParamList = {
   [K in keyof typeof AUTH]: undefined;
 };
 
+export interface NewMessageData {
+  mood: string;
+  contentType: string;
+  messageType: ModalTypeFilterType;
+  date: Date | string; 
+  title?: string;
+}
+
 export type NewMessageStackParamList = {
-  [K in keyof typeof NEW_MESSAGE]: undefined;
+  NewMessage: undefined;
+  NewMessageTitle: { data: Omit<NewMessageData, 'title'> };
+  NewMessageText: { data: NewMessageData };
+  NewMessageImage: { data: NewMessageData };
+  NewMessageAudio: { data: NewMessageData };
+  NewMessageVideo: { data: NewMessageData };
+  MessageConfirmation: undefined;
 };

@@ -6,21 +6,46 @@ import {
     KeyboardAvoidingView,
     Platform,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList, ROUTES } from '../../navigation/roots';
+import { ROUTES, NewMessageStackParamList } from '../../navigation/roots';
 import { ScreenProps } from '../../navigation/types';
 import useColors from '../../hooks/useColors';
 import { Header, WideButton, GeneralInput } from '../../components';
+import { RouteProp } from '@react-navigation/native';
 
 const NewMessageTitle: React.FC<ScreenProps> = () => {
     const { colors } = useColors();
-    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+    const navigation = useNavigation<StackNavigationProp<NewMessageStackParamList>>();
+    const route = useRoute<RouteProp<NewMessageStackParamList, 'NewMessageTitle'>>();
     const [messageTitle, setMessageTitle] = useState('');
 
     const handleKeepGoing = () => {
-        // navigation.navigate(ROUTES.MessageDetails); // TODO: Next step
-        console.log('Title entered:', messageTitle);
+        if (!route.params?.data) return;
+        
+        const { data } = route.params;
+        const completeData = {
+            ...data,
+            title: messageTitle,
+            date: typeof data.date === 'string' ? data.date : data.date.toISOString(),
+        };
+
+        switch (data.contentType) {
+            case 'text':
+                navigation.navigate(ROUTES.NewMessageText, { data: completeData });
+                break;
+            case 'image':
+                navigation.navigate(ROUTES.NewMessageImage, { data: completeData });
+                break;
+            case 'audio':
+                navigation.navigate(ROUTES.NewMessageAudio, { data: completeData });
+                break;
+            case 'video':
+                navigation.navigate(ROUTES.NewMessageVideo, { data: completeData });
+                break;
+            default:
+                console.error('Unknown content type:', data.contentType);
+        }
     };
 
     return (
