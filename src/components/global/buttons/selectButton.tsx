@@ -1,7 +1,6 @@
 import React from 'react';
 import {Pressable, Text, View, ViewStyle} from 'react-native';
 import useColors from '../../../hooks/useColors.tsx';
-import colorPalette from '../../../assets/styles/colors.tsx';
 
 interface SelectButtonProps {
   label?: string;
@@ -31,7 +30,7 @@ const SelectButton: React.FC<SelectButtonProps> = ({
     ? 'rounded-xl'
     : 'rounded-3xl';
 
-  const backgroundColor = colorPalette.gray[500];
+  const backgroundColor = themeColors.secondary;
   const opacity = hasSelection ? (isSelected ? 1 : 0.3) : 1;
 
   const buttonStyle: ViewStyle = {
