@@ -25,23 +25,23 @@ const Card: React.FC<CardProps> = ({
   const {colors} = useColors();
   return (
     <View
-      className={'w-11/12 mx-auto my-10 rounded-xl p-10 gap-5'}
+      className={'w-full rounded-xl p-10 gap-5'}
       style={{backgroundColor: colors.secondary}}>
       <IconContext.Provider value={{color: colors.textPrimary}}>
         <View className={'self-center'}>
           {type ? (
             <IconContext.Provider value={{color: colors.textPrimary}}>
               {type === 'success' && (
-                <CheckCircle size={43} weight={'fill'} color={'#5bca89'} />
+                <CheckCircle size={43} weight={'fill'} color={colors.success} />
               )}
               {type === 'error' && (
-                <XCircle size={43} weight={'fill'} color={'#FF7C7C'} />
+                <XCircle size={43} weight={'fill'} color={colors.error} />
               )}
               {type === 'warning' && (
-                <Question size={43} weight={'fill'} color={'#FFC107'} />
+                <Question size={43} weight={'fill'} color={colors.warning} />
               )}
               {type === 'done' && (
-                <SealCheck size={43} weight={'fill'} color={'#5bca89'} />
+                <SealCheck size={43} weight={'fill'} color={colors.success} />
               )}
             </IconContext.Provider>
           ) : (
@@ -56,15 +56,12 @@ const Card: React.FC<CardProps> = ({
         {title}
       </Text>
       <Text
-        className={`text-lg font-normal self-center font-inter text-center`}
+        className={`text-lg font-normal self-center font-inter text-center mt-4 mb-7`}
         style={{color: colors.textPrimary, opacity: 50}}>
         {description}
       </Text>
 
-      <View
-        className={`flex-row justify-center my-5 gap-4 self-center justify-items-center ${
-          secondButton ? 'w-1/2' : 'w-full'
-        }`}>
+      <View className="w-full gap-4">
         <WideButton {...button} />
         {secondButton && <WideButton {...secondButton} />}
       </View>
