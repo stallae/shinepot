@@ -5,6 +5,9 @@ export type ColorTheme = {
   textPrimary: string;
   textPrimaryDisabled: string;
   textSecondary: string;
+  success: string;
+  error: string;
+  warning: string;
 };
 
 export type TColors = ColorTheme;
@@ -22,6 +25,9 @@ export const Colors: ColorPalettes = {
     textPrimary: '#FFFFFF',
     textPrimaryDisabled: '#FFFFFF40',
     textSecondary: '#FFFFFF',
+    success: '#7CFF90',
+    error: '#FF7C7C',
+    warning: '#FDF558',
   },
   light: {
     primary: '#FFFFFF',
@@ -30,5 +36,8 @@ export const Colors: ColorPalettes = {
     textPrimary: '#000000',
     textPrimaryDisabled: '#00000040',
     textSecondary: '#0183FD',
+    success: '#2d8f4f',
+    error: '#D32F2F',
+    warning: '#F57C00',
   },
 };
