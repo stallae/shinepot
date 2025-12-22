@@ -8,6 +8,7 @@ import MessageViewHeader from '../../../components/main/view-message/MessageView
 import MessageContentView from '../../../components/main/view-message/MessageContentView';
 import MessageTimestamp from '../../../components/main/view-message/MessageTimestamp';
 import PrivateMessageFooter from '../../../components/main/view-message/PrivateMessageFooter';
+import RandomMessageFooter from '../../../components/main/view-message/RandomMessageFooter';
 import { RootStackParamList } from '../../../navigation/roots';
 import { deserializeMessage } from '../../../utils/messageSerialization';
 
@@ -42,6 +43,7 @@ const ViewMessage: React.FC<ScreenProps> = () => {
   }
 
   const isPrivate = message.message_type === 'private';
+  const isRandom = message.message_type === 'random';
   const senderName = message.message_recipients?.recipient_contact?.user_id
     ? 'Sender Name' // TODO: Fetch actual sender name from user data
     : undefined;
@@ -49,6 +51,20 @@ const ViewMessage: React.FC<ScreenProps> = () => {
   const handleMenuPress = () => {
     // TODO: Implement menu actions (report, share, etc.)
     console.log('Menu pressed');
+  };
+
+  const renderFooter = () => {
+    if (isPrivate) {
+      return <PrivateMessageFooter />;
+    }
+    if (isRandom) {
+      return (
+        <RandomMessageFooter
+          message={message}
+        />
+      );
+    }
+    return null;
   };
 
   return (
@@ -67,7 +83,7 @@ const ViewMessage: React.FC<ScreenProps> = () => {
           <MessageTimestamp date={message.publish_date} />
         </View>
       </ScrollView>
-      {isPrivate && <PrivateMessageFooter />}
+      {renderFooter()}
     </SafeAreaView>
   );
 };
