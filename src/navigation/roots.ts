@@ -40,6 +40,7 @@ const AUTH = {
 const NEW_MESSAGE = {
   NewMessage: 'NewMessage',
   NewMessageTitle: 'NewMessageTitle',
+  NewMessageRecipient: 'NewMessageRecipient',
   NewMessageText: 'NewMessageText',
   NewMessageImage: 'NewMessageImage',
   NewMessageAudio: 'NewMessageAudio',
@@ -57,7 +58,12 @@ export type RootStackParamList = {
   OnBoardStart: undefined;
   Auth: undefined;
   Blog: undefined;
-  NewMessageFlow: undefined;
+  NewMessageFlow: 
+    | undefined
+    | {
+        screen: 'NewMessageText' | 'NewMessageImage' | 'NewMessageAudio' | 'NewMessageVideo' | 'NewMessage' | 'NewMessageTitle' | 'NewMessageRecipient' | 'MessageConfirmation';
+        params?: NewMessageStackParamList['NewMessageText' | 'NewMessageImage' | 'NewMessageAudio' | 'NewMessageVideo' | 'NewMessage' | 'NewMessageTitle' | 'NewMessageRecipient' | 'MessageConfirmation'];
+      };
   ViewMessage: { message: SerializedMessages };
 };
 
@@ -71,11 +77,17 @@ export interface NewMessageData {
   messageType: ModalTypeFilterType;
   date: Date | string; 
   title?: string;
+  recipient?: {
+    type: 'self' | 'other';
+    email?: string;
+    phone?: string;
+  };
 }
 
 export type NewMessageStackParamList = {
   NewMessage: undefined;
   NewMessageTitle: { data: Omit<NewMessageData, 'title'> };
+  NewMessageRecipient: { data: Omit<NewMessageData, 'recipient'> & { title: string } };
   NewMessageText: { data: NewMessageData };
   NewMessageImage: { data: NewMessageData };
   NewMessageAudio: { data: NewMessageData };
