@@ -3,6 +3,7 @@ import React from 'react';
 import { NewMessageStackParamList, ROUTES } from './roots';
 import NewMessage from '../screens/create/NewMessage';
 import NewMessageTitle from '../screens/create/NewMessageTitle';
+import NewMessageRecipient from '../screens/create/NewMessageRecipient';
 import NewMessageText from '../screens/create/NewMessageText';
 import NewMessageImage from '../screens/create/NewMessageImage';
 import NewMessageAudio from '../screens/create/NewMessageAudio';
@@ -18,6 +19,7 @@ const NewMessageNavigation = () => {
             initialRouteName={ROUTES.NewMessage}>
             <Stack.Screen name={ROUTES.NewMessage} component={NewMessage} />
             <Stack.Screen name={ROUTES.NewMessageTitle} component={NewMessageTitle} />
+            <Stack.Screen name={ROUTES.NewMessageRecipient} component={NewMessageRecipient} />
             <Stack.Screen name={ROUTES.NewMessageText} component={NewMessageText} />
             <Stack.Screen name={ROUTES.NewMessageImage} component={NewMessageImage} />
             <Stack.Screen name={ROUTES.NewMessageAudio} component={NewMessageAudio} />
