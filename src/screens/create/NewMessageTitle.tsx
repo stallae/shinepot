@@ -30,6 +30,16 @@ const NewMessageTitle: React.FC<ScreenProps> = () => {
             date: typeof data.date === 'string' ? data.date : data.date.toISOString(),
         };
 
+        if (data.messageType === 'private') {
+            navigation.navigate(ROUTES.NewMessageRecipient, { 
+                data: {
+                    ...completeData,
+                    title: messageTitle,
+                }
+            });
+            return;
+        }
+
         switch (data.contentType) {
             case 'text':
                 navigation.navigate(ROUTES.NewMessageText, { data: completeData });
