@@ -72,7 +72,7 @@ export type AuthStackParamList = {
 };
 
 export interface NewMessageData {
-  mood: string;
+  mood?: string;
   contentType: string;
   messageType: ModalTypeFilterType;
   date: Date | string; 
