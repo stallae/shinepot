@@ -2,7 +2,7 @@ import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import { ScreenProps } from "../../../../navigation/types";
 import React from "react";
 import { ArrowLeft } from "phosphor-react-native";
-import BackButton from "../../../../components/global/buttons/backButton";
+import {BackButton} from "../../../../components";
 import useColors from "../../../../hooks/useColors";
 
 const PrivacyPolicy: React.FC<ScreenProps> = ({navigation}) => {

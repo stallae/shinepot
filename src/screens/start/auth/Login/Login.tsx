@@ -1,11 +1,8 @@
 import {Pressable, SafeAreaView, Text, View} from 'react-native';
 import React from 'react';
-import Logo from '../../../../components/global/logo/logo.tsx';
 import useColors from '../../../../hooks/useColors.tsx';
-import WideButton from '../../../../components/global/buttons/wideButton.tsx';
-import GeneralInput from '../../../../components/global/inputs/generalImput.tsx';
+import {WideButton, GeneralInput, BackButton, Logo} from '../../../../components';
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
-import BackButton from '../../../../components/global/buttons/backButton.tsx';
 import {ArrowLeft} from 'phosphor-react-native';
 
 const Login: React.FC<ScreenProps> = ({navigation}) => {

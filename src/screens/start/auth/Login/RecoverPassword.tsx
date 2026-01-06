@@ -2,10 +2,8 @@ import { View, Text, SafeAreaView } from "react-native";
 import { ROUTES, ScreenProps } from "../../../../navigation/types";
 import React, { useState } from "react";
 import { ArrowLeft } from "phosphor-react-native";
-import BackButton from "../../../../components/global/buttons/backButton";
 import useColors from "../../../../hooks/useColors";
-import GeneralInput from "../../../../components/global/inputs/generalImput";
-import WideButton from "../../../../components/global/buttons/wideButton";
+import {GeneralInput, WideButton, BackButton} from "../../../../components";
 
 const RecoverPassword: React.FC<ScreenProps> = ({navigation}) => {
   const {colors} = useColors();

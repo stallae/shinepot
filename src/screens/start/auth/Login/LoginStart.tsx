@@ -1,13 +1,11 @@
 import {SafeAreaView, Text, View} from 'react-native';
 import React from 'react';
-import ProgressBar from '../../../../components/global/progressBar/progressBar.tsx';
-import Logo from '../../../../components/global/logo/logo.tsx';
-import useColors from '../../../../hooks/useColors.tsx';
-import WideButton from '../../../../components/global/buttons/wideButton.tsx';
+import {ProgressBar, Logo, WideButton} from '../../../../components';
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
+import useColors from '../../../../hooks/useColors.tsx';
 
 const LoginStart: React.FC<ScreenProps> = ({navigation}) => {
-  const {colors} = useColors();
+  const {colors} = useColors(); 
   return (
     <SafeAreaView
       className="flex-1 justify-between items-center"
