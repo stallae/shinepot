@@ -16,6 +16,12 @@ const ROOT = {
   Blog: 'Blog',
   NewMessageFlow: 'NewMessageFlow',
   ViewMessage: 'ViewMessage',
+  Profile: 'Profile',
+  PersonalInformation: 'PersonalInformation',
+  PaymentMethods: 'PaymentMethods',
+  DataPrivacy: 'DataPrivacy',
+  About: 'About',
+  BecomeMember: 'BecomeMember',
 } as const;
 
 const AUTH = {
@@ -58,13 +64,19 @@ export type RootStackParamList = {
   OnBoardStart: undefined;
   Auth: undefined;
   Blog: undefined;
-  NewMessageFlow: 
-    | undefined
-    | {
-        screen: 'NewMessageText' | 'NewMessageImage' | 'NewMessageAudio' | 'NewMessageVideo' | 'NewMessage' | 'NewMessageTitle' | 'NewMessageRecipient' | 'MessageConfirmation';
-        params?: NewMessageStackParamList['NewMessageText' | 'NewMessageImage' | 'NewMessageAudio' | 'NewMessageVideo' | 'NewMessage' | 'NewMessageTitle' | 'NewMessageRecipient' | 'MessageConfirmation'];
-      };
+  NewMessageFlow:
+  | undefined
+  | {
+    screen: 'NewMessageText' | 'NewMessageImage' | 'NewMessageAudio' | 'NewMessageVideo' | 'NewMessage' | 'NewMessageTitle' | 'NewMessageRecipient' | 'MessageConfirmation';
+    params?: NewMessageStackParamList['NewMessageText' | 'NewMessageImage' | 'NewMessageAudio' | 'NewMessageVideo' | 'NewMessage' | 'NewMessageTitle' | 'NewMessageRecipient' | 'MessageConfirmation'];
+  };
   ViewMessage: { message: SerializedMessages };
+  Profile: undefined;
+  PersonalInformation: undefined;
+  PaymentMethods: undefined;
+  DataPrivacy: undefined;
+  About: undefined;
+  BecomeMember: undefined;
 };
 
 export type AuthStackParamList = {
@@ -75,7 +87,7 @@ export interface NewMessageData {
   mood?: string;
   contentType: string;
   messageType: ModalTypeFilterType;
-  date: Date | string; 
+  date: Date | string;
   title?: string;
   recipient?: {
     type: 'self' | 'other';

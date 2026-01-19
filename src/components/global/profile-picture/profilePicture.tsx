@@ -1,22 +1,29 @@
 import React from 'react';
-import {Image, View} from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { ROUTES, RootStackParamList } from '../../../navigation/roots';
 import ProfileImage from '../../../assets/images/ProfileImage.png';
-import {ProfilePictureProps} from './interfaces/profilePictureInterface.tsx';
+import { ProfilePictureProps } from './interfaces/profilePictureInterface.tsx';
 
-const ProfilePicture: React.FC<ProfilePictureProps> = ({shape, size, className, source}) => {
+const ProfilePicture: React.FC<ProfilePictureProps> = ({ shape, size, className, source }) => {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   return (
-    <View className="flex-row">
+    <TouchableOpacity
+      className="flex-row"
+      onPress={() => navigation.navigate(ROUTES.Profile)}>
       <Image
         source={source || ProfileImage}
         {...(shape === 'circle'
-          ? {borderRadius: 30}
+          ? { borderRadius: 30 }
           : shape === 'square'
-          ? {borderRadius: 5}
-          : {borderRadius: 15})}
+            ? { borderRadius: 5 }
+            : { borderRadius: 15 })}
         className={`object-contain ${className}`}
-        style={{height: size, width: size}}
+        style={{ height: size, width: size }}
       />
-    </View>
+    </TouchableOpacity>
   );
 };
 
