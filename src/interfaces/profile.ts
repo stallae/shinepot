@@ -1,5 +1,5 @@
 import { Icon } from 'phosphor-react-native';
-import { RootStackParamList } from '../../../navigation/roots';
+import { RootStackParamList } from '../navigation/roots';
 
 export interface ProfileMenuItem {
     title: string;

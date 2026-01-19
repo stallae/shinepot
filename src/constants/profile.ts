@@ -1,7 +1,7 @@
 import { PaperPlaneTilt, CalendarHeart, HandArrowDown, Heart, User, CreditCard, Shield, Info, Sparkle } from 'phosphor-react-native';
 import { ROUTES } from '../navigation/roots';
 import { PROFILE_DATA } from '../_mock/profile';
-import { ProfileMenuItem, ProfileStats } from '../screens/profile/interfaces/profileInterface';
+import { ProfileMenuItem, ProfileStats } from '../interfaces/profile';
 
 export const stats: ProfileStats[] = [
     { title: 'Sent', value: PROFILE_DATA.stats.sent.toString(), icon: PaperPlaneTilt },

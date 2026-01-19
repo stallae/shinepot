@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
-import { ProfileMenuItem } from '../../screens/profile/interfaces/profileInterface';
+import { ProfileMenuItem } from '../../interfaces/profile';
 import useColors from '../../hooks/useColors';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
