@@ -18,6 +18,10 @@ const ROOT = {
   ViewMessage: 'ViewMessage',
   Profile: 'Profile',
   PersonalInformation: 'PersonalInformation',
+  PersonalInfoDetails: 'PersonalInfoDetails',
+  PersonalInfoEmail: 'PersonalInfoEmail',
+  PersonalInfoPhone: 'PersonalInfoPhone',
+  PersonalInfoAddress: 'PersonalInfoAddress',
   PaymentMethods: 'PaymentMethods',
   DataPrivacy: 'DataPrivacy',
   About: 'About',
@@ -73,6 +77,10 @@ export type RootStackParamList = {
   ViewMessage: { message: SerializedMessages };
   Profile: undefined;
   PersonalInformation: undefined;
+  PersonalInfoDetails: undefined;
+  PersonalInfoEmail: undefined;
+  PersonalInfoPhone: undefined;
+  PersonalInfoAddress: undefined;
   PaymentMethods: undefined;
   DataPrivacy: undefined;
   About: undefined;

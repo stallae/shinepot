@@ -1,14 +1,14 @@
 import React from 'react';
-import { View, Text, SafeAreaView, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, Image } from 'react-native';
 import useColors from '../../hooks/useColors';
 import { X } from 'phosphor-react-native';
 import { PROFILE_DATA } from '../../_mock/profile';
 import { useNavigation } from '@react-navigation/native';
 import BackButton from '../../components/global/buttons/backButton';
-import { RootStackParamList, ROUTES } from '../../navigation/roots';
+import { RootStackParamList } from '../../navigation/roots';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { stats, menuItems } from '../../constants/profile';
-import ProfileMenuButton from '../../components/profile/ProfileMenuButton';
+import ProfileMenuButton from '../../components/profile/profileMenuButton';
 
 
 const Profile = () => {
@@ -27,7 +27,7 @@ const Profile = () => {
                     <View className="rounded-full overflow-hidden">
                         <Image source={{ uri: PROFILE_DATA.avatarUrl }} style={{ width: 100, height: 100 }} resizeMode="cover" />
                     </View>
-                    <Text className="text-2xl font-bold mt-4" style={{ color: colors.textPrimary }}>{PROFILE_DATA.name}</Text>
+                    <Text className="text-2xl font-bold mt-4" style={{ color: colors.textPrimary }}>{PROFILE_DATA.firstName} {PROFILE_DATA.lastName}</Text>
                 </View>
 
                 <Text className="text-base font-medium mb-4" style={{ color: colors.textPrimary, opacity: 0.5 }}>Account Stats</Text>
@@ -46,7 +46,13 @@ const Profile = () => {
                 <Text className="text-base font-medium mb-4" style={{ color: colors.textPrimary, opacity: 0.5 }}>Profile</Text>
                 <View className="gap-6 mb-10">
                     {menuItems.map((item, index) => (
-                        <ProfileMenuButton key={index} item={item} highlight={item.highlight} />
+                        <ProfileMenuButton
+                          key={index}
+                          title={item.title}
+                          icon={item.icon}
+                          route={item.route}
+                          highlight={item.highlight}
+                        />
                     ))}
                 </View>
 
