@@ -22,7 +22,7 @@ const Profile = () => {
                 <BackButton icon={<X />} onPress={navigation.goBack} />
             </View>
 
-            <ScrollView className="flex-1 px-6 mt-20">
+            <ScrollView className="flex-1 px-6 pt-20">
                 <View className="items-center mb-8">
                     <View className="rounded-full overflow-hidden">
                         <Image source={{ uri: PROFILE_DATA.avatarUrl }} style={{ width: 100, height: 100 }} resizeMode="cover" />

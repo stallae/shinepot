@@ -16,7 +16,7 @@ const About = () => {
             <View className="absolute top-20 left-2 z-10">
                 <BackButton icon={<ArrowLeft/>} onPress={navigation.goBack} />
             </View>
-            <ScrollView className="flex-1 mt-28 px-6" showsVerticalScrollIndicator={false}>
+            <ScrollView className="flex-1 pt-28 px-6" showsVerticalScrollIndicator={false}>
                 <Text className="text-3xl font-bold mb-8" style={{ color: colors.textPrimary }}>{APP_CONTENT.about.title}</Text>
 
                 <View className="mb-8">
