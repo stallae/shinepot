@@ -1,26 +1,28 @@
 import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
-import { ProfileMenuItem } from '../../interfaces/profile';
+import { ProfileMenuButtonProps } from './interfaces/profileMenuButtonInterface';
 import useColors from '../../hooks/useColors';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/roots';
 
-interface Props {
-    item: ProfileMenuItem;
-    highlight?: boolean;
-    onPress?: () => void;
-}
 
-const ProfileMenuButton: React.FC<Props> = ({ item, highlight = false, onPress }) => {
+const ProfileMenuButton: React.FC<ProfileMenuButtonProps> = ({
+  title,
+  icon: IconComponent,
+  route,
+  highlight = false,
+  description,
+  onPress,
+}) => {
     const { colors } = useColors();
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
     const handlePress = () => {
         if (onPress) {
             onPress();
-        } else if (item.route) {
-            navigation.navigate(item.route as any);
+        } else if (route) {
+            navigation.navigate(route as any);
         }
     };
 
@@ -30,8 +32,8 @@ const ProfileMenuButton: React.FC<Props> = ({ item, highlight = false, onPress }
                 className="flex-row items-center p-4 rounded-xl bg-[#FF9E37]"
                 onPress={handlePress}
             >
-                <item.icon size={24} color="black" weight="fill" />
-                <Text className="text-black font-bold text-lg ml-3">{item.title}</Text>
+                <IconComponent size={24} color="black" weight="fill" />
+                <Text className="text-black font-bold text-lg ml-3">{title}</Text>
             </TouchableOpacity>
         );
     }
@@ -45,14 +47,25 @@ const ProfileMenuButton: React.FC<Props> = ({ item, highlight = false, onPress }
                 className="w-10 h-10 rounded-full justify-center items-center"
                 style={{ backgroundColor: colors.secondary }}
             >
-                <item.icon size={20} color={colors.textPrimary} />
+                <IconComponent size={20} color={colors.textPrimary} />
             </View>
-            <Text
-                className="text-lg ml-4 font-medium"
-                style={{ color: colors.textPrimary }}
-            >
-                {item.title}
-            </Text>
+            <View className="ml-4 flex-1">
+                <Text
+                    className="text-lg font-medium"
+                    style={{ color: colors.textPrimary }}
+                >
+                    {title}
+                </Text>
+                {description ? (
+                    <Text
+                        className="text-sm font-medium"
+                        style={{ color: colors.textPrimary, opacity: 0.55 }}
+                        numberOfLines={1}
+                    >
+                        {description}
+                    </Text>
+                ) : null}
+            </View>
         </TouchableOpacity>
     );
 };
