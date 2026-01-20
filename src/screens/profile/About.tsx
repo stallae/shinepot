@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, Text, SafeAreaView } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView } from 'react-native';
+import { APP_VERSION } from '../../_mock/appInfo';
+import { APP_CONTENT, CONTACT_INFO } from '../../constants/aboutContent';
 import useColors from '../../hooks/useColors';
 import BackButton from '../../components/global/buttons/backButton';
-import { X } from 'phosphor-react-native';
+import { ArrowLeft } from 'phosphor-react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const About = () => {
@@ -12,11 +14,43 @@ const About = () => {
     return (
         <SafeAreaView className="flex-1" style={{ backgroundColor: colors.primary }}>
             <View className="absolute top-20 left-2 z-10">
-                <BackButton icon={<X />} onPress={navigation.goBack} />
+                <BackButton icon={<ArrowLeft/>} onPress={navigation.goBack} />
             </View>
-            <View className="flex-1 justify-center items-center">
-                <Text style={{ color: colors.textPrimary }}>About</Text>
-            </View>
+            <ScrollView className="flex-1 mt-28 px-6" showsVerticalScrollIndicator={false}>
+                <Text className="text-3xl font-bold mb-8" style={{ color: colors.textPrimary }}>{APP_CONTENT.about.title}</Text>
+
+                <View className="mb-8">
+                    <Text className="text-lg font-bold mb-2" style={{ color: colors.textPrimary }}>{APP_CONTENT.about.subtitle}</Text>
+                    <Text className="text-base font-bold mb-2" style={{ color: colors.textPrimary }}>{APP_CONTENT.about.sectionTitle}</Text>
+                    <Text className="text-base leading-6" style={{ color: colors.textPrimary, opacity: 0.7 }}>{APP_CONTENT.about.description}</Text>
+                </View>
+
+                <View className="mb-8">
+                    <Text className="text-lg font-bold mb-4" style={{ color: colors.textPrimary }}>{APP_CONTENT.howItWorks.title}</Text>
+                    <View className="gap-2">
+                        {APP_CONTENT.howItWorks.steps.map((step) => (
+                            <Text key={step.id} className="text-base leading-6" style={{ color: colors.textPrimary, opacity: 0.8 }}>
+                                <Text className="font-bold">{step.id}. {step.boldText} </Text>
+                                {step.text}
+                            </Text>
+                        ))}
+                    </View>
+                </View>
+
+                <View className="mb-8">
+                    <Text className="text-lg font-bold mb-2" style={{ color: colors.textPrimary }}>{CONTACT_INFO.title}</Text>
+                    <View className="flex-row items-center">
+                        <Text className="text-base" style={{ color: colors.textPrimary }}>📥 Support Email: </Text>
+                        <Text className="text-base underline text-blue-400">{CONTACT_INFO.email}</Text>
+                    </View>
+                </View>
+
+                <View className="mb-10">
+                    <Text className="text-lg font-bold mb-2" style={{ color: colors.textPrimary }}>{APP_VERSION.title}</Text>
+                    <Text className="text-base" style={{ color: colors.textPrimary, opacity: 0.7 }}>Version: {APP_VERSION.number}</Text>
+                    <Text className="text-base" style={{ color: colors.textPrimary, opacity: 0.7 }}>Last Update: {APP_VERSION.lastUpdate}</Text>
+                </View>
+            </ScrollView>
         </SafeAreaView>
     );
 };
