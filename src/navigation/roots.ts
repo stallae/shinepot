@@ -26,6 +26,9 @@ const ROOT = {
   DataPrivacy: 'DataPrivacy',
   About: 'About',
   BecomeMember: 'BecomeMember',
+  UpdateEmail: 'UpdateEmail',
+  UpdateEmailPassword: 'UpdateEmailPassword',
+  UpdateEmailConfirm: 'UpdateEmailConfirm',
 } as const;
 
 const AUTH = {
@@ -85,6 +88,9 @@ export type RootStackParamList = {
   DataPrivacy: undefined;
   About: undefined;
   BecomeMember: undefined;
+  UpdateEmail: undefined;
+  UpdateEmailPassword: { email: string };
+  UpdateEmailConfirm: { email: string };
 };
 
 export type AuthStackParamList = {

@@ -16,6 +16,9 @@ import PaymentMethods from '../screens/profile/PaymentMethods';
 import DataPrivacy from '../screens/profile/DataPrivacy';
 import About from '../screens/profile/About';
 import BecomeMember from '../screens/profile/BecomeMember';
+import UpdateEmail from '../screens/profile/update-email/UpdateEmail';
+import UpdateEmailPassword from '../screens/profile/update-email/UpdateEmailPassword';
+import UpdateEmailConfirm from '../screens/profile/update-email/UpdateEmailConfirm';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -39,6 +42,9 @@ const RootNavigation = () => {
       <Stack.Screen name={ROUTES.DataPrivacy} component={DataPrivacy} />
       <Stack.Screen name={ROUTES.About} component={About} />
       <Stack.Screen name={ROUTES.BecomeMember} component={BecomeMember} />
+      <Stack.Screen name={ROUTES.UpdateEmail} component={UpdateEmail} />
+      <Stack.Screen name={ROUTES.UpdateEmailPassword} component={UpdateEmailPassword} />
+      <Stack.Screen name={ROUTES.UpdateEmailConfirm} component={UpdateEmailConfirm} />
     </Stack.Navigator>
   );
 };

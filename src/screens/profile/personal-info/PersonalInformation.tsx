@@ -35,9 +35,9 @@ const PersonalInformation = () => {
           <ProfileMenuButton
             title="Email"
             icon={EnvelopeSimple}
-            route={ROUTES.PersonalInfoEmail}
+            route={ROUTES.UpdateEmail}
             description={PROFILE_DATA.email}
-            onPress={() => navigation.navigate(ROUTES.PersonalInfoEmail)}
+            onPress={() => navigation.navigate(ROUTES.UpdateEmail)}
           />
           <ProfileMenuButton
             title="Phone number"
