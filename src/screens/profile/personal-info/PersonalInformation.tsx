@@ -42,9 +42,9 @@ const PersonalInformation = () => {
           <ProfileMenuButton
             title="Phone number"
             icon={DeviceMobileCamera}
-            route={ROUTES.PersonalInfoPhone}
+            route={ROUTES.UpdatePhone}
             description={PROFILE_DATA.phone}
-            onPress={() => navigation.navigate(ROUTES.PersonalInfoPhone)}
+            onPress={() => navigation.navigate(ROUTES.UpdatePhone)}
           />
           <ProfileMenuButton
             title="Address details"

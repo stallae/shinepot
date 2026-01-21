@@ -32,6 +32,9 @@ const GeneralInput: React.FC<GeneralInputProps> = ({
 }) => {
   const { colors } = useColors();
   const handleChange = (text: string) => {
+    if (onChange) {
+      onChange(text);
+    }
     if (isOtp && text.length === 1 && index < inputRefs.length - 1) {
       inputRefs[index + 1]?.current?.focus();
     }
@@ -63,7 +66,7 @@ const GeneralInput: React.FC<GeneralInputProps> = ({
           placeholder={placeholder}
           secureTextEntry={secureText}
           maxLength={isOtp ? 1 : undefined}
-          onChangeText={onChange || handleChange}
+          onChangeText={handleChange}
           onKeyPress={handleKeyPress}
           className="flex-1 font-bold font-inter text-lg pb-1 h-14 px-3 justify-center"
           style={{

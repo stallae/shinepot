@@ -19,6 +19,9 @@ import BecomeMember from '../screens/profile/BecomeMember';
 import UpdateEmail from '../screens/profile/update-email/UpdateEmail';
 import UpdateEmailPassword from '../screens/profile/update-email/UpdateEmailPassword';
 import UpdateEmailConfirm from '../screens/profile/update-email/UpdateEmailConfirm';
+import UpdatePhone from '../screens/profile/update-phone/UpdatePhone';
+import UpdatePhoneOtp from '../screens/profile/update-phone/UpdatePhoneOtp';
+import UpdatePhoneConfirm from '../screens/profile/update-phone/UpdatePhoneConfirm';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -45,6 +48,9 @@ const RootNavigation = () => {
       <Stack.Screen name={ROUTES.UpdateEmail} component={UpdateEmail} />
       <Stack.Screen name={ROUTES.UpdateEmailPassword} component={UpdateEmailPassword} />
       <Stack.Screen name={ROUTES.UpdateEmailConfirm} component={UpdateEmailConfirm} />
+      <Stack.Screen name={ROUTES.UpdatePhone} component={UpdatePhone} />
+      <Stack.Screen name={ROUTES.UpdatePhoneOtp} component={UpdatePhoneOtp} />
+      <Stack.Screen name={ROUTES.UpdatePhoneConfirm} component={UpdatePhoneConfirm} />
     </Stack.Navigator>
   );
 };

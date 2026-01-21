@@ -29,6 +29,9 @@ const ROOT = {
   UpdateEmail: 'UpdateEmail',
   UpdateEmailPassword: 'UpdateEmailPassword',
   UpdateEmailConfirm: 'UpdateEmailConfirm',
+  UpdatePhone: 'UpdatePhone',
+  UpdatePhoneOtp: 'UpdatePhoneOtp',
+  UpdatePhoneConfirm: 'UpdatePhoneConfirm',
 } as const;
 
 const AUTH = {
@@ -91,6 +94,9 @@ export type RootStackParamList = {
   UpdateEmail: undefined;
   UpdateEmailPassword: { email: string };
   UpdateEmailConfirm: { email: string };
+  UpdatePhone: undefined;
+  UpdatePhoneOtp: { phone: string; countryCode: string };
+  UpdatePhoneConfirm: { phone: string };
 };
 
 export type AuthStackParamList = {
