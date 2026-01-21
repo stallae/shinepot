@@ -20,25 +20,32 @@ const ROOT = {
 
 const PROFILE = {
   Profile: 'Profile',
+  PaymentMethods: 'PaymentMethods',
+  About: 'About',
+  BecomeMember: 'BecomeMember',
+
   PersonalInformation: 'PersonalInformation',
   PersonalInfoDetails: 'PersonalInfoDetails',
   PersonalInfoEmail: 'PersonalInfoEmail',
   PersonalInfoPhone: 'PersonalInfoPhone',
   PersonalInfoAddress: 'PersonalInfoAddress',
-  PaymentMethods: 'PaymentMethods',
+
   DataPrivacy: 'DataPrivacy',
   PrivacyDetail: 'PrivacyDetail',
-  About: 'About',
-  BecomeMember: 'BecomeMember',
-} as const;
 
-const UPDATE_INFO = {
+  DataCollection: 'DataCollection',
+  DataUsage: 'DataUsage',
+  DataSharing: 'DataSharing',
+  UserRights: 'UserRights',
+  SecurityMeasures: 'SecurityMeasures',
+
   UpdateEmail: 'UpdateEmail',
   UpdateEmailPassword: 'UpdateEmailPassword',
   UpdateEmailConfirm: 'UpdateEmailConfirm',
   UpdatePhone: 'UpdatePhone',
   UpdatePhoneOtp: 'UpdatePhoneOtp',
   UpdatePhoneConfirm: 'UpdatePhoneConfirm',
+
 } as const;
 
 const AUTH = {
@@ -74,7 +81,6 @@ const NEW_MESSAGE = {
 export const ROUTES = {
   ...ROOT,
   ...PROFILE,
-  ...UPDATE_INFO,
   ...AUTH,
   ...NEW_MESSAGE,
 } as const;
@@ -91,16 +97,24 @@ export type RootStackParamList = {
   };
   ViewMessage: { message: SerializedMessages };
   Profile: undefined;
+  PaymentMethods: undefined;
+  About: undefined;
+  BecomeMember: undefined;
+
   PersonalInformation: undefined;
   PersonalInfoDetails: undefined;
   PersonalInfoEmail: undefined;
   PersonalInfoPhone: undefined;
   PersonalInfoAddress: undefined;
-  PaymentMethods: undefined;
+
   DataPrivacy: undefined;
   PrivacyDetail: { type: 'dataCollection' | 'dataUsage' | 'dataSharing' | 'userRights' | 'securityMeasures' };
-  About: undefined;
-  BecomeMember: undefined;
+  DataCollection: { type: 'dataCollection' };
+  DataUsage: { type: 'dataUsage' };
+  DataSharing: { type: 'dataSharing' };
+  UserRights: { type: 'userRights' };
+  SecurityMeasures: { type: 'securityMeasures' };
+
   UpdateEmail: undefined;
   UpdateEmailPassword: { email: string };
   UpdateEmailConfirm: { email: string };

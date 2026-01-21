@@ -45,6 +45,11 @@ const RootNavigation = () => {
       <Stack.Screen name={ROUTES.PaymentMethods} component={PaymentMethods} />
       <Stack.Screen name={ROUTES.DataPrivacy} component={DataPrivacy} />
       <Stack.Screen name={ROUTES.PrivacyDetail} component={PrivacyDetail} />
+      <Stack.Screen name={ROUTES.DataCollection} component={PrivacyDetail} initialParams={{ type: 'dataCollection' }} />
+      <Stack.Screen name={ROUTES.DataUsage} component={PrivacyDetail} initialParams={{ type: 'dataUsage' }} />
+      <Stack.Screen name={ROUTES.DataSharing} component={PrivacyDetail} initialParams={{ type: 'dataSharing' }} />
+      <Stack.Screen name={ROUTES.UserRights} component={PrivacyDetail} initialParams={{ type: 'userRights' }} />
+      <Stack.Screen name={ROUTES.SecurityMeasures} component={PrivacyDetail} initialParams={{ type: 'securityMeasures' }} />
       <Stack.Screen name={ROUTES.About} component={About} />
       <Stack.Screen name={ROUTES.BecomeMember} component={BecomeMember} />
       <Stack.Screen name={ROUTES.UpdateEmail} component={UpdateEmail} />

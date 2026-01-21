@@ -16,27 +16,27 @@ const DataPrivacy = () => {
         {
             title: "Data Collection",
             icon: IdentificationCard,
-            type: 'dataCollection' as const,
+            routeName: 'DataCollection' as keyof RootStackParamList,
         },
         {
             title: "Data Usage",
             icon: Database,
-            type: 'dataUsage' as const,
+            routeName: 'DataUsage' as keyof RootStackParamList,
         },
         {
             title: "Data Sharing",
             icon: ShareNetwork,
-            type: 'dataSharing' as const,
+            routeName: 'DataSharing' as keyof RootStackParamList,
         },
         {
             title: "User Rights",
             icon: BookOpen,
-            type: 'userRights' as const,
+            routeName: 'UserRights' as keyof RootStackParamList,
         },
         {
             title: "Security Measures",
             icon: ShieldCheck,
-            type: 'securityMeasures' as const,
+            routeName: 'SecurityMeasures' as keyof RootStackParamList,
         },
     ];
 
@@ -64,7 +64,7 @@ const DataPrivacy = () => {
                                 key={index}
                                 title={item.title}
                                 icon={item.icon}
-                                onPress={() => navigation.navigate('PrivacyDetail', { type: item.type })}
+                                onPress={() => navigation.navigate(item.routeName as any)}
                             />
                         ))}
                     </View>
