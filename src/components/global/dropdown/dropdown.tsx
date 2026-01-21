@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {View, Text, Pressable, ScrollView} from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Pressable, ScrollView } from 'react-native';
 import useColors from '../../../hooks/useColors';
-import {DropdownProps} from './interfaces/dropdownInterface.tsx';
-import {CaretDown} from 'phosphor-react-native';
+import { DropdownProps } from './interfaces/dropdownInterface.tsx';
+import { CaretDown } from 'phosphor-react-native';
 
 const Dropdown: React.FC<DropdownProps> = ({
   options,
@@ -10,14 +10,22 @@ const Dropdown: React.FC<DropdownProps> = ({
   onChange,
   placeholder = 'Select an option',
   maxHeight = 200,
+  label,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const {colors} = useColors();
+  const { colors } = useColors();
 
   const selectedOption = options.find(option => option.value === value);
 
   return (
     <View className="w-full">
+      {label && (
+        <Text
+          className="font-inter font-medium mb-2"
+          style={{ color: colors.textPrimary }}>
+          {label}
+        </Text>
+      )}
       <Pressable
         onPress={() => setIsOpen(!isOpen)}
         className="flex-row items-center rounded-lg"
