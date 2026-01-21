@@ -17,7 +17,7 @@ export const PROFILE_DATA: ProfileData = {
     addressDetails: {
         country: 'BR',
         state: 'MG',
-        city: 'pouso-alegre',
+        city: 'Pouso Alegre',
         street: 'Rua Heitor Carline',
         number: '24',
         complement: '',
