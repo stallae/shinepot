@@ -27,6 +27,7 @@ const PROFILE = {
   PersonalInfoAddress: 'PersonalInfoAddress',
   PaymentMethods: 'PaymentMethods',
   DataPrivacy: 'DataPrivacy',
+  PrivacyDetail: 'PrivacyDetail',
   About: 'About',
   BecomeMember: 'BecomeMember',
 } as const;
@@ -97,6 +98,7 @@ export type RootStackParamList = {
   PersonalInfoAddress: undefined;
   PaymentMethods: undefined;
   DataPrivacy: undefined;
+  PrivacyDetail: { type: 'dataCollection' | 'dataUsage' | 'dataSharing' | 'userRights' | 'securityMeasures' };
   About: undefined;
   BecomeMember: undefined;
   UpdateEmail: undefined;

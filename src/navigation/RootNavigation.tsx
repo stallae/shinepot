@@ -15,6 +15,7 @@ import PersonalInfoAddress from '../screens/profile/personal-info/PersonalInfoAd
 import PaymentMethods from '../screens/profile/PaymentMethods';
 import DataPrivacy from '../screens/profile/DataPrivacy';
 import About from '../screens/profile/About';
+import PrivacyDetail from '../screens/profile/PrivacyDetail';
 import BecomeMember from '../screens/profile/BecomeMember';
 import UpdateEmail from '../screens/profile/update-email/UpdateEmail';
 import UpdateEmailPassword from '../screens/profile/update-email/UpdateEmailPassword';
@@ -43,6 +44,7 @@ const RootNavigation = () => {
       <Stack.Screen name={ROUTES.PersonalInfoAddress} component={PersonalInfoAddress} />
       <Stack.Screen name={ROUTES.PaymentMethods} component={PaymentMethods} />
       <Stack.Screen name={ROUTES.DataPrivacy} component={DataPrivacy} />
+      <Stack.Screen name={ROUTES.PrivacyDetail} component={PrivacyDetail} />
       <Stack.Screen name={ROUTES.About} component={About} />
       <Stack.Screen name={ROUTES.BecomeMember} component={BecomeMember} />
       <Stack.Screen name={ROUTES.UpdateEmail} component={UpdateEmail} />
