@@ -16,6 +16,9 @@ const ROOT = {
   Blog: 'Blog',
   NewMessageFlow: 'NewMessageFlow',
   ViewMessage: 'ViewMessage',
+} as const;
+
+const PROFILE = {
   Profile: 'Profile',
   PersonalInformation: 'PersonalInformation',
   PersonalInfoDetails: 'PersonalInfoDetails',
@@ -26,6 +29,9 @@ const ROOT = {
   DataPrivacy: 'DataPrivacy',
   About: 'About',
   BecomeMember: 'BecomeMember',
+} as const;
+
+const UPDATE_INFO = {
   UpdateEmail: 'UpdateEmail',
   UpdateEmailPassword: 'UpdateEmailPassword',
   UpdateEmailConfirm: 'UpdateEmailConfirm',
@@ -66,6 +72,8 @@ const NEW_MESSAGE = {
 
 export const ROUTES = {
   ...ROOT,
+  ...PROFILE,
+  ...UPDATE_INFO,
   ...AUTH,
   ...NEW_MESSAGE,
 } as const;
