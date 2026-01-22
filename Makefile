@@ -7,6 +7,7 @@
 help:
 	@echo "Available commands:"
 	@echo "  make install     - Install dependencies (yarn + pods)"
+	@echo "  make setup       - Validate environment only"
 	@echo "  make update      - Quick update (yarn + pods)"
 	@echo "  make reset       - Full reset (clean everything + reinstall)"
 	@echo "  make clean       - Clean build caches"
@@ -17,12 +18,23 @@ help:
 	@echo "  make start       - Start Metro bundler"
 	@echo "  make start-clean - Start Metro with cache reset"
 
-# Install dependencies
-install:
+# Validation only (no installation)
+setup:
+	@echo "🔍 Validating environment..."
+	@node -e 'if(parseInt(process.versions.node.split(".")[0]) < 20) { console.error("❌ Node 20+ required. Current: " + process.version); process.exit(1); }'
+	@ruby -e 'v = RUBY_VERSION.split(".").map(&:to_i); if v[0] < 4; puts "❌ Ruby 4.0+ required. Current: #{RUBY_VERSION}"; exit 1; end'
+	@which yarn > /dev/null || (echo "❌ yarn not found" && exit 1)
+	@which bundle > /dev/null || (echo "❌ bundler not found" && exit 1)
+	@echo "✅ Environment valid!"
+
+# Install dependencies  
+install: setup
 	@echo "📦 Installing node modules..."
 	yarn install
-	@echo "🍎 Installing iOS pods..."
-	cd ios && pod install
+	@echo "💎 Installing Ruby gems..."
+	bundle install
+	@echo "🍎 Installing iOS pods (New Architecture Enabled)..."
+	cd ios && RCT_NEW_ARCH_ENABLED=1 bundle exec pod install
 	cd .. 
 	@echo "✅ Done!"
 
@@ -67,8 +79,8 @@ reset: clean-all install
 
 # Install iOS pods only
 pods:
-	@echo "🍎 Installing iOS pods..."
-	cd ios && pod install
+	@echo "🍎 Installing iOS pods (New Architecture)..."
+	cd ios && RCT_NEW_ARCH_ENABLED=1 bundle exec pod install
 	@echo "✅ Pods installed!"
 
 # Start Metro bundler

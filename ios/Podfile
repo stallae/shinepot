@@ -9,7 +9,7 @@ platform :ios, min_ios_version_supported
 prepare_react_native_project!
 
 use_frameworks! :linkage => :static
-use_modular_headers!
+# use_modular_headers!
 
 
 
@@ -29,6 +29,42 @@ target 'Shinepot' do
   )
 
   post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        # 1. Allow non-modular headers (Crucial for RN/Firebase)
+        config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+        
+        # 2. Disable warning for quoted includes in framework headers
+        config.build_settings['CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER'] = 'NO'
+        
+        # 3. Disable global "Treat Warnings as Errors"
+        config.build_settings['GCC_TREAT_WARNINGS_AS_ERRORS'] = 'NO'
+        
+        # 4. Aggressively strip -Werror from CFLAGS and add -Wno-error overrides
+        cflags = config.build_settings['WARNING_CFLAGS'] || '$(inherited)'
+        
+        # Normalize to array for manipulation
+        cflags = cflags.split(' ') if cflags.is_a?(String)
+        
+        # Remove ALL -Werror flags (including specific categories like -Werror=return-type)
+        cflags.reject! { |f| f.start_with?('-Werror') }
+        
+        # Demote all remaining warnings to just warnings
+        cflags << '-Wno-error'
+        
+        # Add specific suppression for common offender warnings in RN 0.83+
+        cflags << '-Wno-error=non-modular-include-in-framework-module'
+        cflags << '-Wno-error=quoted-include-in-framework-header'
+        cflags << '-Wno-error=return-type'
+        cflags << '-Wno-error=deprecated-objc-isa-usage'
+        cflags << '-Wno-error=objc-root-class'
+        cflags << '-Wno-documentation'
+        cflags << '-Wno-strict-prototypes'
+        
+        config.build_settings['WARNING_CFLAGS'] = cflags.join(' ')
+      end
+    end
+
     # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
     react_native_post_install(
       installer,

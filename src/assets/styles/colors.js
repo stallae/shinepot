@@ -1,0 +1,31 @@
+// Cores para uso no Tailwind (CommonJS)
+// Para uso em componentes React, use colors.tsx
+
+const colors = {
+  blue: {
+    500: '#0183FD',
+    900: '#004688',
+  },
+  green: {
+    300: '#7CFF90',
+  },
+  red: {
+    300: '#FF7C7C',
+  },
+  yellow: {
+    300: '#FDF558',
+  },
+  gray: {
+    100: '#FFFFFF',
+    150: '#FAFAFA',
+    200: '#F2F2F2',
+    250: '#BABABA',
+    300: '#6B6A6A',
+    350: '#444444',
+    400: '#282828',
+    450: '#262626',
+    500: '#1D1D1D',
+  },
+};
+
+module.exports = colors;
