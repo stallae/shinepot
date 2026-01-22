@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "611205230918",
+    "project_id": "shine-pot",
+    "storage_bucket": "shine-pot.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611205230918:android:f130bc7012d3cd150bb547",
+        "android_client_info": {
+          "package_name": "com.shinepot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611205230918-qab5st61rci2p906aokgflfn6s1j7ulg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzQNE5S4sRcRWHDRJFgdwSQROFdlIzpAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611205230918-qab5st61rci2p906aokgflfn6s1j7ulg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "611205230918-kf9eapkogl3d8do53mgkc1mibhbh5pno.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.Shinepot"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

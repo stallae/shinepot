@@ -1,17 +1,29 @@
-import {SafeAreaView, Text, View} from 'react-native';
+import { SafeAreaView, Text, View } from 'react-native';
 import React from 'react';
-import {Logo, WideButton, BackButton} from '../../../../components';
+import { Logo, WideButton, BackButton } from '../../../../components';
 import useColors from '../../../../hooks/useColors.tsx';
-import {DeviceMobile, AppleLogo, GoogleLogo, ArrowLeft} from 'phosphor-react-native';
-import {ROUTES, ScreenProps} from '../../../../navigation/types';
+import { DeviceMobile, AppleLogo, GoogleLogo, ArrowLeft } from 'phosphor-react-native';
+import { ROUTES, ScreenProps } from '../../../../navigation/types';
 
+import { signInWithGoogle } from '../../../../services/authService';
 
-const LoginThirdParty: React.FC<ScreenProps> = ({navigation}) => {
-  const {colors} = useColors();
-  return (
+const LoginThirdParty: React.FC<ScreenProps> = ({ navigation }) => {
+  const { colors } = useColors();
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const userCredential = await signInWithGoogle();
+      console.log('User signed in:', userCredential.user);
+      navigation.navigate(ROUTES.Blog); 
+    } catch (error) {
+      console.error('Google Sign-In Error:', error);
+    }
+  };
+
+  return ( 
     <SafeAreaView
       className="flex-1 items-center"
-      style={{backgroundColor: colors.primary}}>
+      style={{ backgroundColor: colors.primary }}>
       <View className="absolute top-20 left-2">
         <BackButton icon={<ArrowLeft />} onPress={navigation.goBack} />
       </View>
@@ -19,13 +31,13 @@ const LoginThirdParty: React.FC<ScreenProps> = ({navigation}) => {
         <Logo />
         <Text
           className="font-inter text-3xl font-bold text-center"
-          style={{color: colors.textPrimary}}>
+          style={{ color: colors.textPrimary }}>
           {'Get ready, the future is\nwaiting for you'}
         </Text>
 
         <View className="justify-between h-36 w-11/12 mx-auto">
           <WideButton
-            icon={<AppleLogo  weight="fill"/>}
+            icon={<AppleLogo weight="fill" />}
             text={'Sign in with Apple'}
             outlined={true}
           />
@@ -33,6 +45,7 @@ const LoginThirdParty: React.FC<ScreenProps> = ({navigation}) => {
             icon={<GoogleLogo />}
             text={'Sign in with Google'}
             outlined={true}
+            onPress={handleGoogleSignIn}
           />
         </View>
         <Text className="font-inter font-bold text-center text-gray-350 mb-4  ">
