@@ -3,7 +3,7 @@ import { SafeAreaView, View, Text } from 'react-native';
 import { X, EnvelopeSimple, DeviceMobileCamera, House, User } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
 import BackButton from '../../../components/global/buttons/backButton';
-import ProfileMenuButton from '../../../components/profile/profileMenuButton';
+import ProfileMenuButton from '../../../components/profile/ProfileMenuButton';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList, ROUTES } from '../../../navigation/roots';

@@ -12,7 +12,6 @@
 		04D432C74D9B42E8A8448A2F /* Roboto_Condensed-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8E7AEAF62142EB90381136 /* Roboto_Condensed-ThinItalic.ttf */; };
 		06C718B8804847A1A8D4BCAA /* Inter_28pt-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2A3D2BAF634A81A7310838 /* Inter_28pt-Medium.ttf */; };
 		0AC68E1A0DDF4DC689EFD547 /* Inter_24pt-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FDF7C3D332434F5AB1A652C9 /* Inter_24pt-SemiBoldItalic.ttf */; };
-		0C80B921A6F3F58F76C31292 /* libPods-Shinepot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-Shinepot.a */; };
 		0D9FAAE93F6743B589F8D8CB /* Inter_28pt-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF921EC71C524F9EB8806312 /* Inter_28pt-BoldItalic.ttf */; };
 		0DBBD27151964BAB82CC0DB4 /* Inter_18pt-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAA24B51129E4C2DB98617FE /* Inter_18pt-SemiBoldItalic.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -80,6 +79,7 @@
 		93D89D1166B04842AD93ADE0 /* Inter_18pt-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B175565189643F38BFE7489 /* Inter_18pt-ExtraLightItalic.ttf */; };
 		A0DA7F8EE0E7415486ECA9BE /* Roboto-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABE3383CD44C4DB88597FB24 /* Roboto-ExtraBold.ttf */; };
 		A210AE1BA45C46C29400358B /* Roboto-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E848CB17DC4E4902AD7C1A6F /* Roboto-ExtraLight.ttf */; };
+		A4999C98F8D275919DB2936A /* libPods-Shinepot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63520990C82097FB7AD97940 /* libPods-Shinepot.a */; };
 		A75AB8DA40E84FFAB0DAB2AB /* Roboto_Condensed-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7405779CF4B348F4961ABBDB /* Roboto_Condensed-Medium.ttf */; };
 		A7FA8C8A859B4DB8988E1532 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17D01CF174D0428E84D430A6 /* Roboto-Thin.ttf */; };
 		AA4241245DED4ACB8C7CF509 /* Inter_18pt-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFE8C9EA812046908A1448BD /* Inter_18pt-ExtraBold.ttf */; };
@@ -160,7 +160,6 @@
 		394785ED9F184A3485861E2A /* Roboto-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-ExtraBoldItalic.ttf"; path = "../src/assets/fonts/Roboto/Roboto-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		3A1144587A2A44A8917E7992 /* Roboto_Condensed-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto_Condensed-Black.ttf"; path = "../src/assets/fonts/Roboto/Roboto_Condensed-Black.ttf"; sourceTree = "<group>"; };
 		3B1270A017884A0F92588FF8 /* Roboto_Condensed-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto_Condensed-Regular.ttf"; path = "../src/assets/fonts/Roboto/Roboto_Condensed-Regular.ttf"; sourceTree = "<group>"; };
-		3B4392A12AC88292D35C810B /* Pods-Shinepot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shinepot.debug.xcconfig"; path = "Target Support Files/Pods-Shinepot/Pods-Shinepot.debug.xcconfig"; sourceTree = "<group>"; };
 		3CD2F42AF4674DE993924B22 /* Inter_24pt-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-MediumItalic.ttf"; path = "../src/assets/fonts/inter/Inter_24pt-MediumItalic.ttf"; sourceTree = "<group>"; };
 		40FBB607E4B146A18678639D /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../src/assets/fonts/Roboto/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		4323665CB8914986BCEA6E0A /* Roboto_Condensed-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto_Condensed-Bold.ttf"; path = "../src/assets/fonts/Roboto/Roboto_Condensed-Bold.ttf"; sourceTree = "<group>"; };
@@ -175,10 +174,9 @@
 		533582594B494A33BEAD44F8 /* Inter_28pt-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-SemiBold.ttf"; path = "../src/assets/fonts/inter/Inter_28pt-SemiBold.ttf"; sourceTree = "<group>"; };
 		5411646F4A884D40AB5BBC17 /* Inter_28pt-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-LightItalic.ttf"; path = "../src/assets/fonts/inter/Inter_28pt-LightItalic.ttf"; sourceTree = "<group>"; };
 		546396D6AF014EEC921C91EA /* Roboto-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-SemiBoldItalic.ttf"; path = "../src/assets/fonts/Roboto/Roboto-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-Shinepot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shinepot.release.xcconfig"; path = "Target Support Files/Pods-Shinepot/Pods-Shinepot.release.xcconfig"; sourceTree = "<group>"; };
 		592794B3B42A409FA1CC555F /* Roboto_Condensed-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto_Condensed-ExtraBold.ttf"; path = "../src/assets/fonts/Roboto/Roboto_Condensed-ExtraBold.ttf"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-Shinepot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Shinepot.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB93EB4BCC9491BB4AA1BEA /* Inter_24pt-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-Italic.ttf"; path = "../src/assets/fonts/inter/Inter_24pt-Italic.ttf"; sourceTree = "<group>"; };
+		63520990C82097FB7AD97940 /* libPods-Shinepot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Shinepot.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		671013C09B6D458C80AAE097 /* Roboto_SemiCondensed-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto_SemiCondensed-ExtraLight.ttf"; path = "../src/assets/fonts/Roboto/Roboto_SemiCondensed-ExtraLight.ttf"; sourceTree = "<group>"; };
 		69A72AE9CEE944EBA9503111 /* Roboto_Condensed-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto_Condensed-LightItalic.ttf"; path = "../src/assets/fonts/Roboto/Roboto_Condensed-LightItalic.ttf"; sourceTree = "<group>"; };
 		6C1AF4819F7841A5A0B3AC0F /* Inter_18pt-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-Regular.ttf"; path = "../src/assets/fonts/inter/Inter_18pt-Regular.ttf"; sourceTree = "<group>"; };
@@ -237,7 +235,9 @@
 		F01B7165E3324A9B9D503A65 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Italic.ttf"; path = "../src/assets/fonts/Roboto/Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		F03F42C3A1914546A2FC3D10 /* Inter_28pt-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Regular.ttf"; path = "../src/assets/fonts/inter/Inter_28pt-Regular.ttf"; sourceTree = "<group>"; };
 		F136AFC283D243B3B316649F /* Roboto_Condensed-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto_Condensed-Italic.ttf"; path = "../src/assets/fonts/Roboto/Roboto_Condensed-Italic.ttf"; sourceTree = "<group>"; };
+		F484A7F5991FCEA180BCCF90 /* Pods-Shinepot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shinepot.release.xcconfig"; path = "Target Support Files/Pods-Shinepot/Pods-Shinepot.release.xcconfig"; sourceTree = "<group>"; };
 		FACF6525641B4596AC0CAD49 /* Inter_24pt-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-BlackItalic.ttf"; path = "../src/assets/fonts/inter/Inter_24pt-BlackItalic.ttf"; sourceTree = "<group>"; };
+		FC124746B9980C2D4CA744B4 /* Pods-Shinepot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shinepot.debug.xcconfig"; path = "Target Support Files/Pods-Shinepot/Pods-Shinepot.debug.xcconfig"; sourceTree = "<group>"; };
 		FC806860098044B3B7D37683 /* Inter_28pt-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Thin.ttf"; path = "../src/assets/fonts/inter/Inter_28pt-Thin.ttf"; sourceTree = "<group>"; };
 		FDF7C3D332434F5AB1A652C9 /* Inter_24pt-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-SemiBoldItalic.ttf"; path = "../src/assets/fonts/inter/Inter_24pt-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		FE0EA56B4E04423B91D1EE34 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../src/assets/fonts/Roboto/Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -248,7 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-Shinepot.a in Frameworks */,
+				A4999C98F8D275919DB2936A /* libPods-Shinepot.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-Shinepot.a */,
+				63520990C82097FB7AD97940 /* libPods-Shinepot.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -424,8 +424,8 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-Shinepot.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-Shinepot.release.xcconfig */,
+				FC124746B9980C2D4CA744B4 /* Pods-Shinepot.debug.xcconfig */,
+				F484A7F5991FCEA180BCCF90 /* Pods-Shinepot.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -437,13 +437,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Shinepot" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				F335B35A182F4076A77B257F /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				C9AA0511B3BE906D47C07205 /* [CP] Embed Pods Frameworks */,
+				6A68F7C6C2B085B79E999AD9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -623,7 +623,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+		6A68F7C6C2B085B79E999AD9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Shinepot/Pods-Shinepot-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Shinepot/Pods-Shinepot-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Shinepot/Pods-Shinepot-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9AA0511B3BE906D47C07205 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -631,20 +648,16 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Shinepot/Pods-Shinepot-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Shinepot/Pods-Shinepot-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Shinepot/Pods-Shinepot-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		F335B35A182F4076A77B257F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -666,27 +679,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Shinepot/Pods-Shinepot-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Shinepot/Pods-Shinepot-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Shinepot/Pods-Shinepot-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -703,7 +695,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-Shinepot.debug.xcconfig */;
+			baseConfigurationReference = FC124746B9980C2D4CA744B4 /* Pods-Shinepot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -732,7 +724,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-Shinepot.release.xcconfig */;
+			baseConfigurationReference = F484A7F5991FCEA180BCCF90 /* Pods-Shinepot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -826,7 +818,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -895,7 +890,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

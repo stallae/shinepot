@@ -8,7 +8,7 @@ import BackButton from '../../components/global/buttons/backButton';
 import { RootStackParamList } from '../../navigation/roots';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { stats, menuItems } from '../../constants/profile';
-import ProfileMenuButton from '../../components/profile/profileMenuButton';
+import ProfileMenuButton from '../../components/profile/ProfileMenuButton';
 
 
 const Profile = () => {

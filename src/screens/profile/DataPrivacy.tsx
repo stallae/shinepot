@@ -4,7 +4,7 @@ import useColors from '../../hooks/useColors';
 import BackButton from '../../components/global/buttons/backButton';
 import { CaretLeft, IdentificationCard, Database, ShareNetwork, BookOpen, ShieldCheck } from 'phosphor-react-native';
 import { useNavigation } from '@react-navigation/native';
-import ProfileMenuButton from '../../components/profile/profileMenuButton';
+import ProfileMenuButton from '../../components/profile/ProfileMenuButton';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/roots';
 
