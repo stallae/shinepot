@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import firebase from '@react-native-firebase/app';
 
 // Initialize Firebase manually to bypass native linking issues
@@ -33,9 +34,11 @@ createServer({
 const App = () => {
   return (
     <ThemeProvider>
-      <NavigationContainer>
-        <RootNavigation />
-      </NavigationContainer>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <RootNavigation />
+        </NavigationContainer>
+      </SafeAreaProvider>
     </ThemeProvider>
   );
 };
