@@ -5,10 +5,24 @@ import useColors from '../../../../hooks/useColors.tsx';
 import { DeviceMobile, AppleLogo, GoogleLogo, ArrowLeft } from 'phosphor-react-native';
 import { ROUTES, ScreenProps } from '../../../../navigation/types';
 
-import { signInWithGoogle } from '../../../../services/authService';
+import { signInWithGoogle, signInWithApple } from '../../../../services/authService';
 
 const LoginThirdParty: React.FC<ScreenProps> = ({ navigation }) => {
   const { colors } = useColors();
+
+
+  const handleAppleSignIn = async () => {
+    try {
+      const userCredential = await signInWithApple();
+      if (userCredential) {
+        console.log('User signed in with Apple:', userCredential.user);
+        navigation.navigate(ROUTES.Blog);
+      }
+    } catch (error) {
+      console.error('Apple Sign-In Error:', error);
+    }
+  };
+
 
   const handleGoogleSignIn = async () => {
     try {
@@ -39,6 +53,7 @@ const LoginThirdParty: React.FC<ScreenProps> = ({ navigation }) => {
           <WideButton
             icon={<AppleLogo weight="fill" />}
             text={'Sign in with Apple'}
+            onPress={handleAppleSignIn}
             outlined={true}
           />
           <WideButton
