@@ -1,35 +1,5 @@
-import firestore, { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
-
-export type MemoryType = 'video' | 'image' | 'text' | 'audio';
-export type MemoryStatus = 'locked' | 'released';
-export type MemoryVisibility = 'public' | 'private' | 'random' | 'invite';
-export type MemoryMood = 'happy' | 'sad' | 'love' | 'nostalgic';
-
-export interface Memory {
-    id?: string;
-    ownerId: string;
-    ownerEmail: string;
-    mood: MemoryMood;
-    type: MemoryType;
-    status: MemoryStatus;
-    visibility: MemoryVisibility;
-    releaseDate: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
-    createdAt: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
-    title: string;
-    description: string;
-    mediaUrl: string;
-    thumbnailUrl?: string;
-    stats: {
-        views: number;
-        likes: number;
-        commentCount: number;
-    };
-    recipient?: {
-        type: 'self' | 'other';
-        email?: string;
-        phone?: string;
-    };
-}
+import firestore from '@react-native-firebase/firestore';
+import { Memory } from '../interfaces/messages';
 
 
 const ensureUserExists = async (userId: string, userEmail: string): Promise<void> => {

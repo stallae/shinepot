@@ -1,53 +1,67 @@
-import {UserContact} from './user.ts';
+import {UserContact} from './user';
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 
-export interface Messages {
-  id: number;
-  user_owner_id: number;
-  provider_id: number;
-  s3_url: string;
-  message_type: 'private' | 'public' | 'random';
-  message_content_type: 'video' | 'image' | 'text' | 'audio';
-  title?: string;
-  publish_date: Date;
-  hidden: boolean;
-  created_at: Date;
-  message_likes?: MessageLikes;
-  messages_comments?: MessagesComments[];
-  message_recipients?: MessageRecipients;
-  message_audit_status?: MessageAuditStatus;
-  message_thread?: MessageThread;
+export type MemoryType = 'video' | 'image' | 'text' | 'audio';
+export type MemoryStatus = 'locked' | 'released' | 'canceled';
+export type MemoryVisibility = 'public' | 'private' | 'random' | 'invite';
+export type MemoryMood = 'happy' | 'sad' | 'love' | 'nostalgic';
+export type RecipientType = 'self' | 'other';
+export type ProviderType = 'WhatsApp' | 'Email' | 'SMS' | 'None';
+
+export interface Memory {
+    id?: string;
+    ownerId: string;
+    ownerEmail: string;
+    mood: MemoryMood;
+    type: MemoryType;
+    status: MemoryStatus;
+    visibility: MemoryVisibility;
+    releaseDate: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
+    createdAt: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
+    title: string;
+    description: string;
+    mediaUrl: string;
+    thumbnailUrl?: string;
+    stats: {
+        views: number;
+        likes: number;
+        commentCount: number;
+    };
+    recipient?: {
+        type: RecipientType;
+        email?: string;
+        phone?: string;
+        provider?: ProviderType;
+    };
+    memoryLikes?: MemoryLikes[];
+    memoryComments?: MemoryComments[];
+    memoryRecipients?: MemoryRecipients[];
+    memoryThread?: MemoryThread;
 }
 
-export interface MessageLikes {
-  id: number;
+export interface MemoryLikes {
+  id?: string;
   user_id: number;
-  message_id: number;
+  memory_id: number;
   created_at: Date;
 }
 
-export interface MessagesComments {
+export interface MemoryComments {
   id: number;
   user_id: number;
-  message_id: number;
+  memory_id: number;
   comment: string;
   created_at: Date;
 }
 
-export interface MessageRecipients {
+export interface MemoryRecipients {
   id: number;
-  message_id: number;
+  memory_id: number;
   recipient_contact: UserContact;
 }
 
-export interface MessageAuditStatus {
+export interface MemoryThread {
   id: number;
-  message_id: number;
-  message_status_type: 'published' | 'pending' | 'canceled';
-  created_at: Date;
-}
-
-export interface MessageThread {
-  id: number;
-  id_message: number;
-  id_answer: number;
+  memory_id: number;
+  parent_id: number;
 }
