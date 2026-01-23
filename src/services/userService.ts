@@ -100,3 +100,19 @@ export const updateUser = async (userId: string, data: Partial<User>): Promise<v
         throw error;
     }
 };
+
+// TODO : Ori ao salva msg aumenta o SENT do usuario aqui 
+
+export const checkIfPhoneNumberExists = async (phoneNumber: string): Promise<boolean> => {
+    try {
+        const querySnapshot = await firestore()
+            .collection('users')
+            .where('phoneNumber', '==', phoneNumber)
+            .get();
+
+        return !querySnapshot.empty;
+    } catch (error) {
+        console.error('[UserService] Error checking phone number existence:', error);
+        throw error;
+    }
+};
