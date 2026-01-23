@@ -31,6 +31,13 @@ const createOrUpdateUser = async (user: FirebaseAuthTypes.User) => {
                     photoURL: user.photoURL,
                     createdAt: firestore.FieldValue.serverTimestamp(),
                     lastLogin: firestore.FieldValue.serverTimestamp(),
+                    phoneNumber: user.phoneNumber,
+                    plan: 'free',
+                    stripeCustomerId: null,
+                    stripeSubscriptionId: null,
+                    stripePriceId: null,
+                    stripeCurrentPeriodEnd: null,
+                    stripeCurrentPeriodStart: null,
                 });
                 console.log('[AuthService] User created successfully');
             } catch (createError) {
