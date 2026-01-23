@@ -1,17 +1,33 @@
 import React from 'react';
 import { SafeAreaView, View, Text } from 'react-native';
-import { X, EnvelopeSimple, DeviceMobileCamera, House, User } from 'phosphor-react-native';
+import { X, EnvelopeSimple, DeviceMobileCamera, House, User as UserIcon } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
 import BackButton from '../../../components/global/buttons/backButton';
 import ProfileMenuButton from '../../../components/profile/ProfileMenuButton';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList, ROUTES } from '../../../navigation/roots';
-import { PROFILE_DATA } from '../../../_mock/profile';
+import { getUser } from '../../../services/userService';
+import auth from '@react-native-firebase/auth';
+import { User } from '../../../interfaces/auth';
 
 const PersonalInformation = () => {
   const { colors } = useColors();
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const [user, setUser] = React.useState<User | null>(null);
+
+  useFocusEffect(
+    React.useCallback(() => {
+        const fetchUser = async () => {
+            const currentUser = auth().currentUser;
+            if (currentUser) {
+                const userData = await getUser(currentUser.uid);
+                setUser(userData);
+            }
+        };
+        fetchUser();
+    }, [])
+  );
 
   return (
     <SafeAreaView className="flex-1" style={{ backgroundColor: colors.primary }}>
@@ -27,7 +43,7 @@ const PersonalInformation = () => {
         <View className="gap-6">
           <ProfileMenuButton
             title="Personal information"
-            icon={User}
+            icon={UserIcon}
             route={ROUTES.PersonalInfoDetails}
             description="Manage your personal information"
             onPress={() => navigation.navigate(ROUTES.PersonalInfoDetails)}
@@ -36,14 +52,14 @@ const PersonalInformation = () => {
             title="Email"
             icon={EnvelopeSimple}
             route={ROUTES.UpdateEmail}
-            description={PROFILE_DATA.email}
+            description={user?.email || 'No email set'}
             onPress={() => navigation.navigate(ROUTES.UpdateEmail)}
           />
           <ProfileMenuButton
             title="Phone number"
             icon={DeviceMobileCamera}
             route={ROUTES.UpdatePhone}
-            description={PROFILE_DATA.phone}
+            description={user?.phoneNumber || 'No phone set'}
             onPress={() => navigation.navigate(ROUTES.UpdatePhone)}
           />
           <ProfileMenuButton

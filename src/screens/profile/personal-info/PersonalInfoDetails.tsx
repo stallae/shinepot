@@ -5,28 +5,76 @@ import useColors from '../../../hooks/useColors';
 import BackButton from '../../../components/global/buttons/backButton';
 import GeneralInput from '../../../components/global/inputs/generalImput';
 import WideButton from '../../../components/global/buttons/wideButton';
-import { useNavigation } from '@react-navigation/native';
-import { PROFILE_DATA } from '../../../_mock/profile';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import { getUser, updateUser } from '../../../services/userService';
+import auth from '@react-native-firebase/auth';
+import { User } from '../../../interfaces/auth';
+
+import { getDateParts, parseDateFromParts } from '../../../utils/dateHelpers';
 
 const PersonalInfoDetails = () => {
   const { colors } = useColors();
   const navigation = useNavigation();
+  const [loading, setLoading] = React.useState(true);
 
-  const [firstName, setFirstName] = React.useState(PROFILE_DATA.firstName ?? '');
-  const [lastName, setLastName] = React.useState(PROFILE_DATA.lastName ?? '');
+  // Form State
+  const [firstName, setFirstName] = React.useState('');
+  const [lastName, setLastName] = React.useState('');
+  const [day, setDay] = React.useState('');
+  const [month, setMonth] = React.useState('');
+  const [year, setYear] = React.useState('');
 
-  const [day, setDay] = React.useState(() => {
-    const parts = (PROFILE_DATA.birthday || '').split('-');
-    return parts[2] ?? '';
-  });
-  const [month, setMonth] = React.useState(() => {
-    const parts = (PROFILE_DATA.birthday || '').split('-');
-    return parts[1] ?? '';
-  });
-  const [year, setYear] = React.useState(() => {
-    const parts = (PROFILE_DATA.birthday || '').split('-');
-    return parts[0] ?? '';
-  });
+  const fetchUser = React.useCallback(async () => {
+    const currentUser = auth().currentUser;
+    if (currentUser) {
+        const userData = await getUser(currentUser.uid);
+        if (userData) {
+            setFirstName(userData.firstName || '');
+            setLastName(userData.lastName || '');
+            
+            const { day, month, year } = getDateParts(userData.birthday);
+            setDay(day);
+            setMonth(month);
+            setYear(year);
+        }
+    }
+    setLoading(false);
+  }, []);
+
+  useFocusEffect(
+    React.useCallback(() => {
+        fetchUser();
+    }, [fetchUser])
+  );
+
+  const handleSave = async () => {
+      const currentUser = auth().currentUser;
+      if (!currentUser) return;
+
+      const birthday = parseDateFromParts(day, month, year);
+
+      const updates: Partial<User> = {
+          firstName,
+          lastName,
+          birthday: birthday || undefined,
+      };
+
+      try {
+          await updateUser(currentUser.uid, updates);
+          navigation.goBack();
+      } catch (error) {
+          console.error("Failed to save profile", error);
+          // Optional: Show alert
+      }
+  };
+
+  if (loading) {
+      return (
+          <SafeAreaView className="flex-1 justify-center items-center" style={{ backgroundColor: colors.primary }}>
+              <Text style={{ color: colors.textPrimary }}>Loading...</Text>
+          </SafeAreaView>
+      );
+  }
 
   return (
     <SafeAreaView className="flex-1" style={{ backgroundColor: colors.primary }}>
@@ -87,7 +135,7 @@ const PersonalInfoDetails = () => {
         </View>
 
         <View className="mt-auto pb-6">
-          <WideButton text="Save" onPress={() => navigation.goBack()} />
+          <WideButton text="Save" onPress={handleSave} />
         </View>
       </View>
     </SafeAreaView>

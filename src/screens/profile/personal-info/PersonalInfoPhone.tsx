@@ -4,11 +4,12 @@ import { X } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
 import BackButton from '../../../components/global/buttons/backButton';
 import { useNavigation } from '@react-navigation/native';
-import { PROFILE_DATA } from '../../../_mock/profile';
+import auth from '@react-native-firebase/auth';
 
 const PersonalInfoPhone = () => {
   const { colors } = useColors();
   const navigation = useNavigation();
+  const user = auth().currentUser;
 
   return (
     <SafeAreaView className="flex-1" style={{ backgroundColor: colors.primary }}>
@@ -20,7 +21,7 @@ const PersonalInfoPhone = () => {
           Phone number
         </Text>
         <Text className="text-base" style={{ color: colors.textPrimary, opacity: 0.7 }}>
-          {PROFILE_DATA.phone}
+          {user?.phoneNumber || 'No phone number set'}
         </Text>
       </View>
     </SafeAreaView>

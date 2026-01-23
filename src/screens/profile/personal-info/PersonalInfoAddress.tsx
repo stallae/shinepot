@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, Text, ScrollView } from 'react-native';
 import { ArrowLeft } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
@@ -7,18 +7,37 @@ import GeneralInput from '../../../components/global/inputs/generalImput';
 import WideButton from '../../../components/global/buttons/wideButton';
 import Dropdown from '../../../components/global/dropdown/dropdown';
 import { useNavigation } from '@react-navigation/native';
-import { PROFILE_DATA } from '../../../_mock/profile';
 import { countriesList } from '../../../constants/addressData';
+import { getUser, updateUser } from '../../../services/userService';
+import auth from '@react-native-firebase/auth';
+import { User } from '../../../interfaces/auth';
 
 const PersonalInfoAddress = () => {
   const { colors } = useColors();
   const navigation = useNavigation();
 
-  const [address, setAddress] = useState(PROFILE_DATA.addressDetails?.street || '');
-  const [city, setCity] = useState(PROFILE_DATA.addressDetails?.city || '');
-  const [postalCode, setPostalCode] = useState(PROFILE_DATA.addressDetails?.zipCode || '');
-  const [state, setState] = useState(PROFILE_DATA.addressDetails?.state || '');
-  const [country, setCountry] = useState<string | number>(PROFILE_DATA.addressDetails?.country || '');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [postalCode, setPostalCode] = useState('');
+  const [state, setState] = useState('');
+  const [country, setCountry] = useState<string | number>('');
+
+  useEffect(() => {
+    const fetchUser = async () => {
+        const currentUser = auth().currentUser;
+        if (currentUser) {
+            const userData = await getUser(currentUser.uid);
+            if (userData && userData.addressDetails) {
+                setAddress(userData.addressDetails.street || '');
+                setCity(userData.addressDetails.city || '');
+                setPostalCode(userData.addressDetails.zipCode || '');
+                setState(userData.addressDetails.state || '');
+                setCountry(userData.addressDetails.country || '');
+            }
+        }
+    };
+    fetchUser();
+  }, []);
 
   const handlePostalCodeChange = (text: string) => {
     const cleaned = text.replace(/\D/g, '');
@@ -29,8 +48,30 @@ const PersonalInfoAddress = () => {
     setPostalCode(formatted);
   };
 
-  const handleSave = () => {
-    navigation.goBack();
+  const handleSave = async () => {
+    const currentUser = auth().currentUser;
+    if (!currentUser) return;
+
+    const addressDetails = {
+        street: address,
+        city,
+        zipCode: postalCode,
+        state,
+        country: country.toString(),
+        number: '', // Add fields if UI supports them later
+        complement: ''
+    };
+
+    const updates: Partial<User> = {
+        addressDetails
+    };
+
+    try {
+        await updateUser(currentUser.uid, updates);
+        navigation.goBack();
+    } catch (error) {
+        console.error("Failed to save address", error);
+    }
   };
 
   return (

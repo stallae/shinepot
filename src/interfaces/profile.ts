@@ -31,7 +31,7 @@ export interface ProfileData {
   email: string;
   phone: string;
   birthday: string; 
-  avatarUrl: string;
+  photoURL: string;
   stats: {
     sent: number;
     scheduled: number;
