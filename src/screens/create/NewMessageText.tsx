@@ -16,21 +16,80 @@ import useColors from '../../hooks/useColors';
 import { WideButton } from '../../components';
 import { RouteProp } from '@react-navigation/native';
 import { ArrowLeft } from 'phosphor-react-native';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import { addMemory, MemoryMood, MemoryType, MemoryVisibility } from '../../services/memoryService';
+import { ActivityIndicator, Alert } from 'react-native';
 
 const NewMessageText: React.FC<ScreenProps> = () => {
     const { colors } = useColors();
     const navigation = useNavigation<StackNavigationProp<NewMessageStackParamList>>();
     const route = useRoute<RouteProp<NewMessageStackParamList, 'NewMessageText'>>();
+    const [isLoading, setIsLoading] = useState(false);
     const [messageContent, setMessageContent] = useState('');
 
-    const handleSendToFuture = () => {
-        // TODO: Save the complete message data including content
+    const handleSendToFuture = async () => {
         const data = route.params?.data;
-        console.log('Saving message:', {
-            ...data,
-            content: messageContent,
-        });
-        navigation.navigate(ROUTES.MessageConfirmation);
+        if (!data) {
+            console.error('[NewMessageText] No route data found');
+            Alert.alert('Error', 'Missing message data. Please go back and try again.');
+            return;
+        }
+
+        if (!data.mood || !data.contentType || !data.messageType || !data.date) {
+            console.error('[NewMessageText] Missing required data fields', data);
+            Alert.alert('Error', 'Incomplete message data. Please go back and fill in all required fields.');
+            return;
+        }
+
+        const currentUser = auth().currentUser;
+        if (!currentUser) {
+            console.error('[NewMessageText] No current user found');
+            Alert.alert('Error', 'You must be logged in to send a message');
+            return;
+        }
+
+        if (!messageContent.trim()) {
+            Alert.alert('Error', 'Please enter a message before sending.');
+            return;
+        }
+
+        setIsLoading(true);
+        try {
+            console.log('[NewMessageText] Saving message with data:', {
+                mood: data.mood,
+                contentType: data.contentType,
+                messageType: data.messageType,
+                date: data.date,
+                title: data.title,
+                recipient: data.recipient,
+            });
+
+            await addMemory({
+                ownerId: currentUser.uid,
+                ownerEmail: currentUser.email || '',
+                mood: data.mood as MemoryMood,
+                type: data.contentType as MemoryType,
+                status: 'locked',
+                visibility: data.messageType as MemoryVisibility,
+                releaseDate: firestore.Timestamp.fromDate(new Date(data.date)),
+                title: data.title || '',
+                description: messageContent,
+                mediaUrl: '',
+                recipient: data.recipient,
+            });
+
+            console.log('[NewMessageText] Message saved successfully');
+            navigation.navigate(ROUTES.MessageConfirmation);
+        } catch (error) {
+            console.error('[NewMessageText] Error saving message:', error);
+            Alert.alert(
+                'Error',
+                'Failed to save your message. Please try again.'
+            );
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -79,13 +138,19 @@ const NewMessageText: React.FC<ScreenProps> = () => {
                                 autoFocus
                             />
                         </View>
+                        <Text
+                            className="text-right mt-2 text-body-secondary"
+                            style={{ color: colors.textPrimary, opacity: 0.4 }}>
+                            {messageContent.length} characters
+                        </Text>
                     </View>
 
                     <View>
                         <WideButton
-                            text="Send to the future"
+                            text={isLoading ? "Sending..." : "Send to the future"}
                             onPress={handleSendToFuture}
-                            isDisabled={messageContent.length === 0}
+                            isDisabled={messageContent.trim().length === 0 || isLoading}
+                            icon={isLoading ? <ActivityIndicator color="#FFFFFF" /> : undefined}
                         />
                     </View>
                 </View>

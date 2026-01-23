@@ -9,10 +9,10 @@ import {
 import { ScreenProps } from '../../navigation/types';
 import useColors from '../../hooks/useColors';
 import { Header, WideButton, SelectButton, MessageTypeInfoModal, DatePickerModal } from '../../components';
-import { MOODS } from '../../constants/moods.ts';
-import { CONTENT_TYPES } from '../../constants/contentTypes.ts';
-import { MODAL_TYPE_FILTER_OPTIONS } from '../../constants/filter.ts';
-import { ModalTypeFilterType } from '../../constants/filter.ts';
+import { MOODS } from '../../constants/moods';
+import { CONTENT_TYPES } from '../../constants/contentTypes';
+import { MODAL_TYPE_FILTER_OPTIONS } from '../../constants/filter';
+import { ModalTypeFilterType } from '../../constants/filter';
 import { Question } from 'phosphor-react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
