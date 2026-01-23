@@ -26,7 +26,7 @@ const OnBoardStart: React.FC<ScreenProps> = ({navigation}) => {
           text={"Let's go"}
           onPress={() =>
             navigation.navigate(ROUTES.Auth, {
-              screen: ROUTES.LoginStart,
+              screen: ROUTES.LoginThirdParty,
             } as never)
           }
         />

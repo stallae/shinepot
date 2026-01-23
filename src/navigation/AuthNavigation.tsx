@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { AuthStackParamList, ROUTES } from './roots';
 
-import LoginStart from '../screens/start/auth/Login/LoginStart';
+// import LoginStart from '../screens/start/auth/Login/LoginStart';
 import LoginThirdParty from '../screens/start/auth/Login/LoginThirdParty';
 import LoginOtp from '../screens/start/auth/Login/LoginOtp';
 import LoginPhone from '../screens/start/auth/Login/LoginPhone';
@@ -21,7 +21,7 @@ const Stack = createStackNavigator<AuthStackParamList>();
 const AuthNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name={ROUTES.LoginStart} component={LoginStart} />
+      {/* <Stack.Screen name={ROUTES.LoginStart} component={LoginStart} /> */}
       <Stack.Screen name={ROUTES.LoginThirdParty} component={LoginThirdParty} />
       <Stack.Screen name={ROUTES.LoginOtp} component={LoginOtp} />
       <Stack.Screen name={ROUTES.LoginPhone} component={LoginPhone} />
