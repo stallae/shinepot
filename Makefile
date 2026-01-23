@@ -42,8 +42,6 @@ install: setup
 update:
 	@echo "📦 Updating node modules..."
 	yarn install
-	@echo "🍎 Updating iOS pods..."
-	cd ios && pod install
 	@echo "✅ Update complete!"
 
 # Clean build caches
