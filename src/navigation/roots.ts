@@ -124,7 +124,7 @@ export type RootStackParamList = {
 };
 
 export type AuthStackParamList = {
-  [K in keyof typeof AUTH]: undefined;
+  [K in keyof typeof AUTH]: K extends 'LoginOtpPhone' ? { confirmation: any } : undefined;
 };
 
 export interface NewMessageData {

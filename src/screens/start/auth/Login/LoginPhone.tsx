@@ -1,13 +1,41 @@
-import { SafeAreaView, Text,  View} from 'react-native';
+import { SafeAreaView, Text, View, Alert } from 'react-native';
 import React, { useState } from 'react';
+import { signInWithPhoneNumber } from '../../../../services/authService';
 import useColors from '../../../../hooks/useColors.tsx';
-import {WideButton, GeneralInput, Logo, BackButton, Dropdown  } from '../../../../components';
+import { WideButton, GeneralInput, Logo, BackButton, Dropdown } from '../../../../components';
 import { countries } from '../../../../constants/countries.ts';
-import {ScreenProps } from '../../../../navigation/types';
+import { ScreenProps } from '../../../../navigation/types';
 import { ArrowLeft } from 'phosphor-react-native';
+
 const LoginPhone: React.FC<ScreenProps> = ({navigation}) => {
   const {colors} = useColors();
-  const [selectedCountry, setSelectedCountry] = useState<string | number>('');
+  const [selectedCountry, setSelectedCountry] = useState<string | number>('BR');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleSendCode = async () => {
+    if (!phoneNumber) {
+      Alert.alert('Error', 'Please enter a phone number');
+      return;
+    }
+    setLoading(true);
+    try {
+      const countryOption = countries.find(c => c.value === selectedCountry);
+      const dialCode = countryOption ? countryOption.dial_code : '+55';
+      const cleanPhone = phoneNumber.replace(/\D/g, '');
+      const fullNumber = `${dialCode}${cleanPhone}`;
+      
+      console.log('Sending code to:', fullNumber);
+      
+      const confirmation = await signInWithPhoneNumber(fullNumber);
+      setLoading(false);
+      navigation.navigate('LoginOtpPhone', { confirmation });
+    } catch (error: any) {
+      setLoading(false);
+      console.error('Phone Auth Error:', error);
+      Alert.alert('Authentication Failed', error.message || 'Unknown error');
+    }
+  };
 
   return (
     <SafeAreaView
@@ -36,6 +64,8 @@ const LoginPhone: React.FC<ScreenProps> = ({navigation}) => {
           <GeneralInput
             keyboardType="numeric"
             placeholder={'Enter your phone number'}
+            value={phoneNumber}
+            onChange={setPhoneNumber}
           />
           </View>
         </View>
@@ -43,8 +73,8 @@ const LoginPhone: React.FC<ScreenProps> = ({navigation}) => {
       <View className="absolute inset-x-0 bottom-12">
         <View className="w-11/12 mx-auto">
           <WideButton 
-            text={'Receive SMS code'}
-            onPress={() => navigation.navigate('LoginOtpPhone')}
+            text={loading ? 'Sending...' : 'Receive SMS code'}
+            onPress={handleSendCode}
           />
         </View>
       </View>

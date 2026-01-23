@@ -1,16 +1,56 @@
 import {Pressable, SafeAreaView, Text, TextInput, View} from 'react-native';
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import useColors from '../../../../hooks/useColors.tsx';
 import {WideButton, GeneralInput, Logo} from '../../../../components';
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { RootNavigationProp } from '../../../../navigation/types';
+import { AuthStackParamList } from '../../../../navigation/roots';
+import { confirmCode } from '../../../../services/authService';
 
 const LoginOtpPhone: React.FC<ScreenProps> = () => {
   const {colors} = useColors();
   const rootNavigation = useNavigation<RootNavigationProp>();
+  const route = useRoute<RouteProp<AuthStackParamList, 'LoginOtpPhone'>>();
+  const  confirmation  = route.params?.confirmation;
 
-  const inputRefs = Array.from({length: 6}, () => useRef<TextInput>(null));
+  const [otp, setOtp] = useState<string[]>(Array(6).fill(''));
+  const [loading, setLoading] = useState(false);
+
+  const inputRefs = [
+    useRef<TextInput>(null),
+    useRef<TextInput>(null),
+    useRef<TextInput>(null),
+    useRef<TextInput>(null),
+    useRef<TextInput>(null),
+    useRef<TextInput>(null),
+  ];
+
+  const handleOtpChange = (text: string, index: number) => {
+      const newOtp = [...otp];
+      newOtp[index] = text;
+      setOtp(newOtp);
+  }
+
+  const handleConfirm = async () => {
+      const code = otp.join('');
+      if (code.length < 6) return;
+      setLoading(true);
+      try {
+          if (confirmation) {
+            await confirmCode(confirmation, code);
+          }
+          rootNavigation.reset({
+            index: 0,
+            routes: [{ name: ROUTES.Blog }],
+          });
+      } catch (error) {
+          console.error(error);
+          setLoading(false);
+          // Handle error
+      }
+  }
+
   return (
     <SafeAreaView
       className="flex-1 items-center justify-center px-6"
@@ -32,6 +72,8 @@ const LoginOtpPhone: React.FC<ScreenProps> = () => {
                 isOtp={true}
                 inputRefs={inputRefs}
                 index={index} 
+                value={otp[index]}
+                onChange={(text) => handleOtpChange(text, index)}
               />
             ))}
           </View>
@@ -48,11 +90,8 @@ const LoginOtpPhone: React.FC<ScreenProps> = () => {
       </View>
       <View className="absolute inset-x-0 bottom-12 w-full px-6">
         <WideButton 
-          text={'Log In'} 
-          onPress={() => rootNavigation.reset({
-            index: 0,
-            routes: [{ name: ROUTES.Blog }],
-          })}
+          text={loading ? 'Verifying...' : 'Log In'} 
+          onPress={handleConfirm}
         />
       </View>
     </SafeAreaView>

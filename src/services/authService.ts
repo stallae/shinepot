@@ -71,6 +71,29 @@ export const signInWithApple = async () => {
   }
 };
 
+export const signInWithPhoneNumber = async (phoneNumber: string) => {
+    try {
+        const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
+        return confirmation;
+    } catch (error) {
+        console.error('Phone Sign-In Error:', error);
+        throw error;
+    }
+};
+
+export const confirmCode = async (confirmation: any, code: string) => {
+    try {
+        const userCredential = await confirmation.confirm(code);
+        if (userCredential?.user) {
+            await createOrUpdateUser(userCredential.user);
+        }
+        return userCredential;
+    } catch (error) {
+        console.error('Confirm Code Error:', error);
+        throw error;
+    }
+};
+
 
 export const signOut = async () => {
     try {

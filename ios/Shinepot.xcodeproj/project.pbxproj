@@ -75,6 +75,7 @@
 		8C1283DBA9D04D468FB706BE /* Inter_18pt-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A0290760A9F45BEB97B6EEA /* Inter_18pt-Italic.ttf */; };
 		8C7A5D23A1EB4E5B9B17EE50 /* Roboto_SemiCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F2A3CDF874B4F7993543BC7 /* Roboto_SemiCondensed-Italic.ttf */; };
 		8E0E73AF0AF949168836B0E4 /* Roboto_SemiCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A275E88F99DF461386CC8A72 /* Roboto_SemiCondensed-Bold.ttf */; };
+		8EE5C01B2F242DF50082B66A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EE5C01A2F242DF50082B66A /* GoogleService-Info.plist */; };
 		8FA993DAAEE24ACCB8C606C6 /* Inter_24pt-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE835F3A3F3A45C1BAB4A1C8 /* Inter_24pt-ExtraBoldItalic.ttf */; };
 		93D89D1166B04842AD93ADE0 /* Inter_18pt-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B175565189643F38BFE7489 /* Inter_18pt-ExtraLightItalic.ttf */; };
 		A0DA7F8EE0E7415486ECA9BE /* Roboto-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABE3383CD44C4DB88597FB24 /* Roboto-ExtraBold.ttf */; };
@@ -191,6 +192,7 @@
 		8A8E7AEAF62142EB90381136 /* Roboto_Condensed-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto_Condensed-ThinItalic.ttf"; path = "../src/assets/fonts/Roboto/Roboto_Condensed-ThinItalic.ttf"; sourceTree = "<group>"; };
 		8E5811C863A2488BA0175C71 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BlackItalic.ttf"; path = "../src/assets/fonts/Roboto/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
 		8EE5C0172F24184B0082B66A /* Shinepot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Shinepot.entitlements; path = Shinepot/Shinepot.entitlements; sourceTree = "<group>"; };
+		8EE5C01A2F242DF50082B66A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		90C375D1C60F428993FA592D /* Roboto-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Black.ttf"; path = "../src/assets/fonts/Roboto/Roboto-Black.ttf"; sourceTree = "<group>"; };
 		93E3C3642A1744A2907F6249 /* Roboto_Condensed-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto_Condensed-BlackItalic.ttf"; path = "../src/assets/fonts/Roboto/Roboto_Condensed-BlackItalic.ttf"; sourceTree = "<group>"; };
 		94328C71FCC14719A69D9D8E /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-ThinItalic.ttf"; path = "../src/assets/fonts/Roboto/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 		13B07FAE1A68108700A75B9A /* Shinepot */ = {
 			isa = PBXGroup;
 			children = (
+				8EE5C01A2F242DF50082B66A /* GoogleService-Info.plist */,
 				8EE5C0172F24184B0082B66A /* Shinepot.entitlements */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				761780EC2CA45674006654EE /* AppDelegate.swift */,
@@ -534,6 +537,7 @@
 				725326248162405BB37CAC5C /* Inter_24pt-ThinItalic.ttf in Resources */,
 				6BE83427089D449CB9A9C84A /* Inter_28pt-Black.ttf in Resources */,
 				831F3B89D802484DA755BFFE /* Inter_28pt-BlackItalic.ttf in Resources */,
+				8EE5C01B2F242DF50082B66A /* GoogleService-Info.plist in Resources */,
 				7C80D1F1D49B4331BAB5B49A /* Inter_28pt-Bold.ttf in Resources */,
 				0D9FAAE93F6743B589F8D8CB /* Inter_28pt-BoldItalic.ttf in Resources */,
 				2A50E5DE113B4796A09073A8 /* Inter_28pt-ExtraBold.ttf in Resources */,
@@ -727,6 +731,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Shinepot/Shinepot.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZT66MSR3ZK;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Shinepot/Info.plist;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
@@ -757,6 +762,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Shinepot/Shinepot.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZT66MSR3ZK;
 				INFOPLIST_FILE = Shinepot/Info.plist;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
