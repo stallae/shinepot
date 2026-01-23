@@ -10,6 +10,7 @@ const firebaseConfig = {
   storageBucket: "shine-pot.firebasestorage.app",
   messagingSenderId: "611205230918",
   authDomain: "shine-pot.firebaseapp.com",
+  databaseURL: "https://shine-pot-default-rtdb.firebaseio.com/",
 };
 
 if (!firebase.apps.length) {
