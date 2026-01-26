@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import {Pressable, View} from 'react-native';
-import {BackButtonProps} from './interfaces/backButtonInterface.tsx';
+import {BackButtonProps} from './interfaces/backButtonInterface';
 import {IconContext} from 'phosphor-react-native';
-import useColors from '../../../hooks/useColors.tsx';
+import useColors from '../../../hooks/useColors';
 
 const BackButton: React.FC<BackButtonProps> = ({icon = null, onPress}) => {
   const {colors} = useColors();

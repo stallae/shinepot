@@ -1,5 +1,5 @@
 import { SafeAreaView, Text, View } from 'react-native';
-import React = require('react');
+import * as React from 'react';
 import { Logo, WideButton, BackButton } from '../../../../components';
 import useColors from '../../../../hooks/useColors';
 import { DeviceMobile, AppleLogo, GoogleLogo, ArrowLeft } from 'phosphor-react-native';

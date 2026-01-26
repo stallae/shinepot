@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react'
 import {
     View,
     SafeAreaView,
@@ -18,7 +19,8 @@ import { RouteProp } from '@react-navigation/native';
 import { ArrowLeft } from 'phosphor-react-native';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import { addMemory, MemoryMood, MemoryType, MemoryVisibility } from '../../services/memoryService';
+import { MemoryMood, MemoryType, MemoryVisibility } from '../../interfaces/messages';
+import { addMemory } from '../../services/memoryService';
 import { ActivityIndicator, Alert } from 'react-native';
 
 const NewMessageText: React.FC<ScreenProps> = () => {
@@ -72,7 +74,7 @@ const NewMessageText: React.FC<ScreenProps> = () => {
                 type: data.contentType as MemoryType,
                 status: 'locked',
                 visibility: data.messageType as MemoryVisibility,
-                releaseDate: firestore.Timestamp.fromDate(new Date(data.date)),
+                publish_date: firestore.Timestamp.fromDate(new Date(data.date)),
                 title: data.title || '',
                 description: messageContent,
                 mediaUrl: '',

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react'
 import { View, Text, Pressable, ScrollView } from 'react-native';
 import useColors from '../../../hooks/useColors';
-import { DropdownProps } from './interfaces/dropdownInterface.tsx';
+import { DropdownProps } from './interfaces/dropdownInterface';
 import { CaretDown } from 'phosphor-react-native';
 
 const Dropdown: React.FC<DropdownProps> = ({

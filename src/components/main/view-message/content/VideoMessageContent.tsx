@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react'
 import { View, Image, Pressable, Text } from 'react-native';
 import { Play } from 'phosphor-react-native';
 import useColors from '../../../../hooks/useColors';
@@ -10,11 +11,11 @@ interface VideoMessageContentProps {
 
 const VideoMessageContent: React.FC<VideoMessageContentProps> = ({ message }) => {
   const { colors } = useColors();
-  const [thumbnailUri] = useState(message.s3_url || '');
+  const [thumbnailUri] = useState(message.mediaUrl || '');
 
   const handlePlay = () => {
     // TODO: Implement video playback logic
-    console.log('Play video:', message.s3_url);
+    console.log('Play video:', message.mediaUrl);
   };
 
   return (

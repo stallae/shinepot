@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
 import useColors from '../../hooks/useColors';
 import BackButton from '../../components/global/buttons/backButton';

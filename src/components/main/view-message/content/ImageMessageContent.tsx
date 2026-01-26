@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { View, Image, ScrollView, Text } from 'react-native';
 import useColors from '../../../../hooks/useColors';
 import { Messages } from '../../../../interfaces/messages';
@@ -11,7 +11,7 @@ const ImageMessageContent: React.FC<ImageMessageContentProps> = ({ message }) =>
   const { colors } = useColors();
 
   // TODO: Handle multiple images if message contains an array of images
-  const imageUri = message.s3_url || '';
+  const imageUri = message.mediaUrl || '';
 
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>

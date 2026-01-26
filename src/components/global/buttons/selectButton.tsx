@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import {Pressable, Text, View, ViewStyle} from 'react-native';
-import useColors from '../../../hooks/useColors.tsx';
+import useColors from '../../../hooks/useColors';
 
 interface SelectButtonProps {
   label?: string;

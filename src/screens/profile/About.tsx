@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { View, Text, SafeAreaView, ScrollView } from 'react-native';
 import { APP_VERSION } from '../../_mock/appInfo';
 import { APP_CONTENT, CONTACT_INFO } from '../../constants/aboutContent';

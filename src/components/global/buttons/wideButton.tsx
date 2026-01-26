@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import {Text, Pressable, View} from 'react-native';
-import {WideButtonProps} from './interfaces/wideButtonInterface.tsx';
-import useColors from '../../../hooks/useColors.tsx';
+import {WideButtonProps} from './interfaces/wideButtonInterface';
+import useColors from '../../../hooks/useColors';
 import {IconContext} from 'phosphor-react-native';
 
 const WideButton: React.FC<WideButtonProps> = ({

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import useColors from '../../../hooks/useColors.tsx';
+import  { useState, useEffect } from 'react';
+import * as React from 'react'
+import useColors from '../../../hooks/useColors';
 import {View} from 'react-native';
-import {LogoHorizontal, ProfilePicture} from '../../index.ts';
+import {LogoHorizontal, ProfilePicture} from '../../index';
 import { getUser } from '../../../services/userService';
 import auth from '@react-native-firebase/auth';
 
@@ -14,7 +15,7 @@ const Header = () => {
           const currentUser = auth().currentUser;
           if (currentUser) {
               const userData = await getUser(currentUser.uid);
-              setPhotoUrl(userData?.avatarUrl || userData?.photoURL || currentUser.photoURL || undefined);
+              setPhotoUrl(userData?.photoURL || currentUser.photoURL || undefined);
           }
       };
       fetchUser();

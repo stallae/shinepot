@@ -1,4 +1,4 @@
-import {UserContact} from './user';
+import {User} from './user';
 import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 
 export type MemoryType = 'video' | 'image' | 'text' | 'audio';
@@ -8,7 +8,7 @@ export type MemoryMood = 'happy' | 'sad' | 'love' | 'nostalgic';
 export type RecipientType = 'self' | 'other';
 export type ProviderType = 'WhatsApp' | 'Email' | 'SMS' | 'None';
 
-export interface Memory {
+export interface Messages {
     id?: string;
     ownerId: string;
     ownerEmail: string;
@@ -16,7 +16,7 @@ export interface Memory {
     type: MemoryType;
     status: MemoryStatus;
     visibility: MemoryVisibility;
-    releaseDate: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
+    publish_date: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
     createdAt: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
     title: string;
     description: string;
@@ -57,7 +57,7 @@ export interface MemoryComments {
 export interface MemoryRecipients {
   id: number;
   memory_id: number;
-  recipient_contact: UserContact;
+  recipient_contact: User;
 }
 
 export interface MemoryThread {

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { View, Text, SafeAreaView, ScrollView, Image } from 'react-native';
 import useColors from '../../hooks/useColors';
 import { X, PaperPlaneTilt, CalendarHeart, HandArrowDown, Heart } from 'phosphor-react-native';

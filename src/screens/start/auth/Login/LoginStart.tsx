@@ -1,5 +1,5 @@
 import { SafeAreaView, Text, View } from 'react-native';
-import React = require('react');
+import * as React from 'react';
 import { ProgressBar, Logo, WideButton } from '../../../../components';
 import { ROUTES, ScreenProps } from '../../../../navigation/types';
 import useColors from '../../../../hooks/useColors';

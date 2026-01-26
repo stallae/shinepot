@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import {Text, Pressable} from 'react-native';
 import {X} from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
-import {FilterChipProps} from './interfaces/filterChipInterface.tsx';
+import {FilterChipProps} from './interfaces/filterChipInterface';
 
 const FilterChip: React.FC<FilterChipProps> = ({label, onRemove}) => {
   const {colors} = useColors();

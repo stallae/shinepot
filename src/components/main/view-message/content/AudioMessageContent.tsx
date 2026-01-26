@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react'
 import { View, Pressable } from 'react-native';
 import { Play, Pause } from 'phosphor-react-native';
 import useColors from '../../../../hooks/useColors';
@@ -14,7 +15,7 @@ const AudioMessageContent: React.FC<AudioMessageContentProps> = ({ message }) =>
 
   const handlePlayPause = () => {
     setIsPlaying(!isPlaying);
-    console.log('isPlaying', message.s3_url);
+    console.log('isPlaying', message.mediaUrl);
     // TODO: Implement audio playback logic
   };
 

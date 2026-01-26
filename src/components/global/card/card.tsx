@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 
-import {CardProps} from './interfaces/cardInterface.tsx';
-import useColors from '../../../hooks/useColors.tsx';
+import {CardProps} from './interfaces/cardInterface';
+import useColors from '../../../hooks/useColors';
 
 import {View, Text} from 'react-native';
 import {
@@ -12,7 +12,7 @@ import {
   XCircle,
 } from 'phosphor-react-native';
 
-import WideButton from '../buttons/wideButton.tsx';
+import WideButton from '../buttons/wideButton';
 
 const Card: React.FC<CardProps> = ({
   title,

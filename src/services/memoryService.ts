@@ -1,5 +1,5 @@
 import firestore from '@react-native-firebase/firestore';
-import { Memory } from '../interfaces/messages';
+import { Messages } from '../interfaces/messages';
 
 
 // TO  DO : Ori, porque essa funcao ta aqui e nao em UserService? 
@@ -20,7 +20,7 @@ const ensureUserExists = async (userId: string, userEmail: string): Promise<void
 
 
 export const addMemory = async (
-    memoryData: Omit<Memory, 'id' | 'createdAt' | 'stats'>,
+    memoryData: Omit<Messages, 'id' | 'createdAt' | 'stats'>,
 ): Promise<string> => {
     try {
         await ensureUserExists(memoryData.ownerId, memoryData.ownerEmail);
@@ -31,7 +31,7 @@ export const addMemory = async (
         
         const memoryRef = userMemoriesRef.doc();
 
-        const newMemory: Memory = {
+        const newMemory: Messages = {
             ...memoryData,
             id: memoryRef.id,
             createdAt: firestore.FieldValue.serverTimestamp(),
@@ -52,7 +52,7 @@ export const addMemory = async (
 };
 
 
-export const getUserMemories = async (ownerId: string): Promise<Memory[]> => {
+export const getUserMemories = async (ownerId: string): Promise<Messages[]> => {
     try {
         const querySnapshot = await firestore()
             .collection('users')
@@ -61,7 +61,7 @@ export const getUserMemories = async (ownerId: string): Promise<Memory[]> => {
             .orderBy('createdAt', 'desc')
             .get();
 
-        return querySnapshot.docs.map(doc => doc.data() as Memory);
+        return querySnapshot.docs.map(doc => doc.data() as Messages);
     } catch (error) {
         console.error('[MemoryService] Error fetching user memories:', error);
         throw error;

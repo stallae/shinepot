@@ -1,9 +1,9 @@
-import React from 'react';
-import useTheme from '../../../hooks/useTheme.tsx';
+import * as React from 'react';
+import useTheme from '../../../hooks/useTheme';
 import {Image, Text, View} from 'react-native';
 import logoDark from '../../../assets/images/logo/logoDark.png';
 import logoLight from '../../../assets/images/logo/logoLight.png';
-import useColors from '../../../hooks/useColors.tsx';
+import useColors from '../../../hooks/useColors';
 
 const Logo = () => {
   const theme = useTheme();

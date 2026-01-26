@@ -1,4 +1,5 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import * as React from 'react'
 import { View, Text, Pressable, Modal } from 'react-native';
 import { X, CaretLeft, CaretRight } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';

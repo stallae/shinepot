@@ -1,7 +1,7 @@
 import {SafeAreaView, Text, View} from 'react-native';
-import React from 'react';
+import * as React from 'react';
 import {Logo, WideButton, BackButton} from '../../../../components';
-import useColors from '../../../../hooks/useColors.tsx';
+import useColors from '../../../../hooks/useColors';
 import {ArrowLeft} from "phosphor-react-native";
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
 
@@ -11,7 +11,7 @@ const RegisterOtp: React.FC<ScreenProps> = ({navigation}) => {
     <SafeAreaView
       className="flex-1 justify-evenly items-center"
       style={{backgroundColor: colors.primary}}>
-      <View className="absolute top-20 left-2"><BackButton icon=<ArrowLeft /> onPress={navigation.goBack} /></View>
+      <View className="absolute top-20 left-2"><BackButton icon={<ArrowLeft />}  onPress={navigation.goBack} /></View>
       <View className="w-full">
         <Logo />
         <Text

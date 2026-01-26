@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
 import { ProfileMenuButtonProps } from './interfaces/profileMenuButtonInterface';
 import useColors from '../../hooks/useColors';

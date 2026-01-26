@@ -1,4 +1,4 @@
-import React = require('react');
+import * as React from 'react';
 import { useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native';
 import { X, EyeSlash, Eye } from 'phosphor-react-native';

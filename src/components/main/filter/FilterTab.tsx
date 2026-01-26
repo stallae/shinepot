@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import {Text, Pressable} from 'react-native';
 import useColors from '../../../hooks/useColors';
-import {FilterTabProps} from './interfaces/filterTabInterface.tsx';
+import {FilterTabProps} from './interfaces/filterTabInterface';
 
 const FilterTab: React.FC<FilterTabProps> = ({label, isActive, onPress}) => {
   const {colors} = useColors();

@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {ThemeProvider} from './src/utils/themeContext.tsx';
+import {ThemeProvider} from './src/utils/themeContext';
 import './src/components/global/global.css';
-import RootNavigation from './src/navigation/RootNavigation.tsx';
+import RootNavigation from './src/navigation/RootNavigation';
 import {createServer} from 'miragejs';
 
 createServer({

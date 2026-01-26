@@ -1,5 +1,5 @@
 import { SafeAreaView, Text, View, Alert } from 'react-native';
-import React = require('react');
+import * as React from 'react';
 import { useState } from 'react';
 import { signInWithPhoneNumber } from '../../../../services/authService';
 import useColors from '../../../../hooks/useColors';

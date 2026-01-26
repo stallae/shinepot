@@ -1,4 +1,4 @@
-import React = require('react');
+import * as React from 'react';
 import { useRef, useState } from 'react';
 import { SafeAreaView, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { ArrowLeft } from 'phosphor-react-native';
@@ -69,7 +69,7 @@ const UpdatePhoneOtp = () => {
                     </View>
 
                     <TouchableOpacity>
-                        <Text className="font-bold underline text-center" style={{ color: '#3b82f6' }}>Didn't receive the code?</Text>
+                        <Text className="font-bold underline text-center" style={{ color: '#3b82f6' }}>Didn&apos;t receive the code?</Text>
                     </TouchableOpacity>
                 </View>
 

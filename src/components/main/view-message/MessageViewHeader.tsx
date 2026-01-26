@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { View, Pressable, Text, ImageSourcePropType } from 'react-native';
 import { ArrowLeft, DotsThree } from 'phosphor-react-native';
 import { useNavigation } from '@react-navigation/native';

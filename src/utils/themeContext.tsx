@@ -1,5 +1,5 @@
 import {createContext, FC, useState} from 'react';
-import React from 'react';
+import * as React from 'react';
 import {TColors, Colors} from '../assets/styles/theme.tsx';
 
 type ThemeContextType = {

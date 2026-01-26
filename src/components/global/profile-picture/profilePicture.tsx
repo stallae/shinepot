@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import { Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { ROUTES, RootStackParamList } from '../../../navigation/roots';
 import ProfileImage from '../../../assets/images/ProfileImage.png';
-import { ProfilePictureProps } from './interfaces/profilePictureInterface.tsx';
+import { ProfilePictureProps } from './interfaces/profilePictureInterface';
 
 const ProfilePicture: React.FC<ProfilePictureProps> = ({ shape, size, className, source }) => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();

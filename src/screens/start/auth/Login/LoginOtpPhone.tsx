@@ -1,5 +1,5 @@
 import {Pressable, SafeAreaView, Text, TextInput, View} from 'react-native';
-import React = require('react');
+import * as React from 'react';
 import {useRef, useState} from 'react';
 import useColors from '../../../../hooks/useColors';
 import {WideButton, GeneralInput, Logo} from '../../../../components';

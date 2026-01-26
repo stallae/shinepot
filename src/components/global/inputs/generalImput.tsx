@@ -1,7 +1,7 @@
 import { TextInput, Text, View, TextInputProps, Pressable } from 'react-native';
-import React from 'react';
-import { InputProps } from './interfaces/inputInterface.tsx';
-import useColors from '../../../hooks/useColors.tsx';
+import * as React from 'react';
+import { InputProps } from './interfaces/inputInterface';
+import useColors from '../../../hooks/useColors';
 
 interface GeneralInputProps extends InputProps {
   centerText?: boolean;

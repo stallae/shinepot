@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import {View} from 'react-native';
-import useColors from '../../../hooks/useColors.tsx';
-import {BarProps} from './interfaces/progressBarInterface.tsx';
+import useColors from '../../../hooks/useColors';
+import {BarProps} from './interfaces/progressBarInterface';
 
 const ProgressBar: React.FC<BarProps> = ({progress}) => {
   const {colors} = useColors();
