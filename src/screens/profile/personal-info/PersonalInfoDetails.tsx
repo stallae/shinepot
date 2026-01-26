@@ -10,14 +10,13 @@ import { getUser, updateUser } from '../../../services/userService';
 import auth from '@react-native-firebase/auth';
 import { User } from '../../../interfaces/auth';
 
-import { getDateParts, parseDateFromParts } from '../../../utils/dateHelpers';
+import { getDateParts, formatDateToYYYYMMDD } from '../../../utils/dateHelpers';
 
 const PersonalInfoDetails = () => {
   const { colors } = useColors();
   const navigation = useNavigation();
   const [loading, setLoading] = React.useState(true);
 
-  // Form State
   const [firstName, setFirstName] = React.useState('');
   const [lastName, setLastName] = React.useState('');
   const [day, setDay] = React.useState('');
@@ -51,7 +50,7 @@ const PersonalInfoDetails = () => {
       const currentUser = auth().currentUser;
       if (!currentUser) return;
 
-      const birthday = parseDateFromParts(day, month, year);
+      const birthday = formatDateToYYYYMMDD(day, month, year);
 
       const updates: Partial<User> = {
           firstName,
@@ -64,7 +63,7 @@ const PersonalInfoDetails = () => {
           navigation.goBack();
       } catch (error) {
           console.error("Failed to save profile", error);
-          // Optional: Show alert
+          // todo: Show alert
       }
   };
 
