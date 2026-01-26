@@ -67,10 +67,10 @@ const Profile = () => {
 
     return (
         <SafeAreaView className="flex-1" style={{ backgroundColor: colors.primary }}>
-
-            <View className="absolute top-20 left-2">
-                <BackButton icon={<X />} onPress={navigation.goBack} />
-            </View>
+            
+      <View className="absolute top-20 left-2 z-10">
+        <BackButton icon={<X />} onPress={navigation.goBack} />
+      </View>
 
             <ScrollView className="flex-1 px-6 pt-20">
                 <View className="items-center mb-8">
