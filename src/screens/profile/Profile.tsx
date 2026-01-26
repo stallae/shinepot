@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, SafeAreaView, ScrollView, Image } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, Image, Pressable } from 'react-native';
 import useColors from '../../hooks/useColors';
 import { X, PaperPlaneTilt, CalendarHeart, HandArrowDown, Heart } from 'phosphor-react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
@@ -10,7 +10,6 @@ import { menuItems } from '../../constants/profile';
 import ProfileMenuButton from '../../components/profile/ProfileMenuButton';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { getUser, uploadProfileImage } from '../../services/userService';
-import { Pressable } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import { User } from '../../interfaces/auth';
 import { ProfileStats } from '../../interfaces/profile';
@@ -56,6 +55,15 @@ const Profile = () => {
         { title: 'Received', value: (user?.stats?.received ?? 0).toString(), icon: HandArrowDown },
         { title: 'Saved', value: (user?.stats?.saved ?? 0).toString(), icon: Heart },
     ];
+
+    const handleLogout = async () => {
+        try {
+            await auth().signOut();
+            navigation.reset({ index: 0, routes: [{ name: 'Auth' as keyof RootStackParamList }] });
+        } catch (error) {
+            console.error('[Profile] Logout failed', error);
+        }
+    };
 
     if (loading) {
         return (
@@ -112,6 +120,15 @@ const Profile = () => {
                         </View>
                     ))}
                 </View>
+
+                <Pressable
+                    onPress={handleLogout}
+                    className="mt-2 mb-8 py-4 rounded-xl items-center"
+                    style={{ backgroundColor: colors.secondary }}>
+                    <Text className="text-base font-semibold" style={{ color: colors.textPrimary }}>
+                        Log out
+                    </Text>
+                </Pressable>
 
             </ScrollView>
         </SafeAreaView>
