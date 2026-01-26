@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { View, Text } from 'react-native';
 import useColors from '../../../hooks/useColors';
 import TextMessageContent from './content/TextMessageContent';
@@ -15,7 +15,7 @@ const MessageContentView: React.FC<MessageContentViewProps> = ({ message }) => {
   const { colors } = useColors();
 
   const renderContent = () => {
-    switch (message.message_content_type) {
+    switch (message.type) {
       case 'text':
         return <TextMessageContent message={message} />;
       case 'audio':

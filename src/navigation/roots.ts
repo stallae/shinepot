@@ -1,13 +1,12 @@
 import { ModalTypeFilterType } from '../constants/filter';
-import { Messages, MessagesComments, MessageLikes, MessageAuditStatus, MessageRecipients } from '../interfaces/messages';
+import { Messages, MemoryComments, MemoryLikes, MemoryRecipients } from '../interfaces/messages';
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 
-export type SerializedMessages = Omit<Messages, 'publish_date' | 'created_at' | 'message_likes' | 'messages_comments' | 'message_audit_status' | 'message_recipients'> & {
-  publish_date: string | Date;
-  created_at: string | Date;
-  message_likes?: Omit<MessageLikes, 'created_at'> & { created_at: string | Date };
-  messages_comments?: Array<Omit<MessagesComments, 'created_at'> & { created_at: string | Date }>;
-  message_recipients?: MessageRecipients;
-  message_audit_status?: Omit<MessageAuditStatus, 'created_at'> & { created_at: string | Date };
+export type SerializedMessages = Omit<Messages, 'createdAt' | 'memoryLikes' | 'memoryComments' | 'memoryRecipients'> & {
+  createdAt: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
+  memoryLikes?: Array<Omit<MemoryLikes, 'created_at'> & { created_at: string | Date }>;
+  memoryComments?: Array<Omit<MemoryComments, 'created_at'> & { created_at: string | Date }>;
+  memoryRecipients?: MemoryRecipients[];
 };
 
 const ROOT = {

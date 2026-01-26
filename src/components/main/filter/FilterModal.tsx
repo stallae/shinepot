@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {View, Text, Pressable, ScrollView, Modal} from 'react-native';
 import {X} from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
@@ -14,11 +14,11 @@ import {
   MODAL_TYPE_FILTER_OPTIONS,
   CONTENT_FILTER_OPTIONS,
   DATE_FILTER_OPTIONS,
-} from '../../../constants/filter.ts';
+} from '../../../constants/filter';
 import {
   FilterModalProps,
   FilterButtonProps,
-} from './interfaces/filterModalInterface.tsx';
+} from './interfaces/filterModalInterface';
 
 const FilterButton: React.FC<FilterButtonProps> = ({
   label,

@@ -1,30 +1,31 @@
-import {Messages} from '../../interfaces/messages.ts';
+import {Messages} from '../../interfaces/messages';
 
 export const _messages: Messages[] = [
   {
-    id: 1,
-    user_owner_id: 1,
-    provider_id: 1,
-    s3_url: 'https://example.com/image1.jpg',
-    message_type: 'private',
-    message_content_type: 'image',
+    id: '1',
+    ownerId: '1',
+    ownerEmail: 'owner@example.com',
+    mood: 'love',
+    mediaUrl: 'https://example.com/image1.jpg',
+    visibility: 'private',
+    type: 'image',
     title: 'To my father, who is no longer here',
-    message_audit_status: {
-      id: 1,
-      message_id: 1,
-      message_status_type: 'published',
-      created_at: new Date('2023-10-01T12:00:00Z'),
-    },
+    description: 'A beautiful memory',
+    status: 'released',
     publish_date: new Date('2023-10-01T12:00:00Z'),
-    hidden: false,
-    created_at: new Date('2023-10-01T12:00:00Z'),
-    message_likes: {
-      id: 1,
-      user_id: 2,
-      message_id: 1,
-      created_at: new Date('2023-10-01T12:05:00Z'),
+    createdAt: new Date('2023-10-01T12:00:00Z'),
+    stats: {
+      views: 10,
+      likes: 5,
+      commentCount: 2,
     },
-    messages_comments: [
+    memoryLikes: [{
+      id: '1',
+      user_id: 2,
+      memory_id: 1,
+      created_at: new Date('2023-10-01T12:05:00Z'),
+    }],
+    memoryComments: [
       {
         id: 1,
         user_id: 2,
@@ -40,9 +41,9 @@ export const _messages: Messages[] = [
         created_at: new Date('2023-10-01T12:15:00Z'),
       },
     ],
-    message_recipients: {
+    memoryRecipients: [{
       id: 1,
-      message_id: 1,
+      memory_id: 1,
       recipient_contact: {
         id: 2,
         user_id: 2,
@@ -57,29 +58,30 @@ export const _messages: Messages[] = [
     },
   },
   {
-    id: 2,
-    user_owner_id: 1,
-    provider_id: 1,
-    s3_url: 'https://example.com/video1.mp4',
-    message_type: 'public',
-    message_content_type: 'video',
+    id: '2',
+    ownerId: '1',
+    ownerEmail: 'owner@example.com',
+    mood: 'happy',
+    mediaUrl: 'https://example.com/video1.mp4',
+    visibility: 'public',
+    type: 'video',
     title: 'To my best friend, when you miss me', 
-    message_audit_status: {
-      id: 2,
-      message_id: 2,
-      message_status_type: 'pending',
-      created_at: new Date('2023-10-02T12:00:00Z'),
-    },
+    description: 'A video message',
+    status: 'locked',
     publish_date: new Date('2023-10-02T12:00:00Z'),
-    hidden: false,
-    created_at: new Date('2023-10-02T12:00:00Z'),
-    message_likes: {
-      id: 2,
-      user_id: 3,
-      message_id: 2,
-      created_at: new Date('2023-10-02T12:05:00Z'),
+    createdAt: new Date('2023-10-02T12:00:00Z'),
+    stats: {
+      views: 20,
+      likes: 8,
+      commentCount: 1,
     },
-    messages_comments: [
+    memoryLikes: [{
+      id: '2',
+      user_id: 3,
+      memory_id: 2,
+      created_at: new Date('2023-10-02T12:05:00Z'),
+    }],
+    memoryComments: [
       {
         id: 2,
         user_id: 3,
@@ -88,9 +90,9 @@ export const _messages: Messages[] = [
         created_at: new Date('2023-10-02T12:10:00Z'),
       },
     ],
-    message_recipients: {
+    memoryRecipients: [{
       id: 2,
-      message_id: 2,
+      memory_id: 2,
       recipient_contact: {
         id: 3,
         user_id: 3,
@@ -102,32 +104,33 @@ export const _messages: Messages[] = [
         street: '456 Elm St',
         zip_code: '94101',
       },
-    },
+    }],
   },
   {
-    id: 3,
-    user_owner_id: 1,
-    provider_id: 1,
-    s3_url: 'https://example.com/audio1.mp3',
-    message_type: 'private',
-    message_content_type: 'audio',
+    id: '3',
+    ownerId: '1',
+    ownerEmail: 'owner@example.com',
+    mood: 'nostalgic',
+    mediaUrl: 'https://example.com/audio1.mp3',
+    visibility: 'private',
+    type: 'audio',
     title: 'A message for my future self',
-    message_audit_status: {
-      id: 3,
-      message_id: 3,
-      message_status_type: 'published',
-      created_at: new Date('2023-10-03T12:00:00Z'),
-    },
+    description: 'An audio memory',
+    status: 'released',
     publish_date: new Date('2023-10-03T12:00:00Z'),
-    hidden: false,
-    created_at: new Date('2023-10-03T12:00:00Z'),
-    message_likes: {
-      id: 3,
-      user_id: 2,
-      message_id: 3,
-      created_at: new Date('2023-10-03T12:05:00Z'),
+    createdAt: new Date('2023-10-03T12:00:00Z'),
+    stats: {
+      views: 15,
+      likes: 6,
+      commentCount: 1,
     },
-    messages_comments: [
+    memoryLikes: [{
+      id: '3',
+      user_id: 2,
+      memory_id: 3,
+      created_at: new Date('2023-10-03T12:05:00Z'),
+    }],
+    memoryComments: [
       {
         id: 3,
         user_id: 2,
@@ -136,9 +139,9 @@ export const _messages: Messages[] = [
         created_at: new Date('2023-10-03T12:10:00Z'),
       },
     ],
-    message_recipients: {
+    memoryRecipients: [{
       id: 3,
-      message_id: 3,
+      memory_id: 3,
       recipient_contact: {
         id: 2,
         user_id: 2,
@@ -150,32 +153,33 @@ export const _messages: Messages[] = [
         street: '123 Main St',
         zip_code: '90001',
       },
-    },
+    }],
   },
   {
-    id: 4,
-    user_owner_id: 1,
-    provider_id: 1,
-    s3_url: 'https://example.com/text1.txt',
-    message_type: 'random',
-    message_content_type: 'text',
+    id: '4',
+    ownerId: '1',
+    ownerEmail: 'owner@example.com',
+    mood: 'sad',
+    mediaUrl: 'https://example.com/text1.txt',
+    visibility: 'random',
+    type: 'text',
     title: 'Thoughts I want to remember',
-    message_audit_status: {
-      id: 4,
-      message_id: 4,
-      message_status_type: 'published',
-      created_at: new Date('2023-10-04T12:00:00Z'),
-    },
+    description: 'Text thoughts',
+    status: 'released',
     publish_date: new Date('2023-10-04T12:00:00Z'),
-    hidden: false,
-    created_at: new Date('2023-10-04T12:00:00Z'),
-    message_likes: {
-      id: 4,
-      user_id: 3,
-      message_id: 4,
-      created_at: new Date('2023-10-04T12:05:00Z'),
+    createdAt: new Date('2023-10-04T12:00:00Z'),
+    stats: {
+      views: 25,
+      likes: 10,
+      commentCount: 1,
     },
-    messages_comments: [
+    memoryLikes: [{
+      id: '4',
+      user_id: 3,
+      memory_id: 4,
+      created_at: new Date('2023-10-04T12:05:00Z'),
+    }],
+    memoryComments: [
       {
         id: 4,
         user_id: 3,

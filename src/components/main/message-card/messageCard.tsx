@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import {View, Text, Pressable, StyleSheet} from 'react-native';
-import {Messages} from '../../../interfaces/messages.ts';
-import useColors from '../../../hooks/useColors.tsx';
+import {Messages} from '../../../interfaces/messages';
+import useColors from '../../../hooks/useColors';
 import {Lock} from 'phosphor-react-native';
-import {ProfilePicture} from '../../index.ts';
+import {ProfilePicture} from '../../index';
 
 interface MessageCardProps {
   message: Messages;
@@ -14,26 +14,26 @@ const MessageCard: React.FC<MessageCardProps> = ({message, onPress}) => {
   const {colors} = useColors();
 
   const getMessageTypeDescription = () => {
-    return `This a ${message.message_content_type} message.`;
+    return `This a ${message.type} message.`;
   };
 
-  const isLocked = message.message_audit_status?.message_status_type === 'pending';
+  const isLocked = message.status === 'locked';
   
-  const publishDate = message.publish_date instanceof Date 
-    ? message.publish_date 
-    : new Date(message.publish_date);
+  const publishDate = 'toDate' in message.publish_date 
+    ? message.publish_date.toDate() 
+    : new Date();
   const now = new Date();
   const isFuture = publishDate > now;
   
   const shouldBlock = isFuture || isLocked;
 
   const handlePress = () => {
-    const checkDate = message.publish_date instanceof Date 
-      ? message.publish_date 
-      : new Date(message.publish_date);
+    const checkDate = 'toDate' in message.publish_date 
+      ? message.publish_date.toDate() 
+      : new Date();
     const checkNow = new Date();
     const checkIsFuture = checkDate > checkNow;
-    const checkIsLocked = message.message_audit_status?.message_status_type === 'pending';
+    const checkIsLocked = message.status === 'locked';
     const checkShouldBlock = checkIsFuture || checkIsLocked;
     
     if (!checkShouldBlock && onPress) {

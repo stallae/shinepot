@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { View, SafeAreaView, ScrollView } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { RouteProp } from '@react-navigation/native';
@@ -24,12 +24,12 @@ const ViewMessage: React.FC<ScreenProps> = () => {
 
   const message = deserializeMessage(rawMessage);
 
-  const publishDate = typeof message.publish_date === 'string' 
-    ? new Date(message.publish_date) 
-    : message.publish_date;
+  const publishDate = 'toDate' in message.publish_date 
+    ? message.publish_date.toDate() 
+    : new Date();
   const now = new Date();
   const isFuture = publishDate > now;
-  const isLocked = message.message_audit_status?.message_status_type === 'pending';
+  const isLocked = message.status === 'locked';
   const shouldBlock = isFuture || isLocked;
   
   React.useLayoutEffect(() => {
@@ -42,9 +42,9 @@ const ViewMessage: React.FC<ScreenProps> = () => {
     return null;
   }
 
-  const isPrivate = message.message_type === 'private';
-  const isRandom = message.message_type === 'random';
-  const senderName = message.message_recipients?.recipient_contact?.user_id
+  const isPrivate = message.visibility === 'private';
+  const isRandom = message.visibility === 'random';
+  const senderName = message.memoryRecipients?.[0]?.recipient_contact?.id
     ? 'Sender Name' // TODO: Fetch actual sender name from user data
     : undefined;
 

@@ -1,4 +1,4 @@
-import {Messages} from '../interfaces/messages.ts';
+import {Messages} from '../interfaces/messages';
 import {
   TabFilterType,
   StatusFilterType,
@@ -6,7 +6,7 @@ import {
   ModalTypeFilterType,
   ContentFilterType,
   DateFilterType,
-} from '../constants/filter.ts';
+} from '../constants/filter';
 import {
   getStartOfDay,
   getEndOfDay,
@@ -16,7 +16,7 @@ import {
   getEndOfMonth,
   getStartOfYear,
   getEndOfYear,
-} from './dateHelpers.ts';
+} from './dateHelpers';
 
 export interface FilterState {
   activeTabFilter: TabFilterType;
@@ -29,7 +29,7 @@ export interface FilterState {
 
 export const filterMessages = (
   messages: Messages[],
-  currentUserId: number,
+  currentUserId: string,
   filters: FilterState,
 ): Messages[] => {
   let filtered: Messages[] = [];
@@ -37,8 +37,8 @@ export const filterMessages = (
 
   const userRelevantMessages = messages.filter(
     (message: Messages) =>
-      message.user_owner_id === currentUserId ||
-      message.message_recipients?.recipient_contact?.user_id === currentUserId,
+      message.ownerId === currentUserId ||
+      message.memoryRecipients?.[0]?.recipient_contact?.id === currentUserId,
   );
 
   filtered = userRelevantMessages;
@@ -47,13 +47,13 @@ export const filterMessages = (
   switch (filters.activeTabFilter) {
     case 'sent':
       filtered = filtered.filter(
-        (message: Messages) => message.user_owner_id === currentUserId,
+        (message: Messages) => message.ownerId === currentUserId,
       );
       break;
     case 'received':
       filtered = filtered.filter(
         (message: Messages) =>
-          message.message_recipients?.recipient_contact?.user_id ===
+          message.memoryRecipients?.[0]?.recipient_contact?.id ===
           currentUserId,
       );
       break;
@@ -66,13 +66,13 @@ export const filterMessages = (
     switch (filters.activeModalMessageFilter) {
       case 'sent':
         filtered = filtered.filter(
-          (message: Messages) => message.user_owner_id === currentUserId,
+          (message: Messages) => message.ownerId === currentUserId,
         );
         break;
       case 'received':
         filtered = filtered.filter(
           (message: Messages) =>
-            message.message_recipients?.recipient_contact?.user_id ===
+            message.memoryRecipients?.[0]?.recipient_contact?.id ===
             currentUserId,
         );
         break;
@@ -85,7 +85,7 @@ export const filterMessages = (
   if (filters.activeModalTypeFilter.length > 0) {
     filtered = filtered.filter((message: Messages) =>
       filters.activeModalTypeFilter.includes(
-        message.message_type as ModalTypeFilterType,
+        message.visibility as ModalTypeFilterType,
       ),
     );
   }
@@ -93,14 +93,14 @@ export const filterMessages = (
   // Apply content type filter (multiple selections)
   if (filters.activeContentFilter.length > 0) {
     filtered = filtered.filter((message: Messages) =>
-      filters.activeContentFilter.includes(message.message_content_type),
+      filters.activeContentFilter.includes(message.type),
     );
   }
 
   // Apply date filter (multiple selections)
   if (filters.activeDateFilter.length > 0) {
     filtered = filtered.filter((message: Messages) => {
-      const publishDate = new Date(message.publish_date);
+      const publishDate = 'toDate' in message.publish_date ? message.publish_date.toDate() : new Date();
       return filters.activeDateFilter.some(dateFilter => {
         switch (dateFilter) {
           case 'today': {
@@ -132,11 +132,11 @@ export const filterMessages = (
 
   if (filters.activeStatusFilter) {
     filtered = filtered.filter((message: Messages) => {
-      const status = message.message_audit_status?.message_status_type;
+      const status = message.status;
       if (filters.activeStatusFilter === 'opened') {
-        return status === 'published';
+        return status === 'released';
       } else {
-        return status === 'pending' || status === 'canceled';
+        return status === 'locked' || status === 'canceled';
       }
     });
   }

@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import React from 'react';
+import * as React from 'react';
 import { NewMessageStackParamList, ROUTES } from './roots';
 import NewMessage from '../screens/create/NewMessage';
 import NewMessageTitle from '../screens/create/NewMessageTitle';

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import useColors from '../../../hooks/useColors';
 import { Messages } from '../../../interfaces/messages';
@@ -25,8 +25,8 @@ const RandomMessageFooter: React.FC<RandomMessageFooterProps> = ({
 
   const handleReply = () => {
     const replyData: Omit<NewMessageData, 'title'> = {
-      contentType: message.message_content_type,
-      messageType: 'random',
+      contentType: message.type,
+      visibility: 'random',
       date: new Date().toISOString(),
     };
     

@@ -1,25 +1,26 @@
 import {View, SafeAreaView, FlatList, Text, Pressable, ScrollView} from 'react-native';
 import {ScreenProps} from '../../navigation/types';
-import React, {useMemo, useState} from 'react';
+import {useMemo, useState} from 'react';
 import useColors from '../../hooks/useColors';
+import * as React from 'react'
 import {Header, MessageCard, NewMessageButton} from '../../components';
-import {_messages} from '../../_mock/messages/_mocked-messages.ts';
-import {Messages} from '../../interfaces/messages.ts';
+import {_messages} from '../../_mock/messages/_mocked-messages';
+import {Messages} from '../../interfaces/messages';
 import {Funnel} from 'phosphor-react-native';
-import {TabFilterType, TAB_FILTER_OPTIONS} from '../../constants/filter.ts';
-import FilterTab from '../../components/main/filter/FilterTab.tsx';
-import FilterChips from '../../components/main/filter/FilterChips.tsx';
-import FilterModal from '../../components/main/filter/FilterModal.tsx';
-import {filterMessages, FilterState} from '../../utils/filterHelpers.ts';
+import {TabFilterType, TAB_FILTER_OPTIONS} from '../../constants/filter';
+import FilterTab from '../../components/main/filter/FilterTab';
+import FilterChips from '../../components/main/filter/FilterChips';
+import FilterModal from '../../components/main/filter/FilterModal';
+import {filterMessages, FilterState} from '../../utils/filterHelpers';
 import {
   StatusFilterType,
   ModalMessageFilterType,
   ModalTypeFilterType,
   ContentFilterType,
   DateFilterType,
-} from '../../constants/filter.ts';
+} from '../../constants/filter';
 import {ROUTES} from '../../navigation/roots';
-import {serializeMessage} from '../../utils/messageSerialization.ts';
+import {serializeMessage} from '../../utils/messageSerialization';
 
 const Blog: React.FC<ScreenProps> = ({navigation}) => {
   const {colors} = useColors();
@@ -56,7 +57,7 @@ const Blog: React.FC<ScreenProps> = ({navigation}) => {
   };
 
   // TODO: Replace with actual current user ID from auth context
-  const currentUserId = 1;
+  const currentUserId = '1';
 
   const userMessages = useMemo(() => {
     const filterState: FilterState = {
@@ -123,21 +124,21 @@ const Blog: React.FC<ScreenProps> = ({navigation}) => {
   };
 
   const renderMessage = ({item}: {item: Messages}) => {
-    const publishDate = item.publish_date instanceof Date 
-      ? item.publish_date 
-      : new Date(item.publish_date);
+    const publishDate = 'toDate' in item.publish_date 
+      ? item.publish_date.toDate() 
+      : new Date();
     const now = new Date();
     const isFuture = publishDate > now;
-    const isLocked = item.message_audit_status?.message_status_type === 'pending';
+    const isLocked = item.status === 'locked';
     const shouldBlock = isFuture || isLocked;
     
     const handleMessagePress = () => {
-      const checkDate = item.publish_date instanceof Date 
-        ? item.publish_date 
-        : new Date(item.publish_date);
+      const checkDate = 'toDate' in item.publish_date 
+        ? item.publish_date.toDate() 
+        : new Date();
       const checkNow = new Date();
       const checkIsFuture = checkDate > checkNow;
-      const checkIsLocked = item.message_audit_status?.message_status_type === 'pending';
+      const checkIsLocked = item.status === 'locked';
       const checkShouldBlock = checkIsFuture || checkIsLocked;
       
       if (!checkShouldBlock) {
