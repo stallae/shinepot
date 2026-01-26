@@ -68,10 +68,12 @@ const GeneralInput: React.FC<GeneralInputProps> = ({
           maxLength={isOtp ? 1 : undefined}
           onChangeText={handleChange}
           onKeyPress={handleKeyPress}
-          className="flex-1 font-bold font-inter text-lg pb-1 h-14 px-3 justify-center"
+          className="flex-1 font-bold font-inter text-lg px-3 h-14 py-0"
           style={{
             color: colors.textPrimary,
             textAlign: centerText ? 'center' : 'left',
+            textAlignVertical: 'center',
+            lineHeight: undefined,
           }}
           value={value}
         />
