@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React = require('react');
+import { useState } from 'react';
 import { SafeAreaView, View, Text } from 'react-native';
 import { EnvelopeSimple, X } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
@@ -27,7 +28,7 @@ const UpdateEmail = () => {
     }, []);
 
     const handleContinue = () => {
-        navigation.navigate(ROUTES.UpdateEmailPassword, { email });
+        navigation.navigate(ROUTES.UpdateEmailConfirm, { email });
     };
 
     return (

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React = require('react');
+import { useState } from 'react';
 import { SafeAreaView, View, Text } from 'react-native';
 import { X } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';

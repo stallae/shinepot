@@ -1,8 +1,8 @@
 import {Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import React from 'react';
+import React = require('react');
 import {ProgressBar, Logo, WideButton} from '../../../components';
-import useColors from '../../../hooks/useColors.tsx';
+import useColors from '../../../hooks/useColors';
 import {ROUTES, ScreenProps} from '../../../navigation/types';
 
 const OnBoardStart: React.FC<ScreenProps> = ({navigation}) => {

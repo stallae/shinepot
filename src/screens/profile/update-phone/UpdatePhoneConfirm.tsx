@@ -1,4 +1,4 @@
-import React from 'react';
+import React = require('react');
 import { SafeAreaView, View } from 'react-native';
 import { X } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
@@ -7,7 +7,7 @@ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigation/roots';
 import BackButton from '../../../components/global/buttons/backButton';
-
+import { ROUTES } from '../../../navigation/roots';
 type UpdatePhoneConfirmRouteProp = RouteProp<RootStackParamList, 'UpdatePhoneConfirm'>;
 
 const UpdatePhoneConfirm = () => {
@@ -17,7 +17,7 @@ const UpdatePhoneConfirm = () => {
     const { phone } = route.params;
 
     const handleFinish = () => {
-        navigation.popToTop();
+        navigation.navigate(ROUTES.Blog);
     };
 
     return (

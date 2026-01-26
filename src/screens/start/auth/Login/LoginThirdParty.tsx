@@ -1,7 +1,7 @@
 import { SafeAreaView, Text, View } from 'react-native';
-import React from 'react';
+import React = require('react');
 import { Logo, WideButton, BackButton } from '../../../../components';
-import useColors from '../../../../hooks/useColors.tsx';
+import useColors from '../../../../hooks/useColors';
 import { DeviceMobile, AppleLogo, GoogleLogo, ArrowLeft } from 'phosphor-react-native';
 import { ROUTES, ScreenProps } from '../../../../navigation/types';
 

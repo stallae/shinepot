@@ -1,22 +1,22 @@
-import {SafeAreaView, Text, View} from 'react-native';
-import React from 'react';
-import {ProgressBar, Logo, WideButton} from '../../../../components';
-import {ROUTES, ScreenProps} from '../../../../navigation/types';
-import useColors from '../../../../hooks/useColors.tsx';
+import { SafeAreaView, Text, View } from 'react-native';
+import React = require('react');
+import { ProgressBar, Logo, WideButton } from '../../../../components';
+import { ROUTES, ScreenProps } from '../../../../navigation/types';
+import useColors from '../../../../hooks/useColors';
 
-const LoginStart: React.FC<ScreenProps> = ({navigation}) => {
-  const {colors} = useColors(); 
+const LoginStart: React.FC<ScreenProps> = ({ navigation }) => {
+  const { colors } = useColors();
   return (
     <SafeAreaView
       className="flex-1 justify-between items-center"
-      style={{backgroundColor: colors.primary}}>
+      style={{ backgroundColor: colors.primary }}>
       <ProgressBar progress={100} />
 
       <View>
         <Logo />
         <Text
           className="font-roboto font-semibold text-4xl mt-5 text-center"
-          style={{color: colors.textPrimary}}>
+          style={{ color: colors.textPrimary }}>
           {'SEND AND RECEIVE\nMESSAGES AT THE\nRIGHT TIME'}
         </Text>
       </View>

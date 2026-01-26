@@ -1,6 +1,7 @@
 import {Pressable, SafeAreaView, Text, TextInput, View} from 'react-native';
-import React, {useRef} from 'react';
-import useColors from '../../../../hooks/useColors.tsx';
+import React = require('react');
+import {useRef} from 'react';
+import useColors from '../../../../hooks/useColors';
 import {WideButton, GeneralInput, Logo} from '../../../../components';
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
 import { useNavigation } from '@react-navigation/native';

@@ -1,9 +1,10 @@
 import { SafeAreaView, Text, View, Alert } from 'react-native';
-import React, { useState } from 'react';
+import React = require('react');
+import { useState } from 'react';
 import { signInWithPhoneNumber } from '../../../../services/authService';
-import useColors from '../../../../hooks/useColors.tsx';
+import useColors from '../../../../hooks/useColors';
 import { WideButton, GeneralInput, Logo, BackButton, Dropdown } from '../../../../components';
-import { countries } from '../../../../constants/countries.ts';
+import { countries } from '../../../../constants/countries';
 import { ScreenProps } from '../../../../navigation/types';
 import { ArrowLeft } from 'phosphor-react-native';
 

@@ -1,6 +1,6 @@
 import {Pressable, SafeAreaView, Text, View} from 'react-native';
-import React from 'react';
-import useColors from '../../../../hooks/useColors.tsx';
+import React = require('react');
+import useColors from '../../../../hooks/useColors';
 import {WideButton, GeneralInput, BackButton, Logo} from '../../../../components';
 import {ROUTES, ScreenProps} from '../../../../navigation/types';
 import {ArrowLeft} from 'phosphor-react-native';

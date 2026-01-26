@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react';
+import React = require('react');
+import { useRef, useState } from 'react';
 import { SafeAreaView, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { ArrowLeft } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';

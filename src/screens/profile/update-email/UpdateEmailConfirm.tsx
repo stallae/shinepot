@@ -1,4 +1,4 @@
-import React from 'react';
+import React = require('react');
 import { SafeAreaView, View } from 'react-native';
 import { EnvelopeSimple, X } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
