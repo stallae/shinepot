@@ -24,7 +24,7 @@ const ViewMessage: React.FC<ScreenProps> = () => {
 
   const message = deserializeMessage(rawMessage);
 
-  const publishDate = 'toDate' in message.publish_date 
+  const publishDate = message.publish_date && 'toDate' in message.publish_date
     ? message.publish_date.toDate() 
     : new Date();
   const now = new Date();

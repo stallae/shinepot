@@ -100,7 +100,7 @@ export const filterMessages = (
   // Apply date filter (multiple selections)
   if (filters.activeDateFilter.length > 0) {
     filtered = filtered.filter((message: Messages) => {
-      const publishDate = 'toDate' in message.publish_date ? message.publish_date.toDate() : new Date();
+      const publishDate = message.publish_date && 'toDate' in message.publish_date ? message.publish_date.toDate() : new Date();
       return filters.activeDateFilter.some(dateFilter => {
         switch (dateFilter) {
           case 'today': {

@@ -1,17 +1,17 @@
 import {useEffect, useState} from 'react';
 import {getUserMemories} from '../services/memoryService';
-import {Memory} from '../interfaces/messages';
+import {Messages} from '../interfaces/messages';
 import useAuth from './useAuth';
 
 interface UseMemoriesReturn {
-  memories: Memory[];
+  memories: Messages[];
   isLoading: boolean;
   error: Error | null;
   refetch: () => void;
 }
 
 const useMemories = (): UseMemoriesReturn => {
-  const [memories, setMemories] = useState<Memory[]>([]);
+  const [memories, setMemories] = useState<Messages[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   const {user, isAuthenticated} = useAuth();

@@ -19,7 +19,7 @@ const MessageCard: React.FC<MessageCardProps> = ({message, onPress}) => {
 
   const isLocked = message.status === 'locked';
   
-  const publishDate = 'toDate' in message.publish_date 
+  const publishDate = message.publish_date && 'toDate' in message.publish_date
     ? message.publish_date.toDate() 
     : new Date();
   const now = new Date();
@@ -28,7 +28,7 @@ const MessageCard: React.FC<MessageCardProps> = ({message, onPress}) => {
   const shouldBlock = isFuture || isLocked;
 
   const handlePress = () => {
-    const checkDate = 'toDate' in message.publish_date 
+    const checkDate = message.publish_date && 'toDate' in message.publish_date
       ? message.publish_date.toDate() 
       : new Date();
     const checkNow = new Date();

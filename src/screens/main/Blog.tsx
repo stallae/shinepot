@@ -1,10 +1,9 @@
-import {View, SafeAreaView, FlatList, Text, Pressable, ScrollView} from 'react-native';
+import {View, SafeAreaView, FlatList, Text, Pressable, ScrollView, ActivityIndicator} from 'react-native';
 import {ScreenProps} from '../../navigation/types';
 import {useMemo, useState} from 'react';
 import useColors from '../../hooks/useColors';
 import * as React from 'react'
 import {Header, MessageCard, NewMessageButton} from '../../components';
-import {_messages} from '../../_mock/messages/_mocked-messages';
 import {Messages} from '../../interfaces/messages';
 import {Funnel} from 'phosphor-react-native';
 import {TabFilterType, TAB_FILTER_OPTIONS} from '../../constants/filter';
@@ -21,9 +20,14 @@ import {
 } from '../../constants/filter';
 import {ROUTES} from '../../navigation/roots';
 import {serializeMessage} from '../../utils/messageSerialization';
+import useMemories from '../../hooks/useMemories';
+import useAuth from '../../hooks/useAuth';
 
 const Blog: React.FC<ScreenProps> = ({navigation}) => {
   const {colors} = useColors();
+  const {user} = useAuth();
+  const {memories: allMessages, isLoading: isLoadingMessages, error: memoryError} = useMemories();
+  
   const [activeTabFilter, setActiveTabFilter] = useState<TabFilterType>('all');
   const [activeStatusFilter, setActiveStatusFilter] = useState<StatusFilterType | null>(null);
   const [activeModalMessageFilter, setActiveModalMessageFilter] = useState<ModalMessageFilterType | null>(null);
@@ -31,6 +35,8 @@ const Blog: React.FC<ScreenProps> = ({navigation}) => {
   const [activeContentFilter, setActiveContentFilter] = useState<ContentFilterType[]>([]);
   const [activeDateFilter, setActiveDateFilter] = useState<DateFilterType[]>([]);
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+
+  const errorMessages = memoryError?.message || null;
 
   const handleTabFilterChange = (filter: TabFilterType) => {
     setActiveTabFilter(filter);
@@ -56,8 +62,8 @@ const Blog: React.FC<ScreenProps> = ({navigation}) => {
     }
   };
 
-  // TODO: Replace with actual current user ID from auth context
-  const currentUserId = '1';
+
+  const currentUserId = user?.uid || '1';
 
   const userMessages = useMemo(() => {
     const filterState: FilterState = {
@@ -68,7 +74,7 @@ const Blog: React.FC<ScreenProps> = ({navigation}) => {
       activeContentFilter,
       activeDateFilter,
     };
-    return filterMessages(_messages, currentUserId, filterState);
+    return filterMessages(allMessages, currentUserId, filterState);
   }, [
     currentUserId,
     activeTabFilter,
@@ -77,6 +83,7 @@ const Blog: React.FC<ScreenProps> = ({navigation}) => {
     activeModalTypeFilter,
     activeContentFilter,
     activeDateFilter,
+    allMessages,
   ]);
 
   const handleClearAllFilters = () => {
@@ -124,7 +131,7 @@ const Blog: React.FC<ScreenProps> = ({navigation}) => {
   };
 
   const renderMessage = ({item}: {item: Messages}) => {
-    const publishDate = 'toDate' in item.publish_date 
+    const publishDate = item.publish_date && 'toDate' in item.publish_date
       ? item.publish_date.toDate() 
       : new Date();
     const now = new Date();
@@ -133,7 +140,7 @@ const Blog: React.FC<ScreenProps> = ({navigation}) => {
     const shouldBlock = isFuture || isLocked;
     
     const handleMessagePress = () => {
-      const checkDate = 'toDate' in item.publish_date 
+      const checkDate = item.publish_date && 'toDate' in item.publish_date
         ? item.publish_date.toDate() 
         : new Date();
       const checkNow = new Date();
@@ -216,7 +223,24 @@ const Blog: React.FC<ScreenProps> = ({navigation}) => {
           onRemoveDateFilter={handleRemoveDateFilter}
         />
 
-        {userMessages.length === 0 ? (
+        {isLoadingMessages ? (
+          <View className="flex-1 justify-center items-center">
+            <ActivityIndicator size="large" color={colors.textPrimary} />
+          </View>
+        ) : errorMessages ? (
+          <View className="flex-1 justify-center items-center px-4">
+            <Text
+              className="font-inter text-lg font-semibold text-center"
+              style={{color: colors.textPrimary}}>
+              Error loading messages
+            </Text>
+            <Text
+              className="font-inter text-base text-center mt-2"
+              style={{color: colors.textPrimary, opacity: 0.5}}>
+              {errorMessages}
+            </Text>
+          </View>
+        ) : userMessages.length === 0 ? (
           <View className="flex-1 justify-center items-center px-4">
             <Text
               className="font-inter text-xl font-semibold text-center"
