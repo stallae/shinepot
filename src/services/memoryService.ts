@@ -1,22 +1,9 @@
 import firestore from '@react-native-firebase/firestore';
 import { Messages } from '../interfaces/messages';
-
+import { ensureUserExists } from './userService';
 
 // TO  DO : Ori, porque essa funcao ta aqui e nao em UserService? 
-const ensureUserExists = async (userId: string, userEmail: string): Promise<void> => {
-    const userRef = firestore().collection('users').doc(userId);
-    const userDoc = await userRef.get();
-    
-    if (!userDoc.exists) {
-        console.log(`[MemoryService] User document not found, creating for ${userId}`);
-        await userRef.set({
-            uid: userId,
-            email: userEmail,
-            createdAt: firestore.FieldValue.serverTimestamp(),
-            lastLogin: firestore.FieldValue.serverTimestamp(),
-        }, { merge: true });
-    }
-};
+
 
 
 export const addMemory = async (
