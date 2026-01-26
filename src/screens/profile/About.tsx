@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, Text, SafeAreaView, ScrollView } from 'react-native';
-import { APP_VERSION } from '../../_mock/appInfo';
+import { APP_INFO } from '../../constants/appInfo';
 import { APP_CONTENT, CONTACT_INFO } from '../../constants/aboutContent';
 import useColors from '../../hooks/useColors';
 import BackButton from '../../components/global/buttons/backButton';
@@ -46,9 +46,10 @@ const About = () => {
                 </View>
 
                 <View className="mb-10">
-                    <Text className="text-lg font-bold mb-2" style={{ color: colors.textPrimary }}>{APP_VERSION.title}</Text>
-                    <Text className="text-base" style={{ color: colors.textPrimary, opacity: 0.7 }}>Version: {APP_VERSION.number}</Text>
-                    <Text className="text-base" style={{ color: colors.textPrimary, opacity: 0.7 }}>Last Update: {APP_VERSION.lastUpdate}</Text>
+                    <Text className="text-lg font-bold mb-2" style={{ color: colors.textPrimary }}>App Version</Text>
+                    <Text className="text-base" style={{ color: colors.textPrimary, opacity: 0.7 }}>Version: {APP_INFO.version}</Text>
+                    <Text className="text-base" style={{ color: colors.textPrimary, opacity: 0.7 }}>Last Update: {new Date(APP_INFO.lastUpdate).toLocaleDateString()}</Text>
+                
                 </View>
             </ScrollView>
         </SafeAreaView>
