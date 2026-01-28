@@ -1,12 +1,14 @@
 import * as React from 'react';
 import {View, Text, Pressable, StyleSheet} from 'react-native';
-import {Messages} from '../../../interfaces/messages';
+import {PublicMessage, PrivateMessage, RandomMessage} from '../../../interfaces/messages/Messages';
 import useColors from '../../../hooks/useColors';
 import {Lock} from 'phosphor-react-native';
 import {ProfilePicture} from '../../index';
 
+type Message = PublicMessage | RandomMessage | PrivateMessage;
+
 interface MessageCardProps {
-  message: Messages;
+  message: Message;
   onPress?: () => void;
 }
 
@@ -14,7 +16,7 @@ const MessageCard: React.FC<MessageCardProps> = ({message, onPress}) => {
   const {colors} = useColors();
 
   const getMessageTypeDescription = () => {
-    return `This a ${message.type} message.`;
+    return `This a ${message.format} message.`;
   };
 
   const isLocked = message.status === 'locked';

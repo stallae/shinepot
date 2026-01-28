@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import useColors from '../../../hooks/useColors';
-import { Messages } from '../../../interfaces/messages';
+import { RandomMessage } from '../../../interfaces/messages/Messages';
 import { ArrowClockwise, PaperPlaneRight } from 'phosphor-react-native';
 import { useNavigation } from '@react-navigation/native';
 import { CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList, NewMessageStackParamList, ROUTES, NewMessageData } from '../../../navigation/roots';
 
+type Message = RandomMessage;
+
 interface RandomMessageFooterProps {
-  message: Messages;
+  message: Message;
 }
 
 type NavigationProp = CompositeNavigationProp<
@@ -25,8 +27,8 @@ const RandomMessageFooter: React.FC<RandomMessageFooterProps> = ({
 
   const handleReply = () => {
     const replyData: Omit<NewMessageData, 'title'> = {
-      contentType: message.type,
-      visibility: 'random',
+      contentType: message.format,
+      messageType: 'random',
       date: new Date().toISOString(),
     };
     

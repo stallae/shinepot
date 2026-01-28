@@ -1,17 +1,20 @@
 import * as React from 'react';
 import { View, Image, ScrollView, Text } from 'react-native';
 import useColors from '../../../../hooks/useColors';
-import { Messages } from '../../../../interfaces/messages';
+import {PublicMessage, PrivateMessage, RandomMessage} from '../../../../interfaces/messages/Messages';
+
+
+type Message = PublicMessage | RandomMessage | PrivateMessage;
 
 interface ImageMessageContentProps {
-  message: Messages;
+  message: Message;
 }
 
 const ImageMessageContent: React.FC<ImageMessageContentProps> = ({ message }) => {
   const { colors } = useColors();
 
   // TODO: Handle multiple images if message contains an array of images
-  const imageUri = message.mediaUrl || '';
+  const imageUri = message.media_URL || '';
 
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>

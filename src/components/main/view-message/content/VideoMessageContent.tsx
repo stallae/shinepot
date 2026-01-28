@@ -3,19 +3,22 @@ import * as React from 'react'
 import { View, Image, Pressable, Text } from 'react-native';
 import { Play } from 'phosphor-react-native';
 import useColors from '../../../../hooks/useColors';
-import { Messages } from '../../../../interfaces/messages';
+import {PublicMessage, PrivateMessage, RandomMessage} from '../../../../interfaces/messages/Messages';
+
+
+type Message = PublicMessage | RandomMessage | PrivateMessage;
 
 interface VideoMessageContentProps {
-  message: Messages;
+  message: Message;
 }
 
 const VideoMessageContent: React.FC<VideoMessageContentProps> = ({ message }) => {
   const { colors } = useColors();
-  const [thumbnailUri] = useState(message.mediaUrl || '');
+  const [thumbnailUri] = useState(message.media_URL || '');
 
   const handlePlay = () => {
     // TODO: Implement video playback logic
-    console.log('Play video:', message.mediaUrl);
+    console.log('Play video:', message.media_URL);
   };
 
   return (

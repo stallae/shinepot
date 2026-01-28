@@ -3,10 +3,13 @@ import * as React from 'react'
 import { View, Pressable } from 'react-native';
 import { Play, Pause } from 'phosphor-react-native';
 import useColors from '../../../../hooks/useColors';
-import { Messages } from '../../../../interfaces/messages';
+import {PublicMessage, PrivateMessage, RandomMessage} from '../../../../interfaces/messages/Messages';
+
+
+type Message = PublicMessage | RandomMessage | PrivateMessage;
 
 interface AudioMessageContentProps {
-  message: Messages;
+  message: Message;
 }
 
 const AudioMessageContent: React.FC<AudioMessageContentProps> = ({ message }) => {
@@ -15,7 +18,7 @@ const AudioMessageContent: React.FC<AudioMessageContentProps> = ({ message }) =>
 
   const handlePlayPause = () => {
     setIsPlaying(!isPlaying);
-    console.log('isPlaying', message.mediaUrl);
+    console.log('isPlaying', message.media_URL);
     // TODO: Implement audio playback logic
   };
 

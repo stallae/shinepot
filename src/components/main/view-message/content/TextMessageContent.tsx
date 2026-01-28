@@ -1,16 +1,18 @@
 import * as React from 'react';
 import { Text, ScrollView } from 'react-native';
 import useColors from '../../../../hooks/useColors';
-import { Messages } from '../../../../interfaces/messages';
+import {PublicMessage, PrivateMessage, RandomMessage} from '../../../../interfaces/messages/Messages';
+
+type Message = PublicMessage | RandomMessage | PrivateMessage;
 
 interface TextMessageContentProps {
-  message: Messages;
+  message: Message;
 }
 
 const TextMessageContent: React.FC<TextMessageContentProps> = ({ message }) => {
   const { colors } = useColors();
 
-  const messageText = message.mediaUrl || 'Message content will be displayed here...';
+  const messageText = message.description || 'Message content will be displayed here...';
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>

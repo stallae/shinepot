@@ -5,17 +5,20 @@ import TextMessageContent from './content/TextMessageContent';
 import AudioMessageContent from './content/AudioMessageContent';
 import VideoMessageContent from './content/VideoMessageContent';
 import ImageMessageContent from './content/ImageMessageContent';
-import { Messages } from '../../../interfaces/messages';
+import {PublicMessage, PrivateMessage, RandomMessage} from '../../../interfaces/messages/Messages';
+
+
+type Message = PublicMessage | RandomMessage | PrivateMessage;
 
 interface MessageContentViewProps {
-  message: Messages;
+  message: Message;
 }
 
 const MessageContentView: React.FC<MessageContentViewProps> = ({ message }) => {
   const { colors } = useColors();
 
   const renderContent = () => {
-    switch (message.type) {
+    switch (message.format) {
       case 'text':
         return <TextMessageContent message={message} />;
       case 'audio':
