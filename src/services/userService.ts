@@ -1,7 +1,7 @@
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { User } from '../interfaces/auth';
+import { User } from '../interfaces/user';
 
 function isFirestoreError(error: unknown): error is { code: string; message?: string } {
     return (
@@ -18,34 +18,28 @@ export const createOrUpdateUser = async (user: FirebaseAuthTypes.User) => {
 
     try {
         await userRef.update({
-            lastLogin: firestore.FieldValue.serverTimestamp(),
+            last_login: firestore.FieldValue.serverTimestamp(),
         });
         console.log('[UserService] User updated successfully');
     } catch (error: unknown) {
         if (isFirestoreError(error) && (error.code === 'firestore/not-found' || error.message?.includes('not-found'))) {
             console.log('[UserService] User not found, creating new record...');
             try {
-                // Initial stats and address placeholders could be set here if needed
                 const newUser: User = {
-                    uid: user.uid,
-                    email: user.email,
-                    displayName: user.displayName,
-                    photoURL: user.photoURL,
-                    createdAt: firestore.FieldValue.serverTimestamp(),
-                    lastLogin: firestore.FieldValue.serverTimestamp(),
-                    phoneNumber: user.phoneNumber,
-                    plan: 'free',
-                    stripeCustomerId: null,
-                    stripeSubscriptionId: null,
-                    stripePriceId: null,
-                    stripeCurrentPeriodEnd: null,
-                    stripeCurrentPeriodStart: null,
-                    stats: {
-                        sent: 0,
-                        scheduled: 0,
-                        received: 0,
-                        saved: 0,
-                    }
+                    id: user.uid,
+                    email: user.email || '',
+                    name: user.displayName || '',
+                    photo_URL: user.photoURL || '',
+                    created_at: firestore.FieldValue.serverTimestamp(),
+                    last_login: firestore.FieldValue.serverTimestamp(),
+                    phone_number: user.phoneNumber || '',
+                    allow_random: true,
+                    address: {
+                        id: `address_${user.uid}`,
+                    },
+                    paid_messages: 0,
+                    stripe_customer_id: '',
+                    liked: [],
                 };
                 await userRef.set(newUser);
                 console.log('[UserService] User created successfully');
@@ -81,7 +75,7 @@ export const uploadProfileImage = async (userId: string, imageUri: string): Prom
         const url = await reference.getDownloadURL();
         
         await firestore().collection('users').doc(userId).update({
-            photoURL: url 
+            photo_URL: url 
         });
         
         return url;
@@ -106,12 +100,12 @@ export const ensureUserExists = async (userId: string, userEmail: string): Promi
     const userDoc = await userRef.get();
     
     if (!userDoc.exists) {
-        console.log(`[MemoryService] User document not found, creating for ${userId}`);
+        console.log(`[UserService] User document not found, creating for ${userId}`);
         await userRef.set({
-            uid: userId,
+            id: userId,
             email: userEmail,
-            createdAt: firestore.FieldValue.serverTimestamp(),
-            lastLogin: firestore.FieldValue.serverTimestamp(),
+            created_at: firestore.FieldValue.serverTimestamp(),
+            last_login: firestore.FieldValue.serverTimestamp(),
         }, { merge: true });
     }
 };
@@ -122,7 +116,7 @@ export const checkIfPhoneNumberExists = async (phoneNumber: string): Promise<boo
     try {
         const querySnapshot = await firestore()
             .collection('users')
-            .where('phoneNumber', '==', phoneNumber)
+            .where('phone_number', '==', phoneNumber)
             .get();
 
         return !querySnapshot.empty;

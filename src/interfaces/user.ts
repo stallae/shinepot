@@ -1,31 +1,34 @@
-import {PaidServices} from './providers';
+
 import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 
 export interface User {
   id: string;
   email: string;
-  displayName: string;
-  photoURL: string;
-  createdAt: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
-  lastLogin: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
-  phoneNumber: string;
-  plan: 'free';
-  stripeCustomerId: null;
-  stripeSubscriptionId: null;
-  stripePriceId: null;
-  stripeCurrentPeriodEnd: null;
-  stripeCurrentPeriodStart: null;
-  allow_random_messages: boolean;
+  name: string;
+  photo_URL: string;
+  created_at: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
+  last_login: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
+  phone_number: string;
+  allow_random: boolean;
   address: Address;
-  paid_services?: PaidServices[];
+  paid_messages?: number;
+  stripe_customer_id?: string;
+  liked?: UserLike[];
 }
 
 export interface Address {
-  id: number;
+  id: string;
   country?: string;
   state?: string;
   city?: string;
   street?: string;
+  complement?: string;
   zip_code?: string;
+  additional?: string;
+}
+
+export interface UserLike {
+  id: string;
+  message_id: string;
 }
 
