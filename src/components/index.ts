@@ -17,6 +17,7 @@ export { default as FilterTab } from './main/filter/FilterTab';
 export { default as FilterChips } from './main/filter/FilterChips';
 export { default as FilterModal } from './main/filter/FilterModal';
 export { default as FilterChip } from './main/filter/FilterChip';
+export { default as TabFooter } from './main/tab-footer/TabFooter';
 
 export { default as MessageViewHeader } from './main/view-message/MessageViewHeader';
 export { default as MessageContentView } from './main/view-message/MessageContentView';

@@ -3,9 +3,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { RootStackParamList, ROUTES } from './roots';
 import OnBoardStart from '../screens/start/onBoard/OnBoardStart';
 import AuthNavigation from './AuthNavigation';
-import Blog from '../screens/main/Blog';
+import Explore from '../screens/main/Explore';
+import Private from '../screens/main/Private';
+import Threads from '../screens/main/Threads';
 import NewMessageNavigation from './NewMessageNavigation';
-import ViewMessage from '../screens/main/view/ViewMessage';
 import Profile from '../screens/profile/Profile';
 import PersonalInformation from '../screens/profile/personal-info/PersonalInformation';
 import PersonalInfoDetails from '../screens/profile/personal-info/PersonalInfoDetails';
@@ -33,9 +34,43 @@ const RootNavigation = () => {
       initialRouteName={ROUTES.OnBoardStart}>
       <Stack.Screen name={ROUTES.OnBoardStart} component={OnBoardStart} />
       <Stack.Screen name={ROUTES.Auth} component={AuthNavigation} />
-      <Stack.Screen name={ROUTES.Blog} component={Blog} />
+      <Stack.Screen 
+        name={ROUTES.Blog} 
+        component={Explore}
+        options={{ 
+          animationEnabled: false,
+          cardStyleInterpolator: ({ current }) => ({
+            cardStyle: {
+              opacity: current.progress,
+            },
+          }),
+        }}
+      />
+      <Stack.Screen 
+        name={ROUTES.Private} 
+        component={Private}
+        options={{ 
+          animationEnabled: false,
+          cardStyleInterpolator: ({ current }) => ({
+            cardStyle: {
+              opacity: current.progress,
+            },
+          }),
+        }}
+      />
+      <Stack.Screen 
+        name={ROUTES.Threads} 
+        component={Threads}
+        options={{ 
+          animationEnabled: false,
+          cardStyleInterpolator: ({ current }) => ({
+            cardStyle: {
+              opacity: current.progress,
+            },
+          }),
+        }}
+      />
       <Stack.Screen name={ROUTES.NewMessageFlow} component={NewMessageNavigation} />
-      <Stack.Screen name={ROUTES.ViewMessage} component={ViewMessage} />
       <Stack.Screen name={ROUTES.Profile} component={Profile} />
       <Stack.Screen name={ROUTES.PersonalInformation} component={PersonalInformation} />
       <Stack.Screen name={ROUTES.PersonalInfoDetails} component={PersonalInfoDetails} />

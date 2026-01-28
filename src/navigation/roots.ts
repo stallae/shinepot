@@ -1,20 +1,14 @@
-import { ModalTypeFilterType } from '../constants/filter';
-import { Messages, MemoryComments, MemoryLikes, MemoryRecipients } from '../interfaces/messages';
-import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
+import { type NewMessageData } from "../interfaces";
+import { type SerializedPublicMessage } from "../utils/messageSerialization";
 
-export type SerializedMessages = Omit<Messages, 'createdAt' | 'memoryLikes' | 'memoryComments' | 'memoryRecipients'> & {
-  createdAt: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
-  memoryLikes?: Array<Omit<MemoryLikes, 'created_at'> & { created_at: string | Date }>;
-  memoryComments?: Array<Omit<MemoryComments, 'created_at'> & { created_at: string | Date }>;
-  memoryRecipients?: MemoryRecipients[];
-};
 
 const ROOT = {
   OnBoardStart: 'OnBoardStart',
   Auth: 'Auth',
   Blog: 'Blog',
+  Private: 'Private',
+  Threads: 'Threads',
   NewMessageFlow: 'NewMessageFlow',
-  ViewMessage: 'ViewMessage',
 } as const;
 
 const PROFILE = {
@@ -87,14 +81,15 @@ export const ROUTES = {
 export type RootStackParamList = {
   OnBoardStart: undefined;
   Auth: undefined;
-  Blog: undefined;
+  Blog: { message: SerializedPublicMessage } | undefined;
+  Private: undefined;
+  Threads: undefined;
   NewMessageFlow:
   | undefined
   | {
     screen: 'NewMessageText' | 'NewMessageImage' | 'NewMessageAudio' | 'NewMessageVideo' | 'NewMessage' | 'NewMessageTitle' | 'NewMessageRecipient' | 'MessageConfirmation';
     params?: NewMessageStackParamList['NewMessageText' | 'NewMessageImage' | 'NewMessageAudio' | 'NewMessageVideo' | 'NewMessage' | 'NewMessageTitle' | 'NewMessageRecipient' | 'MessageConfirmation'];
   };
-  ViewMessage: { message: SerializedMessages };
   Profile: undefined;
   PaymentMethods: undefined;
   About: undefined;
@@ -126,18 +121,6 @@ export type AuthStackParamList = {
   [K in keyof typeof AUTH]: K extends 'LoginOtpPhone' ? { confirmation: any } : undefined;
 };
 
-export interface NewMessageData {
-  mood?: string;
-  contentType: string;
-  messageType: ModalTypeFilterType;
-  date: Date | string;
-  title?: string;
-  recipient?: {
-    type: 'self' | 'other';
-    email?: string;
-    phone?: string;
-  };
-}
 
 export type NewMessageStackParamList = {
   NewMessage: undefined;

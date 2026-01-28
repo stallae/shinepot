@@ -28,10 +28,15 @@ export const getPrivateMessagesByOwner = async (ownerId: string): Promise<Privat
     const querySnapshot = await firestore()
       .collection('private_messages')
       .where('owner_id', '==', ownerId)
-      .orderBy('created_at', 'desc')
       .get();
 
-    return querySnapshot.docs.map(doc => doc.data() as PrivateMessage);
+    // Sort in memory instead of using orderBy to avoid index requirement
+    const messages = querySnapshot.docs.map(doc => doc.data() as PrivateMessage);
+    return messages.sort((a, b) => {
+      const aTime = a.created_at && 'toMillis' in a.created_at ? a.created_at.toMillis() : 0;
+      const bTime = b.created_at && 'toMillis' in b.created_at ? b.created_at.toMillis() : 0;
+      return bTime - aTime; // Descending order (newest first)
+    });
   } catch (error) {
     console.error('[PrivateMessageService] Error fetching private messages by owner:', error);
     throw error;
