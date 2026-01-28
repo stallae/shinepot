@@ -1,5 +1,5 @@
 import firestore from '@react-native-firebase/firestore';
-import { PrivateMessage } from '../interfaces/messages/Messages';
+import type { PrivateMessage } from '../interfaces';
 
 export const addPrivateMessage = async (
   messageData: Omit<PrivateMessage, 'id' | 'created_at'>,

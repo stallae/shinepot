@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {getRandomMessages} from '../services/randomMessageService';
-import {RandomMessage} from '../interfaces/messages/RandomMessage';
+import type { RandomMessage } from '../interfaces';
 import useAuth from './useAuth';
 
 interface UseRandomMessagesReturn {

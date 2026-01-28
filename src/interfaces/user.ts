@@ -6,6 +6,7 @@ export interface User {
   email: string;
   name: string;
   photo_URL: string;
+  birthday?: string;
   created_at: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
   last_login: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
   phone_number: string;

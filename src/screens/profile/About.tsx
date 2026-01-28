@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { View, Text, SafeAreaView, ScrollView } from 'react-native';
-import { APP_INFO } from '../../constants/appInfo';
-import { APP_CONTENT, CONTACT_INFO } from '../../constants/aboutContent';
 import useColors from '../../hooks/useColors';
-import BackButton from '../../components/global/buttons/backButton';
+import { BackButton } from '../../components';
 import { ArrowLeft } from 'phosphor-react-native';
 import { useNavigation } from '@react-navigation/native';
+import { APP_INFO, APP_CONTENT, CONTACT_INFO } from '../../constants';
 
 const About = () => {
     const { colors } = useColors();

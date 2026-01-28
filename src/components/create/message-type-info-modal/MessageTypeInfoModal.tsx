@@ -3,7 +3,7 @@ import { View, Text, Pressable, Modal, ScrollView } from 'react-native';
 import { X } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
 import { MessageTypeInfoModalProps } from './interfaces/messageTypeInfoModalInterface';
-import { MESSAGE_TYPES_INFO } from '../../../constants/messageTypes';
+import { MESSAGE_TYPES_INFO } from '../../../constants';
 
 const MessageTypeInfoModal: React.FC<MessageTypeInfoModalProps> = ({
   visible,

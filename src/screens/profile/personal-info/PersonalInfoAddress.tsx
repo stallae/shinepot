@@ -3,15 +3,11 @@ import * as React from 'react'
 import { SafeAreaView, View, Text, ScrollView } from 'react-native';
 import { ArrowLeft } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
-import BackButton from '../../../components/global/buttons/backButton';
-import GeneralInput from '../../../components/global/inputs/generalImput';
-import WideButton from '../../../components/global/buttons/wideButton';
-import Dropdown from '../../../components/global/dropdown/dropdown';
+import { BackButton, GeneralInput, WideButton, Dropdown } from '../../../components';
 import { useNavigation } from '@react-navigation/native';
-import { countriesList } from '../../../constants/addressData';
+import { countriesList } from '../../../constants';
 import { getUser, updateUser } from '../../../services/userService';
 import auth from '@react-native-firebase/auth';
-import { User } from '../../../interfaces/auth';
 
 const PersonalInfoAddress = () => {
   const { colors } = useColors();
@@ -28,12 +24,12 @@ const PersonalInfoAddress = () => {
         const currentUser = auth().currentUser;
         if (currentUser) {
             const userData = await getUser(currentUser.uid);
-            if (userData && userData.addressDetails) {
-                setAddress(userData.addressDetails.street || '');
-                setCity(userData.addressDetails.city || '');
-                setPostalCode(userData.addressDetails.zipCode || '');
-                setState(userData.addressDetails.state || '');
-                setCountry(userData.addressDetails.country || '');
+            if (userData && userData.address) {
+                setAddress(userData.address.street || '');
+                setCity(userData.address.city || '');
+                setPostalCode(userData.address.zip_code || '');
+                setState(userData.address.state || '');
+                setCountry(userData.address.country || '');
             }
         }
     };
@@ -53,18 +49,18 @@ const PersonalInfoAddress = () => {
     const currentUser = auth().currentUser;
     if (!currentUser) return;
 
-    const addressDetails = {
+    const addressData = {
+        id: '',
         street: address,
         city,
-        zipCode: postalCode,
+        zip_code: postalCode,
         state,
         country: country.toString(),
-        number: '', // Add fields if UI supports them later
         complement: ''
     };
 
-    const updates: Partial<User> = {
-        addressDetails
+    const updates = {
+        address: addressData
     };
 
     try {

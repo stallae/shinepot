@@ -3,7 +3,7 @@ import * as React from 'react'
 import { View, Pressable } from 'react-native';
 import { Play, Pause } from 'phosphor-react-native';
 import useColors from '../../../../hooks/useColors';
-import {PublicMessage, PrivateMessage, RandomMessage} from '../../../../interfaces/messages/Messages';
+import {PublicMessage, PrivateMessage, RandomMessage} from '../../../../interfaces/Messages';
 
 
 type Message = PublicMessage | RandomMessage | PrivateMessage;

@@ -2,11 +2,10 @@ import * as React from 'react';
 import { SafeAreaView, View } from 'react-native';
 import { EnvelopeSimple, X } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
-import Card from '../../../components/global/card/card';
+import { Card, BackButton } from '../../../components';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigation/roots';
-import BackButton from '../../../components/global/buttons/backButton';
 
 const UpdateEmailConfirm = () => {
     const { colors } = useColors();

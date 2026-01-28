@@ -1,7 +1,7 @@
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { User } from '../interfaces/user';
+import type { User } from '../interfaces';
 
 function isFirestoreError(error: unknown): error is { code: string; message?: string } {
     return (

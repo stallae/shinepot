@@ -5,7 +5,7 @@ import TextMessageContent from './content/TextMessageContent';
 import AudioMessageContent from './content/AudioMessageContent';
 import VideoMessageContent from './content/VideoMessageContent';
 import ImageMessageContent from './content/ImageMessageContent';
-import {PublicMessage, PrivateMessage, RandomMessage} from '../../../interfaces/messages/Messages';
+import type { PublicMessage, PrivateMessage, RandomMessage } from '../../../interfaces';
 
 
 type Message = PublicMessage | RandomMessage | PrivateMessage;

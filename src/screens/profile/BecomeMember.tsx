@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
 import useColors from '../../hooks/useColors';
-import BackButton from '../../components/global/buttons/backButton';
+import { BackButton } from '../../components';
 import { X } from 'phosphor-react-native';
 import { useNavigation } from '@react-navigation/native';
 

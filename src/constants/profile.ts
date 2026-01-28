@@ -1,6 +1,6 @@
-import { PaperPlaneTilt, CalendarHeart, HandArrowDown, Heart, User, CreditCard, Shield, Info, Sparkle } from 'phosphor-react-native';
+import { User, CreditCard, Shield, Info, Sparkle } from 'phosphor-react-native';
 import { ROUTES } from '../navigation/roots';
-import { ProfileMenuItem } from '../interfaces/profile';
+import type { ProfileMenuItem } from '../interfaces';
 
 export const menuItems: ProfileMenuItem[] = [
     { title: 'Become a premium', icon: Sparkle, route: ROUTES.BecomeMember, highlight: true },

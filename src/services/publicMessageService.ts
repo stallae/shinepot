@@ -1,5 +1,5 @@
 import firestore from '@react-native-firebase/firestore';
-import { PublicMessage, MessageStats, MessageComment } from '../interfaces/messages/Messages';
+import type { PublicMessage, MessageStats, MessageComment } from '../interfaces';
 
 export const addPublicMessage = async (
   messageData: Omit<PublicMessage, 'id' | 'created_at' | 'stats'>,

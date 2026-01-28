@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SafeAreaView, View, Text } from 'react-native';
 import { X } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
-import BackButton from '../../../components/global/buttons/backButton';
+import { BackButton } from '../../../components';
 import { useNavigation } from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 

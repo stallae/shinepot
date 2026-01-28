@@ -1,44 +1,26 @@
-import { Messages } from '../interfaces/messages';
-import { SerializedMessages } from '../navigation/roots';
+import { PublicMessage, RandomMessage, PrivateMessage } from '../interfaces';
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 
-export const serializeMessage = (message: Messages): SerializedMessages => {
-  return {
-    ...message,
-    createdAt: 'toDate' in message.createdAt 
-      ? message.createdAt 
-      : message.createdAt,
-    memoryLikes: message.memoryLikes?.map(like => ({
-      ...like,
-      created_at: like.created_at instanceof Date
-        ? like.created_at.toISOString()
-        : like.created_at,
-    })),
-    memoryComments: message.memoryComments?.map(comment => ({
-      ...comment,
-      created_at: comment.created_at instanceof Date
-        ? comment.created_at.toISOString()
-        : comment.created_at,
-    })),
-    memoryRecipients: message.memoryRecipients,
-  };
+type Message = PublicMessage | RandomMessage | PrivateMessage;
+
+export type SerializedPublicMessage = Omit<PublicMessage, 'created_at'> & {
+  created_at: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
 };
-export const deserializeMessage = (message: SerializedMessages): Messages => {
+
+
+export const serializeMessage = (message: Message): SerializedPublicMessage => {
   return {
     ...message,
-    createdAt: message.createdAt,
-    memoryLikes: message.memoryLikes?.map(like => ({
-      ...like,
-      created_at: typeof like.created_at === 'string'
-        ? new Date(like.created_at)
-        : like.created_at,
-    })),
-    memoryComments: message.memoryComments?.map(comment => ({
-      ...comment,
-      created_at: typeof comment.created_at === 'string'
-        ? new Date(comment.created_at)
-        : comment.created_at,
-    })),
-    memoryRecipients: message.memoryRecipients,
-  };
+    created_at: 'toDate' in message.created_at 
+      ? message.created_at 
+      : message.created_at,
+  } as SerializedPublicMessage;
+};
+
+export const deserializeMessage = (message: SerializedPublicMessage): Message => {
+  return {
+    ...message,
+    created_at: message.created_at,
+  } as Message;
 };
 

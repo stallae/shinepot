@@ -1,67 +1,88 @@
-import {User} from './user';
 import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
+import { Address } from './user';
+import type { ModalTypeFilterType } from '../constants';
 
-export type MemoryType = 'video' | 'image' | 'text' | 'audio';
-export type MemoryStatus = 'locked' | 'released' | 'canceled';
-export type MemoryVisibility = 'public' | 'private' | 'random' | 'invite';
-export type MemoryMood = 'happy' | 'sad' | 'love' | 'nostalgic';
-export type RecipientType = 'self' | 'other';
-export type ProviderType = 'WhatsApp' | 'Email' | 'SMS' | 'None';
 
-export interface Messages {
-    id?: string;
-    ownerId: string;
-    ownerEmail: string;
-    mood: MemoryMood;
-    type: MemoryType;
-    status: MemoryStatus;
-    visibility: MemoryVisibility;
-    publish_date: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
-    createdAt: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
-    title: string;
-    description: string;
-    mediaUrl: string;
-    thumbnailUrl?: string;
-    stats: {
-        views: number;
-        likes: number;
-        commentCount: number;
-    };
-    recipient?: {
-        type: RecipientType;
-        email?: string;
-        phone?: string;
-        provider?: ProviderType;
-    };
-    memoryLikes?: MemoryLikes[];
-    memoryComments?: MemoryComments[];
-    memoryRecipients?: MemoryRecipients[];
-    memoryThread?: MemoryThread;
+export type MessageMood = 'happy' | 'sad' | 'love' | 'nostalgic';
+export type MessageFormat = 'video' | 'image' | 'text' | 'audio';
+export type MessageStatus = 'locked' | 'released' | 'canceled';
+
+
+export interface NewMessageData {
+  mood?: string;
+  contentType: string;
+  messageType: ModalTypeFilterType;
+  date: Date | string;
+  title?: string;
+  recipient?: {
+    type: 'self' | 'other';
+    provider?: string;
+    email?: string;
+    phone?: string;
+    address?: Address;
+  };
 }
 
-export interface MemoryLikes {
-  id?: string;
-  user_id: number;
-  memory_id: number;
-  created_at: Date;
+interface BaseMessage {
+  id: string;
+  owner_id: string;
+  mood: MessageMood;
+  format: MessageFormat;
+  status: MessageStatus;
+  publish_date: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
+  created_at: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
+  title: string;
+  description: string;
+  media_URL: string;
 }
 
-export interface MemoryComments {
-  id: number;
-  user_id: number;
-  memory_id: number;
-  comment: string;
-  created_at: Date;
+export interface PublicMessage extends BaseMessage {
+  stats: MessageStats;
 }
 
-export interface MemoryRecipients {
-  id: number;
-  memory_id: number;
-  recipient_contact: User;
+export interface PrivateMessage extends BaseMessage {
+  recipient: Recipient;
 }
 
-export interface MemoryThread {
-  id: number;
-  memory_id: number;
-  parent_id: number;
+export interface RandomMessage extends BaseMessage {
+  thread_id: string;
+  index: number;
+}
+
+
+export interface Recipient {
+  id: string;
+  provider: string;
+  email?: string;
+  phone_number?: string;
+  address?: Address;
+}
+
+
+export interface MessageStats {
+  views: number;
+  likes: number;
+  comments: number;
+}
+
+export interface MessageLike {
+  id: string;
+  user_id: string;
+}
+
+export interface MessageComment {
+  id: string;
+  user_id: string;
+  created_at: FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.FieldValue;
+  text: string;
+  stats: CommentStats;
+}
+
+export interface CommentStats {
+  likes: number;
+}
+
+export interface CommentLike {
+  id: string;
+  user_id: string;
 }

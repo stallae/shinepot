@@ -1,7 +1,7 @@
 import {useContext, useEffect} from 'react';
-import {Colors, TColors} from '../assets/styles/theme.tsx';
-import {ThemeContext} from '../utils/themeContext.tsx';
-import useTheme from './useTheme.tsx';
+import {Colors, TColors} from '../assets/styles/theme';
+import {ThemeContext} from '../utils/themeContext';
+import useTheme from './useTheme';
 
 interface ColorType {
   colors: TColors;

@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {getPublicMessages} from '../services/publicMessageService';
-import {PublicMessage} from '../interfaces/messages/Messages';
+import type { PublicMessage } from '../interfaces';
 import useAuth from './useAuth';
 
 interface UsePublicMessagesReturn {

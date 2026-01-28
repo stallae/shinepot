@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {View, Text, Pressable, StyleSheet} from 'react-native';
-import {PublicMessage, PrivateMessage, RandomMessage} from '../../../interfaces/messages/Messages';
+import type { PublicMessage, PrivateMessage, RandomMessage } from '../../../interfaces';
 import useColors from '../../../hooks/useColors';
 import {Lock} from 'phosphor-react-native';
 import {ProfilePicture} from '../../index';

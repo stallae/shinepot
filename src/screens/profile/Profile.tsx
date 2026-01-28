@@ -1,18 +1,16 @@
 import * as React from 'react';
 import { View, Text, SafeAreaView, ScrollView, Image, Pressable } from 'react-native';
 import useColors from '../../hooks/useColors';
-import { X, PaperPlaneTilt, CalendarHeart, HandArrowDown, Heart } from 'phosphor-react-native';
+import { X } from 'phosphor-react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
-import BackButton from '../../components/global/buttons/backButton';
+import { BackButton, ProfileMenuButton } from '../../components';
 import { RootStackParamList } from '../../navigation/roots';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { menuItems } from '../../constants/profile';
-import ProfileMenuButton from '../../components/profile/ProfileMenuButton';
+import { menuItems } from '../../constants';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { getUser, uploadProfileImage } from '../../services/userService';
 import auth from '@react-native-firebase/auth';
-import { User } from '../../interfaces/auth';
-import { ProfileStats } from '../../interfaces/profile';
+import type { User } from '../../interfaces';
 
 const Profile = () => {
     const { colors } = useColors();
@@ -49,12 +47,7 @@ const Profile = () => {
         }
     };
 
-    const userStats: ProfileStats[] = [
-        { title: 'Sent', value: (user?.stats?.sent ?? 0).toString(), icon: PaperPlaneTilt },
-        { title: 'Scheduled', value: (user?.stats?.scheduled ?? 0).toString(), icon: CalendarHeart },
-        { title: 'Received', value: (user?.stats?.received ?? 0).toString(), icon: HandArrowDown },
-        { title: 'Saved', value: (user?.stats?.saved ?? 0).toString(), icon: Heart },
-    ];
+
 
     const handleLogout = async () => {
         try {
@@ -84,29 +77,15 @@ const Profile = () => {
                 <View className="items-center mb-8">
                     <Pressable onPress={handleImagePress} className="rounded-full overflow-hidden">
                         <Image 
-                            source={{ uri: user?.photoURL || 'https://via.placeholder.com/100' }} 
+                            source={{ uri: user?.photo_URL || 'https://via.placeholder.com/100' }} 
                             style={{ width: 100, height: 100 }} 
                             resizeMode="cover" 
                         />
                     </Pressable>
                     <Text className="text-2xl font-bold mt-4" style={{ color: colors.textPrimary }}>
-                        {user ? `${user.firstName || ''} ${user.lastName || ''}`.trim() || user.displayName || 'User' : 'Guest'}
+                        {user ? `${user.name || ''}` : 'Guest'}
                     </Text>
                 </View>
-
-                <Text className="text-base font-medium mb-4" style={{ color: colors.textPrimary, opacity: 0.5 }}>Account Stats</Text>
-                <View className="flex-row flex-wrap justify-between gap-y-4 mb-8">
-                    {userStats.map((stat, index) => (
-                        <View key={index} className="w-[48%] p-4 rounded-xl" style={{ backgroundColor: colors.secondary }}>
-                            <View className="flex-row items-center gap-2 mb-2">
-                                <stat.icon size={20} color={colors.textPrimary} weight="regular" style={{ opacity: 0.7 }} />
-                                <Text className="text-sm font-medium" style={{ color: colors.textPrimary }}>{stat.title}</Text>
-                            </View>
-                            <Text className="text-3xl font-bold" style={{ color: colors.textPrimary }}>{stat.value}</Text>
-                        </View>
-                    ))}
-                </View>
-
                 <Text className="text-base font-medium mb-4" style={{ color: colors.textPrimary, opacity: 0.5 }}>Profile</Text>
                 <View className="gap-6 mb-10">
                     {menuItems.map((item, index) => (

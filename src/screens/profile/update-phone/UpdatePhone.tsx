@@ -3,14 +3,11 @@ import { useState } from 'react';
 import { SafeAreaView, View, Text } from 'react-native';
 import { X } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
-import BackButton from '../../../components/global/buttons/backButton';
-import GeneralInput from '../../../components/global/inputs/generalImput';
-import WideButton from '../../../components/global/buttons/wideButton';
-import Dropdown from '../../../components/global/dropdown/dropdown';
+import { BackButton, GeneralInput, WideButton, Dropdown } from '../../../components';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList, ROUTES } from '../../../navigation/roots';
-import { countries } from '../../../constants/countries';
+import { countries } from '../../../constants';
 import auth from '@react-native-firebase/auth';
 
 const UpdatePhone = () => {

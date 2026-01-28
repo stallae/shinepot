@@ -1,5 +1,5 @@
 import firestore from '@react-native-firebase/firestore';
-import { RandomMessage } from '../interfaces/messages/Messages';
+import type { RandomMessage } from '../interfaces';
 
 
 export const addRandomMessage = async (

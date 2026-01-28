@@ -8,6 +8,7 @@ import {
     Platform,
     TextInput,
     Pressable,
+    ActivityIndicator,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -19,9 +20,11 @@ import { RouteProp } from '@react-navigation/native';
 import { ArrowLeft } from 'phosphor-react-native';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import { MemoryMood, MemoryType, MemoryVisibility } from '../../interfaces/messages';
-import { addMemory } from '../../services/memoryService';
-import { ActivityIndicator, Alert } from 'react-native';
+import type { MessageMood, MessageFormat } from '../../interfaces';
+import { addPublicMessage } from '../../services/publicMessageService';
+import { addRandomMessage, getNextThreadIndex } from '../../services/randomMessageService';
+import { addPrivateMessage } from '../../services/privateMessageService';
+import { Alert } from 'react-native';
 
 const NewMessageText: React.FC<ScreenProps> = () => {
     const { colors } = useColors();
@@ -55,7 +58,6 @@ const NewMessageText: React.FC<ScreenProps> = () => {
             Alert.alert('Error', 'Please enter a message before sending.');
             return;
         }
-
         setIsLoading(true);
         try {
             console.log('[NewMessageText] Saving message with data:', {
@@ -67,19 +69,60 @@ const NewMessageText: React.FC<ScreenProps> = () => {
                 recipient: data.recipient,
             });
 
-            await addMemory({
-                ownerId: currentUser.uid,
-                ownerEmail: currentUser.email || '',
-                mood: data.mood as MemoryMood,
-                type: data.contentType as MemoryType,
-                status: 'locked',
-                visibility: data.messageType as MemoryVisibility,
-                publish_date: firestore.Timestamp.fromDate(new Date(data.date)),
-                title: data.title || '',
-                description: messageContent,
-                mediaUrl: '',
-                recipient: data.recipient,
-            });
+            const messageType = data.messageType;
+            const publishDate = firestore.Timestamp.fromDate(new Date(data.date));
+
+            if (messageType === 'public') {
+                await addPublicMessage({
+                    owner_id: currentUser.uid,
+                    mood: data.mood as MessageMood,
+                    format: data.contentType as MessageFormat,
+                    status: 'locked',
+                    publish_date: publishDate,
+                    title: data.title || '',
+                    description: messageContent,
+                    media_URL: '',
+                });
+            } else if (messageType === 'random') {
+                const threadId = `thread_${currentUser.uid}_${Date.now()}`;
+                const nextIndex = await getNextThreadIndex(threadId);
+                
+                await addRandomMessage({
+                    owner_id: currentUser.uid,
+                    mood: data.mood as MessageMood,
+                    format: data.contentType as MessageFormat,
+                    status: 'locked',
+                    publish_date: publishDate,
+                    title: data.title || '',
+                    description: messageContent,
+                    media_URL: '',
+                    thread_id: threadId,
+                    index: nextIndex,
+                });
+            } else if (messageType === 'private') {
+                if (!data.recipient) {
+                    Alert.alert('Error', 'Recipient information is missing');
+                    return;
+                }
+
+                await addPrivateMessage({
+                    owner_id: currentUser.uid,
+                    mood: data.mood as MessageMood,
+                    format: data.contentType as MessageFormat,
+                    status: 'locked',
+                    publish_date: publishDate,
+                    title: data.title || '',
+                    description: messageContent,
+                    media_URL: '',
+                    recipient: {
+                        id: `recipient_${Date.now()}`,
+                        provider: data.recipient.provider || 'Email',
+                        email: data.recipient.email,
+                        phone_number: data.recipient.phone,
+                        address: data.recipient.address,
+                    },
+                });
+            }
 
             console.log('[NewMessageText] Message saved successfully');
             navigation.navigate(ROUTES.MessageConfirmation);

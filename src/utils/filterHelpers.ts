@@ -1,12 +1,12 @@
-import {Messages} from '../interfaces/messages';
-import {
+import type { PublicMessage } from '../interfaces';
+import type {
   TabFilterType,
   StatusFilterType,
   ModalMessageFilterType,
   ModalTypeFilterType,
   ContentFilterType,
   DateFilterType,
-} from '../constants/filter';
+} from '../constants';
 import {
   getStartOfDay,
   getEndOfDay,
@@ -28,17 +28,16 @@ export interface FilterState {
 }
 
 export const filterMessages = (
-  messages: Messages[],
+  messages: PublicMessage[],
   currentUserId: string,
   filters: FilterState,
-): Messages[] => {
-  let filtered: Messages[] = [];
+): PublicMessage[] => {
+  let filtered: PublicMessage[] = [];
   const now = new Date();
 
   const userRelevantMessages = messages.filter(
-    (message: Messages) =>
-      message.ownerId === currentUserId ||
-      message.memoryRecipients?.[0]?.recipient_contact?.id === currentUserId,
+    (message: PublicMessage) =>
+      message.owner_id === currentUserId,
   );
 
   filtered = userRelevantMessages;
@@ -47,59 +46,42 @@ export const filterMessages = (
   switch (filters.activeTabFilter) {
     case 'sent':
       filtered = filtered.filter(
-        (message: Messages) => message.ownerId === currentUserId,
+        (message: PublicMessage) => message.owner_id === currentUserId,
       );
       break;
     case 'received':
-      filtered = filtered.filter(
-        (message: Messages) =>
-          message.memoryRecipients?.[0]?.recipient_contact?.id ===
-          currentUserId,
-      );
+      // Public messages don't have recipients - skip this filter
+      filtered = [];
       break;
     default:
       break;
   }
 
-  // Apply modal message filter
   if (filters.activeModalMessageFilter) {
     switch (filters.activeModalMessageFilter) {
       case 'sent':
         filtered = filtered.filter(
-          (message: Messages) => message.ownerId === currentUserId,
+          (message: PublicMessage) => message.owner_id === currentUserId,
         );
         break;
       case 'received':
-        filtered = filtered.filter(
-          (message: Messages) =>
-            message.memoryRecipients?.[0]?.recipient_contact?.id ===
-            currentUserId,
-        );
+        filtered = [];
         break;
       default:
         break;
     }
   }
 
-  // Apply modal type filter (multiple selections)
-  if (filters.activeModalTypeFilter.length > 0) {
-    filtered = filtered.filter((message: Messages) =>
-      filters.activeModalTypeFilter.includes(
-        message.visibility as ModalTypeFilterType,
-      ),
-    );
-  }
 
   // Apply content type filter (multiple selections)
   if (filters.activeContentFilter.length > 0) {
-    filtered = filtered.filter((message: Messages) =>
-      filters.activeContentFilter.includes(message.type),
+    filtered = filtered.filter((message: PublicMessage) =>
+      filters.activeContentFilter.includes(message.format),
     );
   }
 
-  // Apply date filter (multiple selections)
   if (filters.activeDateFilter.length > 0) {
-    filtered = filtered.filter((message: Messages) => {
+    filtered = filtered.filter((message: PublicMessage) => {
       const publishDate = message.publish_date && 'toDate' in message.publish_date ? message.publish_date.toDate() : new Date();
       return filters.activeDateFilter.some(dateFilter => {
         switch (dateFilter) {
@@ -131,7 +113,7 @@ export const filterMessages = (
   }
 
   if (filters.activeStatusFilter) {
-    filtered = filtered.filter((message: Messages) => {
+    filtered = filtered.filter((message: PublicMessage) => {
       const status = message.status;
       if (filters.activeStatusFilter === 'opened') {
         return status === 'released';

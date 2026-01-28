@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { View, Text, SafeAreaView, ScrollView } from 'react-native';
 import useColors from '../../hooks/useColors';
-import BackButton from '../../components/global/buttons/backButton';
+import { BackButton } from '../../components';
 import { CaretLeft, IdentificationCard, Database, ShareNetwork, BookOpen, ShieldCheck } from 'phosphor-react-native';
 import { useNavigation } from '@react-navigation/native';
-import ProfileMenuButton from '../../components/profile/ProfileMenuButton';
+import { ProfileMenuButton } from '../../components';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/roots';
 

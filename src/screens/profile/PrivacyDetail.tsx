@@ -3,8 +3,8 @@ import { View, Text, SafeAreaView, ScrollView } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { CaretLeft } from 'phosphor-react-native';
 import useColors from '../../hooks/useColors';
-import BackButton from '../../components/global/buttons/backButton';
-import { PRIVACY_CONTENT, PrivacySubsection } from '../../constants/privacyContent';
+import { BackButton } from '../../components';
+import { PRIVACY_CONTENT, type PrivacySubsection } from '../../constants';
 import { RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigation/roots';
 

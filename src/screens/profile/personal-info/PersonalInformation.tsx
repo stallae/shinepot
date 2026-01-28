@@ -2,14 +2,13 @@ import * as React from 'react';
 import { SafeAreaView, View, Text } from 'react-native';
 import { X, EnvelopeSimple, DeviceMobileCamera, House, User as UserIcon } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
-import BackButton from '../../../components/global/buttons/backButton';
-import ProfileMenuButton from '../../../components/profile/ProfileMenuButton';
+import { BackButton, ProfileMenuButton } from '../../../components';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList, ROUTES } from '../../../navigation/roots';
 import { getUser } from '../../../services/userService';
 import auth from '@react-native-firebase/auth';
-import { User } from '../../../interfaces/auth';
+import { User } from '../../../interfaces';
 
 const PersonalInformation = () => {
   const { colors } = useColors();
@@ -59,7 +58,7 @@ const PersonalInformation = () => {
             title="Phone number"
             icon={DeviceMobileCamera}
             route={ROUTES.UpdatePhone}
-            description={user?.phoneNumber || 'No phone set'}
+            description={user?.phone_number || 'No phone set'}
             onPress={() => navigation.navigate(ROUTES.UpdatePhone)}
           />
           <ProfileMenuButton

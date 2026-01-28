@@ -6,8 +6,8 @@ import {
   MODAL_TYPE_FILTER_OPTIONS,
   CONTENT_FILTER_OPTIONS,
   DATE_FILTER_OPTIONS,
-} from '../../../constants/filter.ts';
-import {FilterChipsProps} from './interfaces/filterChipsInterface.tsx';
+} from '../../../constants';
+import {FilterChipsProps} from '../../../components';
 
 const FilterChips: React.FC<FilterChipsProps> = ({
   activeStatusFilter,

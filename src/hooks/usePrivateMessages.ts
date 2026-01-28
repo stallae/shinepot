@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {getPrivateMessagesByOwner} from '../services/privateMessageService';
-import {PrivateMessage} from '../interfaces/messages/PrivateMessage';
+import type { PrivateMessage } from '../interfaces';
 import useAuth from './useAuth';
 
 interface UsePrivateMessagesReturn {

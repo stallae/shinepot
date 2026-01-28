@@ -14,7 +14,7 @@ import {
   MODAL_TYPE_FILTER_OPTIONS,
   CONTENT_FILTER_OPTIONS,
   DATE_FILTER_OPTIONS,
-} from '../../../constants/filter';
+} from '../../../constants';
 import {
   FilterModalProps,
   FilterButtonProps,

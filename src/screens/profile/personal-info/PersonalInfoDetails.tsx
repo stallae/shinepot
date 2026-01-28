@@ -2,13 +2,11 @@ import * as React from 'react';
 import { SafeAreaView, View, Text } from 'react-native';
 import { X } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
-import BackButton from '../../../components/global/buttons/backButton';
-import GeneralInput from '../../../components/global/inputs/generalImput';
-import WideButton from '../../../components/global/buttons/wideButton';
+import { BackButton, GeneralInput, WideButton } from '../../../components';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { getUser, updateUser } from '../../../services/userService';
 import auth from '@react-native-firebase/auth';
-import { User } from '../../../interfaces/auth';
+import { User } from '../../../interfaces';
 
 import { getDateParts, formatDateToYYYYMMDD } from '../../../utils/dateHelpers';
 
@@ -17,8 +15,7 @@ const PersonalInfoDetails = () => {
   const navigation = useNavigation();
   const [loading, setLoading] = React.useState(true);
 
-  const [firstName, setFirstName] = React.useState('');
-  const [lastName, setLastName] = React.useState('');
+  const [name, setName] = React.useState('');
   const [day, setDay] = React.useState('');
   const [month, setMonth] = React.useState('');
   const [year, setYear] = React.useState('');
@@ -28,8 +25,7 @@ const PersonalInfoDetails = () => {
     if (currentUser) {
         const userData = await getUser(currentUser.uid);
         if (userData) {
-            setFirstName(userData.firstName || '');
-            setLastName(userData.lastName || '');
+            setName(userData.name || '');
             
             const { day, month, year } = getDateParts(userData.birthday);
             setDay(day);
@@ -53,8 +49,7 @@ const PersonalInfoDetails = () => {
       const birthday = formatDateToYYYYMMDD(day, month, year);
 
       const updates: Partial<User> = {
-          firstName,
-          lastName,
+          name: name,
           birthday: birthday || undefined,
       };
 
@@ -91,15 +86,8 @@ const PersonalInfoDetails = () => {
             label="First name:"
             placeholder="First name"
             keyboardType="default"
-            value={firstName}
-            onChange={setFirstName}
-          />
-          <GeneralInput
-            label="Last name"
-            placeholder="Last name"
-            keyboardType="default"
-            value={lastName}
-            onChange={setLastName}
+            value={name}
+            onChange={setName}
           />
 
           <View className="flex-row gap-3">

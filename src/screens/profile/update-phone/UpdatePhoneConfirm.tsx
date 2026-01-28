@@ -2,12 +2,10 @@ import * as React from 'react';
 import { SafeAreaView, View } from 'react-native';
 import { X } from 'phosphor-react-native';
 import useColors from '../../../hooks/useColors';
-import Card from '../../../components/global/card/card';
+import { Card, BackButton } from '../../../components';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../../navigation/roots';
-import BackButton from '../../../components/global/buttons/backButton';
-import { ROUTES } from '../../../navigation/roots';
+import { RootStackParamList, ROUTES } from '../../../navigation/roots';
 type UpdatePhoneConfirmRouteProp = RouteProp<RootStackParamList, 'UpdatePhoneConfirm'>;
 
 const UpdatePhoneConfirm = () => {

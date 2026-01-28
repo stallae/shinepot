@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import useColors from '../../../hooks/useColors';
-import { RandomMessage } from '../../../interfaces/messages/Messages';
+import type { RandomMessage, NewMessageData } from '../../../interfaces';
 import { ArrowClockwise, PaperPlaneRight } from 'phosphor-react-native';
 import { useNavigation } from '@react-navigation/native';
 import { CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList, NewMessageStackParamList, ROUTES, NewMessageData } from '../../../navigation/roots';
+import { RootStackParamList, NewMessageStackParamList, ROUTES } from '../../../navigation/roots';
 
 type Message = RandomMessage;
 
